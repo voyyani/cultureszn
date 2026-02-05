@@ -53,6 +53,7 @@ function AlbumCard({ project }: { project: NormalizedProject }) {
   }
   
   const gradient = typeColors[project.type as keyof typeof typeColors] || typeColors.album
+  const hasCoverArt = Boolean(project.coverArt)
   
   return (
     <motion.div
@@ -61,10 +62,19 @@ function AlbumCard({ project }: { project: NormalizedProject }) {
       className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/10 hover:border-burnt-orange/40 transition-all duration-300 group"
     >
       {/* Album Header with Gradient */}
-      <div className={`relative h-48 bg-gradient-to-br ${gradient} p-6 overflow-hidden`}>
+      <div className={`relative h-48 p-6 overflow-hidden ${hasCoverArt ? '' : `bg-gradient-to-br ${gradient}`}`}>
+        {hasCoverArt && (
+          <>
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${project.coverArt})` }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/55 to-black/70" />
+          </>
+        )}
         {/* Decorative circles */}
-        <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-white/10 blur-2xl" />
-        <div className="absolute -left-10 -bottom-10 w-32 h-32 rounded-full bg-black/20 blur-xl" />
+        <div className={`absolute -right-10 -top-10 w-40 h-40 rounded-full blur-2xl ${hasCoverArt ? 'bg-white/5' : 'bg-white/10'}`} />
+        <div className={`absolute -left-10 -bottom-10 w-32 h-32 rounded-full blur-xl ${hasCoverArt ? 'bg-black/40' : 'bg-black/20'}`} />
         
         <div className="relative z-10 h-full flex flex-col justify-between">
           <div className="flex items-start justify-between">

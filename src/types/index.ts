@@ -27,6 +27,7 @@ export interface Release {
   releaseDate: string
   coverArt: string
   description?: string
+  tracks?: string[]
   streamingLinks: {
     spotify?: string
     appleMusic?: string

@@ -1,7 +1,37 @@
 import type { Release } from '@/types'
 
 export const releases: Release[] = [
-  // SIXXTAPE - Featured Album
+  // 6 AM - Featured Album
+  {
+    id: '6-am',
+    slug: '6-am',
+    title: '6 AM',
+    artist: 'XiiX',
+    artistSlug: 'xiix',
+    type: 'album',
+    releaseDate: '2026-01-31',
+    coverArt: 'https://res.cloudinary.com/dph79ptoz/image/upload/v1770302177/Screenshot_from_2026-02-05_17-36-05_jits6m.png',
+    tracks: ['UNFORGETTABLE', 'SI UONGO', '6 AGAIN', 'DAY 2 DAY', 'ALL DAY'],
+    streamingLinks: {
+      spotify: 'https://open.spotify.com/album/1Qbztqv7IDwQolRJquhxMk',
+    },
+    featured: true,
+  },
+  {
+    id: 'all-day',
+    slug: 'all-day',
+    title: 'ALL DAY (feat. 3 PVNCH)',
+    artist: 'XiiX',
+    artistSlug: 'xiix',
+    type: 'single',
+    releaseDate: '2026-01-30',
+    coverArt: 'https://res.cloudinary.com/dph79ptoz/image/upload/v1770302373/Screenshot_from_2026-02-05_17-39-21_vpxu4c.png',
+    streamingLinks: {
+      soundcloud: 'https://soundcloud.com/xiix-int/all-day-ft-3-pvnch',
+    },
+    featured: false,
+  },
+  // SIXXTAPE - Album
   {
     id: 'sixxtape',
     slug: 'sixxtape',
@@ -16,7 +46,7 @@ export const releases: Release[] = [
       spotify: 'https://open.spotify.com/album/5EC55CH3Tybf6kNJS0415L',
       appleMusic: 'https://music.apple.com/us/album/sixxtape/1817687168',
     },
-    featured: true,
+    featured: false,
   },
   // XiiX Latest Singles
   {

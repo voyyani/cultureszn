@@ -1,15 +1,17 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Play } from 'lucide-react'
-import { Button, SectionHeader, Text, Badge } from '@/components/ui'
+import { Play, ChevronDown, ChevronUp } from 'lucide-react'
+import { Button, SectionHeader } from '@/components/ui'
 import { ReleaseCard } from '@/components/shared'
 import { getFeaturedRelease, getRecentReleases } from '@/data'
 import { staggerContainer, fadeInUp } from '@/lib/motion'
 
 export function ReleasesSection() {
   const featuredRelease = getFeaturedRelease()
-  const recentReleases = getRecentReleases(3).filter(
-    (r) => r.id !== featuredRelease?.id
-  )
+  const recentReleases = getRecentReleases(10)
+    .filter((r) => r.id !== featuredRelease?.id)
+    .slice(0, 3)
+  const [showTracklist, setShowTracklist] = useState(false)
 
   return (
     <section id="releases" className="section-szn bg-gradient-subtle">
@@ -43,23 +45,14 @@ export function ReleasesSection() {
                 <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/50 to-black/70 z-0" />
 
                 <div className="relative z-10">
-                  <Badge variant="gradient" className="mb-6">
-                    Featured Release
-                  </Badge>
-
-                  <h3 className="text-3xl md:text-4xl font-[family-name:var(--font-heading)] font-bold mb-4 text-text-primary">
+                  <p className="text-xs uppercase tracking-[0.3em] text-burnt-orange/80 mb-3">
+                    XiiX New Album
+                  </p>
+                  <h3 className="text-3xl md:text-4xl font-[family-name:var(--font-heading)] font-bold mb-6 text-text-primary">
                     {featuredRelease.title}
                   </h3>
 
-                  <Text color="orange" size="lg" weight="medium" className="mb-6">
-                    {featuredRelease.artist}
-                  </Text>
-
-                  <Text color="secondary" className="mb-8 leading-relaxed">
-                    {featuredRelease.description}
-                  </Text>
-
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-3 mb-6">
                     {featuredRelease.streamingLinks.spotify && (
                       <Button
                         variant="primary"
@@ -85,6 +78,39 @@ export function ReleasesSection() {
                       </Button>
                     )}
                   </div>
+
+                  {featuredRelease.tracks && featuredRelease.tracks.length > 0 && (
+                    <div>
+                      <button
+                        onClick={() => setShowTracklist(!showTracklist)}
+                        className="flex items-center gap-2 text-text-secondary hover:text-white transition-colors"
+                        aria-label="Toggle tracklist"
+                      >
+                        {showTracklist ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                      </button>
+
+                      <motion.div
+                        initial={false}
+                        animate={{ height: showTracklist ? 'auto' : 0, opacity: showTracklist ? 1 : 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pt-4 space-y-2">
+                          {featuredRelease.tracks.map((track, index) => (
+                            <div
+                              key={`${featuredRelease.id}-track-${index}`}
+                              className="flex items-center gap-3 py-2 px-3 rounded-lg bg-white/5 text-text-secondary"
+                            >
+                              <span className="w-5 text-xs text-text-muted font-mono">
+                                {(index + 1).toString().padStart(2, '0')}
+                              </span>
+                              <span className="text-sm">{track}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Ambient glow */}
