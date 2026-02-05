@@ -141,6 +141,7 @@
           "role": "featured_artist",
           "primary_artist": "XiiX",
           "credited_as": ["Pipí Ciagi", "Pipí"],
+          "cover_art": "https://res.cloudinary.com/dph79ptoz/image/upload/v1770304277/Screenshot_from_2026-02-05_18-10-29_fjh4za.png",
           "duration": "2:32",
           "release_year": 2021,
           "links": {
@@ -159,6 +160,7 @@
           "role": "featured_artist",
           "primary_artist": "Culture SZN",
           "credited_artists": ["Wavy Srf", "Sire", "Pipí Ciagi", "XiiX"],
+          "cover_art": "https://res.cloudinary.com/dph79ptoz/image/upload/v1770304858/Screenshot_from_2026-02-05_18-20-46_d8tbkq.png",
           "release_date": "2025-07-31",
           "duration": "2:00",
           "links": {

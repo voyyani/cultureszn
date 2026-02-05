@@ -14,6 +14,7 @@ interface PipiVerifiedTrack {
   duration?: string
   release_year?: number
   release_date?: string
+  cover_art?: string
   links?: {
     soundcloud?: string
     apple_music?: string
@@ -166,6 +167,7 @@ const highlights: DiscographyHighlight[] = verifiedTracks
       title: buildFeatureTitle(title, creditedForTitle, displayName),
       type: 'single',
       release_date: releaseDate,
+      cover_art: track.cover_art || undefined,
       credits: {
         primary_artist: track.primary_artist || 'Culture SZN',
         ...(creditedWithoutPipi.length > 0 ? { featured_artists: creditedWithoutPipi } : {}),

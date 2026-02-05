@@ -4,6 +4,7 @@ import wavySource from './wavy.json'
 interface WavyTrack {
   title?: string
   display_title?: string
+  cover_art?: string
   primary_artist?: string
   featured_artists?: string[]
   release?: {
@@ -135,6 +136,7 @@ function buildHighlights(tracks: WavyTrack[], isWavyName: (name: string) => bool
         title,
         type: normalizeReleaseType(track.release?.release_type?.value, isPrimaryArtist),
         release_date: releaseDate,
+        cover_art: track.cover_art,
         credits,
         links,
       }

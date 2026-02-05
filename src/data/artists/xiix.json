@@ -112,6 +112,24 @@
         "links": {}
       },
       {
+        "title": "STORY OF MY LIFE (feat. XiiX & Wavy Srf)",
+        "type": "single",
+        "release_date": "2025-06-13",
+        "cover_art": "https://res.cloudinary.com/dph79ptoz/image/upload/v1770305960/Screenshot_from_2026-02-05_18-39-01_bowwti.png",
+        "credits": {
+          "primary_artist": "Culture SZN",
+          "featured_artists": [
+            "XiiX",
+            "Wavy Srf"
+          ]
+        },
+        "links": {
+          "apple_music": "https://music.apple.com/ch/album/story-of-my-life-feat-xiix-wavy-srf-single/1820528528",
+          "soundcloud": "https://soundcloud.com/xiix-int/story-of-my-life-ft-wavy-srf",
+          "youtube": "https://www.youtube.com/watch?v=QEmSIzEPM6g"
+        }
+      },
+      {
         "title": "YOU WANT IT (feat. Culture Szn, Wavy SRF, Sire)",
         "type": "single",
         "release_date": "2025-06-21",
@@ -128,6 +146,25 @@
           ]
         },
         "links": {}
+      },
+      {
+        "title": "MOTO (feat. Wavy Srf, XiiX, Wuann1er & Lineeeezy)",
+        "type": "single",
+        "release_date": "2025-06-27",
+        "cover_art": "https://res.cloudinary.com/dph79ptoz/image/upload/v1770305878/sddefault_up9djf.jpg",
+        "credits": {
+          "primary_artist": "Culture SZN",
+          "featured_artists": [
+            "Wavy Srf",
+            "XiiX",
+            "Wuann1er",
+            "Lineeeezy"
+          ]
+        },
+        "links": {
+          "apple_music": "https://music.apple.com/ch/album/moto-feat-wavy-srf-xiix-wuann1er-lineeeezy-single/1823571261",
+          "youtube": "https://www.youtube.com/watch?v=Ke0akDtBewA"
+        }
       },
       {
         "title": "FIREMAN (feat. Culture Szn, Sire)",
@@ -158,6 +195,25 @@
           ]
         },
         "links": {}
+      },
+      {
+        "title": "GAS N GO (feat. Wavy Srf, Sire, Pipí Ciagi & XiiX)",
+        "type": "single",
+        "release_date": "2025-07-31",
+        "cover_art": "https://res.cloudinary.com/dph79ptoz/image/upload/v1770304858/Screenshot_from_2026-02-05_18-20-46_d8tbkq.png",
+        "credits": {
+          "primary_artist": "Culture SZN",
+          "featured_artists": [
+            "Wavy Srf",
+            "Sire",
+            "Pipí Ciagi",
+            "XiiX"
+          ]
+        },
+        "links": {
+          "apple_music": "https://music.apple.com/us/album/gas-n-go-feat-wavy-srf-sire-pip%C3%AD-ciagi-xiix-single/1830335632",
+          "soundcloud": "https://soundcloud.com/xiix-int/gas-n-go-ft-wavy-srf-pipi"
+        }
       },
       {
         "title": "SI UONGO",
@@ -1528,6 +1584,44 @@
           "coverArt": "https://res.cloudinary.com/dph79ptoz/image/upload/v1770304020/Screenshot_from_2026-02-05_18-06-49_m6qc1i.png"
         },
         {
+          "title": "GAS N GO",
+          "canonicalReleaseDate": "2025-07-31",
+          "length": "02:43",
+          "label": "Culture Szn KE",
+          "designation": [
+            "single"
+          ],
+          "projects": [],
+          "featuredArtists": [
+            "CULTURE SZN",
+            "Wavy SRF",
+            "Sire",
+            "Pipí Ciagi"
+          ],
+          "credits": {
+            "writers": [
+              "Lincoln Musumbi Nzioka",
+              "Brandon King Sire",
+              "Marcel Adala Owen",
+              "Biko Brandon Bantu"
+            ],
+            "producers": [],
+            "beatMakers": [
+              "emn beats"
+            ],
+            "engineers": [],
+            "executiveProducers": [
+              "HIDDEN VIBES AFRICA"
+            ]
+          },
+          "links": {
+            "qobuz": "https://www.qobuz.com/us-en/album/gas-n-go-feat-wavy-srf-sire-pipi-ciagi-xiix-culture-szn/dh5tyi29t6ybc",
+            "soundcloud": "https://soundcloud.com/xiix-int/gas-n-go-ft-wavy-srf-pipi",
+            "appleMusic": "https://music.apple.com/us/album/gas-n-go-feat-wavy-srf-sire-pip%C3%AD-ciagi-xiix-single/1830335632"
+          },
+          "coverArt": "https://res.cloudinary.com/dph79ptoz/image/upload/v1770304858/Screenshot_from_2026-02-05_18-20-46_d8tbkq.png"
+        },
+        {
           "title": "Monday To Monday",
           "canonicalReleaseDate": "2025-07-31",
           "length": "02:57",
@@ -1977,6 +2071,13 @@
           "coverArt": "https://res.cloudinary.com/dph79ptoz/image/upload/v1770304020/Screenshot_from_2026-02-05_18-06-49_m6qc1i.png"
         },
         {
+          "title": "GAS N GO",
+          "length": "02:43",
+          "releaseDate": "2025-07-31",
+          "primaryLink": "https://www.qobuz.com/us-en/album/gas-n-go-feat-wavy-srf-sire-pipi-ciagi-xiix-culture-szn/dh5tyi29t6ybc",
+          "coverArt": "https://res.cloudinary.com/dph79ptoz/image/upload/v1770304858/Screenshot_from_2026-02-05_18-20-46_d8tbkq.png"
+        },
+        {
           "title": "Monday To Monday",
           "length": "02:57",
           "releaseDate": "2025-07-31",
@@ -2068,6 +2169,10 @@
         },
         {
           "date": "2025-07-31",
+          "title": "GAS N GO"
+        },
+        {
+          "date": "2025-07-31",
           "title": "Monday To Monday"
         },
         {
@@ -2107,7 +2212,7 @@
           },
           {
             "year": 2025,
-            "count": 25
+            "count": 26
           },
           {
             "year": 2026,
@@ -2116,7 +2221,7 @@
         ],
         "asciiBar": [
           "2024 | ##### (5)",
-          "2025 | ######################### (25)",
+          "2025 | ########################## (26)",
           "2026 | ## (2)"
         ]
       }
