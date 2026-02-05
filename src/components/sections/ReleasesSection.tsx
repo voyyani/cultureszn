@@ -34,8 +34,13 @@ export function ReleasesSection() {
                 variants={fadeInUp}
                 className="relative bg-black/30 rounded-[var(--radius-szn)] p-8 md:p-10 border border-white/10 overflow-hidden"
               >
-                {/* Background glow */}
-                <div className="absolute inset-0 bg-gradient-sunset opacity-5 z-0" />
+                {/* Background image */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center opacity-25 z-0"
+                  style={{ backgroundImage: `url(${featuredRelease.coverArt})` }}
+                />
+                {/* Gradient overlay for readability */}
+                <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/50 to-black/70 z-0" />
 
                 <div className="relative z-10">
                   <Badge variant="gradient" className="mb-6">
@@ -54,17 +59,36 @@ export function ReleasesSection() {
                     {featuredRelease.description}
                   </Text>
 
-                  <Button variant="primary" size="lg">
-                    <Play size={20} />
-                    Stream Now
-                  </Button>
+                  <div className="flex flex-wrap gap-3">
+                    {featuredRelease.streamingLinks.spotify && (
+                      <Button
+                        variant="primary"
+                        size="lg"
+                        onClick={() => {
+                          window.open(featuredRelease.streamingLinks.spotify, '_blank', 'noopener,noreferrer')
+                        }}
+                      >
+                        <Play size={20} />
+                        Spotify
+                      </Button>
+                    )}
+                    {featuredRelease.streamingLinks.appleMusic && (
+                      <Button
+                        variant="outline"
+                        size="lg"
+                        onClick={() => {
+                          window.open(featuredRelease.streamingLinks.appleMusic, '_blank', 'noopener,noreferrer')
+                        }}
+                      >
+                        <Play size={20} />
+                        Apple Music
+                      </Button>
+                    )}
+                  </div>
                 </div>
 
-                {/* Cover art background */}
-                <div
-                  className="absolute top-0 right-0 w-1/2 h-full bg-cover bg-center opacity-20"
-                  style={{ backgroundImage: `url(${featuredRelease.coverArt})` }}
-                />
+                {/* Ambient glow */}
+                <div className="absolute inset-0 bg-gradient-sunset opacity-10 z-0" />
               </motion.div>
             )}
 

@@ -97,13 +97,28 @@ function getSpotifyTrackId(url: string): string | null {
   return match ? match[1] : null
 }
 
+type ReleaseLinks = NormalizedRelease['links']
+
+function getPrimaryLink(links: ReleaseLinks): { url: string | undefined; platform: keyof ReleaseLinks | null } {
+  if (links.youtube) return { url: links.youtube, platform: 'youtube' }
+  if (links.soundcloud) return { url: links.soundcloud, platform: 'soundcloud' }
+  if (links.spotify) return { url: links.spotify, platform: 'spotify' }
+  if (links.apple) return { url: links.apple, platform: 'apple' }
+  return { url: undefined, platform: null }
+}
+
 export function ReleaseCard({ release, index }: ReleaseCardProps) {
   const [isExpanded, setIsExpanded] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [showEmbed, setShowEmbed] = useState(false)
 
-  const spotifyTrackId = release.links.spotify ? getSpotifyTrackId(release.links.spotify) : null
+  const { url: primaryLink, platform: primaryPlatform } = getPrimaryLink(release.links)
+  const spotifyTrackId =
+    primaryPlatform === 'spotify' && release.links.spotify
+      ? getSpotifyTrackId(release.links.spotify)
+      : null
   const hasMultiplePlatforms = Object.values(release.links).filter(Boolean).length > 1
+  const hasPlayableLink = Boolean(primaryLink)
 
   // Type badge color mapping
   const typeBadgeConfig: Record<string, { bg: string; text: string }> = {
@@ -162,75 +177,81 @@ export function ReleaseCard({ release, index }: ReleaseCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         {/* Play Button Overlay with Pulse Animation */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-          {spotifyTrackId ? (
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                setShowEmbed(!showEmbed)
-                setIsPlaying(!isPlaying)
-              }}
-              className="relative w-16 h-16 rounded-full bg-[#1DB954] flex items-center justify-center shadow-2xl shadow-[#1DB954]/30"
-            >
-              {/* Pulse rings */}
-              {!isPlaying && (
-                <>
-                  <motion.span
-                    className="absolute inset-0 rounded-full bg-[#1DB954]"
-                    animate={{
-                      scale: [1, 1.5],
-                      opacity: [0.4, 0],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: 'easeOut',
-                    }}
-                  />
-                  <motion.span
-                    className="absolute inset-0 rounded-full bg-[#1DB954]"
-                    animate={{
-                      scale: [1, 1.5],
-                      opacity: [0.4, 0],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: 'easeOut',
-                      delay: 0.5,
-                    }}
-                  />
-                </>
-              )}
-              {isPlaying ? (
-                <Pause size={28} className="relative text-white" />
-              ) : (
+        {hasPlayableLink && (
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+            {spotifyTrackId ? (
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  setShowEmbed(!showEmbed)
+                  setIsPlaying(!isPlaying)
+                }}
+                className="relative w-16 h-16 rounded-full bg-[#1DB954] flex items-center justify-center shadow-2xl shadow-[#1DB954]/30"
+              >
+                {/* Pulse rings */}
+                {!isPlaying && (
+                  <>
+                    <motion.span
+                      className="absolute inset-0 rounded-full bg-[#1DB954]"
+                      animate={{
+                        scale: [1, 1.5],
+                        opacity: [0.4, 0],
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: 'easeOut',
+                      }}
+                    />
+                    <motion.span
+                      className="absolute inset-0 rounded-full bg-[#1DB954]"
+                      animate={{
+                        scale: [1, 1.5],
+                        opacity: [0.4, 0],
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: 'easeOut',
+                        delay: 0.5,
+                      }}
+                    />
+                  </>
+                )}
+                {isPlaying ? (
+                  <Pause size={28} className="relative text-white" />
+                ) : (
+                  <Play size={28} className="relative text-white ml-1" />
+                )}
+              </motion.button>
+            ) : (
+              <motion.a
+                href={primaryLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative w-16 h-16 rounded-full bg-burnt-orange flex items-center justify-center shadow-2xl"
+              >
+                {/* Pulse ring for non-Spotify */}
+                <motion.span
+                  className="absolute inset-0 rounded-full bg-burnt-orange"
+                  animate={{
+                    scale: [1, 1.4],
+                    opacity: [0.3, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeOut',
+                  }}
+                />
                 <Play size={28} className="relative text-white ml-1" />
-              )}
-            </motion.button>
-          ) : (
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              className="relative w-16 h-16 rounded-full bg-burnt-orange flex items-center justify-center shadow-2xl"
-            >
-              {/* Pulse ring for non-Spotify */}
-              <motion.span
-                className="absolute inset-0 rounded-full bg-burnt-orange"
-                animate={{
-                  scale: [1, 1.4],
-                  opacity: [0.3, 0],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: 'easeOut',
-                }}
-              />
-              <Play size={28} className="relative text-white ml-1" />
-            </motion.div>
-          )}
-        </div>
+              </motion.a>
+            )}
+          </div>
+        )}
 
         {/* Type Badge - Top Right */}
         <div className="absolute top-3 right-3">

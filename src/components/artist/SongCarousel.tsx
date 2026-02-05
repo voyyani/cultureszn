@@ -200,8 +200,8 @@ interface SongCardProps {
 }
 
 function SongCard({ release, index, width, isDragging }: SongCardProps) {
-  const hasLinks = release.links.spotify || release.links.apple || release.links.soundcloud || release.links.youtube
-  const primaryLink = release.links.spotify || release.links.apple || release.links.soundcloud || release.links.youtube
+  const hasLinks = release.links.youtube || release.links.soundcloud || release.links.spotify || release.links.apple
+  const primaryLink = release.links.youtube || release.links.soundcloud || release.links.spotify || release.links.apple
   
   return (
     <motion.div

@@ -10,7 +10,7 @@ export const releases: Release[] = [
     artistSlug: 'xiix',
     type: 'album',
     releaseDate: '2025-05-29',
-    coverArt: 'https://res.cloudinary.com/dph79ptoz/image/upload/v1770287296/SaveClip.App_621681944_18107153134673313_6513464581845031078_n_qdthcw.jpg',
+    coverArt: 'https://res.cloudinary.com/dph79ptoz/image/upload/v1770294878/SaveClip.App_324837469_1204419686827882_3608251730568902880_n_uwulvm.jpg',
     description: "XiiX's second studio album featuring 7 tracks of raw, poetic rap. A journey through introspection, faith, and the Nairobi hustle. Includes collaborations with Culture Szn, Wavy SRF, Sire, Wakanema, and LA 7AY.",
     streamingLinks: {
       spotify: 'https://open.spotify.com/album/5EC55CH3Tybf6kNJS0415L',
@@ -27,7 +27,7 @@ export const releases: Release[] = [
     artistSlug: 'xiix',
     type: 'single',
     releaseDate: '2026-01-09',
-    coverArt: 'https://res.cloudinary.com/dph79ptoz/image/upload/v1770287296/SaveClip.App_621681944_18107153134673313_6513464581845031078_n_qdthcw.jpg',
+    coverArt: 'https://res.cloudinary.com/dph79ptoz/image/upload/v1770296050/SaveClip.App_618534492_18106822660673313_4488624986590919646_n_s4t6zp.jpg',
     description: "XiiX teams up with Uncle Sliqè for this introspective track about resilience and self-acceptance.",
     streamingLinks: {
       youtube: 'https://www.youtube.com/watch?v=JhOVIyWeqLM',
@@ -42,7 +42,7 @@ export const releases: Release[] = [
     artistSlug: 'xiix',
     type: 'single',
     releaseDate: '2026-01-09',
-    coverArt: 'https://res.cloudinary.com/dph79ptoz/image/upload/v1770287296/SaveClip.App_621681944_18107153134673313_6513464581845031078_n_qdthcw.jpg',
+    coverArt: 'https://res.cloudinary.com/dph79ptoz/image/upload/v1770295415/SaveClip.App_588181846_18102610495673313_1503356049576872472_n_btwvlw.jpg',
     description: "A melodic reflection on moments and memories that stay with us forever.",
     streamingLinks: {},
     featured: false,
