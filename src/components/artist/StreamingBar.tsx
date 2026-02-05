@@ -81,8 +81,20 @@ const defaultConfig = {
   hoverBorder: 'hover:border-burnt-orange/50',
 }
 
+
 export function StreamingBar({ links, artistName }: StreamingBarProps) {
   if (links.length === 0) return null
+
+  // Sort links in the order: youtube, soundcloud, spotify, apple, then others
+  const platformOrder = ['youtube', 'soundcloud', 'spotify', 'apple']
+  const sortedLinks = [...links].sort((a, b) => {
+    const aIdx = platformOrder.indexOf(a.platform)
+    const bIdx = platformOrder.indexOf(b.platform)
+    if (aIdx === -1 && bIdx === -1) return 0
+    if (aIdx === -1) return 1
+    if (bIdx === -1) return -1
+    return aIdx - bIdx
+  })
 
   return (
     <section className="py-6 border-y border-white/5 bg-gradient-to-r from-white/[0.02] via-white/[0.04] to-white/[0.02]">
@@ -102,13 +114,13 @@ export function StreamingBar({ links, artistName }: StreamingBarProps) {
             Stream {artistName}
           </motion.p>
 
-          {/* Platform links - horizontal scroll on mobile */}
+          {/* Platform links - stack vertically on mobile, horizontal on md+ */}
           <motion.div
             variants={fadeInUp}
-            className="w-full overflow-x-auto scrollbar-hide"
+            className="w-full"
           >
-            <div className="flex justify-center gap-3 min-w-max px-4 md:px-0">
-              {links.map((link, index) => {
+            <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-3 min-w-max px-4 md:px-0">
+              {sortedLinks.map((link, index) => {
                 const config = platformConfig[link.platform] || defaultConfig
 
                 return (

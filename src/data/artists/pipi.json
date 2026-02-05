@@ -1,0 +1,261 @@
+{
+  "schema_version": "2.0.0",
+  "entity_type": "multidisciplinary_creator",
+  "generated_at": "2026-02-05",
+  "publisher": {
+    "organization": "Culture SZN",
+    "site": "cultureszn",
+    "timezone": "Africa/Nairobi"
+  },
+
+  "identity": {
+    "display_name": "Pipí Ciagi",
+    "slug": "pipi-ciagi",
+    "name_variants": [
+      {
+        "name": "Pipí Ciagi",
+        "use_case": "Full editorial / credits"
+      },
+      {
+        "name": "Pipí",
+        "use_case": "Short credit on platform listings (e.g., Apple Music track credits)"
+      }
+    ],
+    "origin": {
+      "place": "Sabaki",
+      "country": "Kenya",
+      "confidence": "high",
+      "evidence": [
+        {
+          "source": "Apple Music artist 'About'",
+          "url": "https://music.apple.com/pl/artist/pip%C3%AD-ciagi/1650424672"
+        }
+      ]
+    },
+    "birth_date": {
+      "value": "1996-05-24",
+      "visibility": "optional_public",
+      "confidence": "high",
+      "evidence": [
+        {
+          "source": "Apple Music artist 'About'",
+          "url": "https://music.apple.com/pl/artist/pip%C3%AD-ciagi/1650424672"
+        }
+      ]
+    },
+    "primary_roles": [
+      "Fashion Designer",
+      "Creative Director",
+      "Recording Artist"
+    ],
+    "role_labels_for_ui": {
+      "primary": "Multidisciplinary Creator",
+      "secondary": ["Fashion", "Music"]
+    }
+  },
+
+  "positioning": {
+    "one_liner": "Pipí Ciagi is a multidisciplinary creator from Sabaki — a bold fashion designer and recording artist shaping Culture SZN’s visual and sonic identity.",
+    "elevator_pitch": "Operating across fashion and music, Pipí Ciagi merges design thinking with cultural storytelling. His work balances sharp silhouettes and street-born aesthetics with a sound that moves through contemporary rap and collaborative culture. Within the Culture SZN ecosystem, Pipí Ciagi represents a new generation of creators who build worlds — not just products — turning style, sound, and identity into one cohesive language.",
+    "voice_and_tone": [
+      "editorial",
+      "confident",
+      "culture-forward",
+      "premium",
+      "youth-driven"
+    ],
+    "keywords": [
+      "multidisciplinary",
+      "fashion designer",
+      "creative director",
+      "Kenyan streetwear",
+      "culture-driven design",
+      "Hip-Hop/Rap",
+      "Culture SZN"
+    ],
+    "do_not_say": [
+      "emerging (unless you intentionally want a newcomer angle)",
+      "unknown",
+      "limited footprint"
+    ]
+  },
+
+  "bios": {
+    "short": "Pipí Ciagi is a multidisciplinary creator from Sabaki — a fashion designer, creative director, and recording artist connected to Culture SZN through key collaborations like “SABAKI” with XiiX.",
+    "website": "Pipí Ciagi is a multidisciplinary creator from Sabaki, Kenya, working across fashion and music. As a designer and creative director, he translates street-born energy into intentional silhouettes, texture-forward details, and visual identity built for the now. As a recording artist, he contributes to Culture SZN’s sound through collaborative releases — including his feature on XiiX’s “SABAKI.”\n\nAcross both disciplines, Pipí Ciagi’s work is driven by storytelling and presence: bold choices, sharp execution, and a cultural point of view. Whether building a look or a record, the goal is the same — make the statement undeniable.",
+    "press_kit": "Pipí Ciagi (b. 24 May 1996) is a multidisciplinary creator from Sabaki, Kenya — a fashion designer and creative director whose work blends contemporary street aesthetics with intentional craftsmanship, and a recording artist associated with Hip-Hop/Rap. He is connected to Culture SZN’s creative ecosystem through collaborative music credits, including “SABAKI” with XiiX and “GAS N GO” with Culture SZN."
+  },
+
+  "disciplines": {
+    "fashion": {
+      "headline": "Fashion Design & Creative Direction",
+      "brand_name": "Pipí Ciagi",
+      "design_signature": [
+        "bold silhouettes",
+        "texture-driven detailing",
+        "street-meets-editorial balance",
+        "identity-led styling",
+        "visual world-building"
+      ],
+      "creative_services": [
+        "custom garments",
+        "styling direction",
+        "creative direction",
+        "brand identity + campaign visuals",
+        "wardrobe for artists + performances"
+      ],
+      "portfolio_placeholders": {
+        "lookbook_gallery": [],
+        "campaign_gallery": [],
+        "press_features": []
+      },
+      "copy_blocks": {
+        "statement": "For Pipí Ciagi, fashion is not decoration — it’s language. Every piece is built to communicate confidence, culture, and intent.",
+        "values": [
+          "authenticity over trend",
+          "craftsmanship and fit",
+          "cultural relevance",
+          "bold execution"
+        ]
+      }
+    },
+
+    "music": {
+      "headline": "Music & Collaborations",
+      "primary_genres": [
+        {
+          "name": "Hip-Hop/Rap",
+          "confidence": "high",
+          "evidence": [
+            {
+              "source": "Apple Music artist 'About'",
+              "url": "https://music.apple.com/pl/artist/pip%C3%AD-ciagi/1650424672"
+            }
+          ]
+        }
+      ],
+      "roles": ["featured_artist", "collaborator"],
+      "verified_tracks": [
+        {
+          "title": "SABAKI",
+          "role": "featured_artist",
+          "primary_artist": "XiiX",
+          "credited_as": ["Pipí Ciagi", "Pipí"],
+          "duration": "2:32",
+          "release_year": 2021,
+          "links": {
+            "soundcloud": "https://soundcloud.com/xiix-int/sabaki-ft-pipi-ciagi",
+            "apple_music": "https://music.apple.com/mx/song/sabaki-feat-pip%C3%AD/1809545946",
+            "youtube": "https://www.youtube.com/watch?v=w73_Upv2ZLw"
+          },
+          "evidence": [
+            { "source": "SoundCloud track page", "url": "https://m.soundcloud.com/xiix-int/sabaki-ft-pipi-ciagi?in=xiix-int%2Fsets%2Fhidden-gems" },
+            { "source": "Apple Music song page", "url": "https://music.apple.com/mx/song/sabaki-feat-pip%C3%AD/1809545946" },
+            { "source": "YouTube video title", "url": "https://www.youtube.com/watch?v=w73_Upv2ZLw" }
+          ]
+        },
+        {
+          "title": "GAS N GO",
+          "role": "featured_artist",
+          "primary_artist": "Culture SZN",
+          "credited_artists": ["Wavy Srf", "Sire", "Pipí Ciagi", "XiiX"],
+          "release_date": "2025-07-31",
+          "duration": "2:00",
+          "links": {
+            "apple_music": "https://music.apple.com/us/album/gas-n-go-feat-wavy-srf-sire-pip%C3%AD-ciagi-xiix-single/1830335632",
+            "amazon_music": "https://www.amazon.com/GAS-GO-Explicit-CULTURE-SZN/dp/B0FKMKBHBL"
+          },
+          "evidence": [
+            { "source": "Apple Music single page", "url": "https://music.apple.com/us/album/gas-n-go-feat-wavy-srf-sire-pip%C3%AD-ciagi-xiix-single/1830335632" },
+            { "source": "Amazon Music listing", "url": "https://www.amazon.com/GAS-GO-Explicit-CULTURE-SZN/dp/B0FKMKBHBL" }
+          ]
+        }
+      ],
+      "platform_profiles": {
+        "apple_music": {
+          "artist_url": "https://music.apple.com/pl/artist/pip%C3%AD-ciagi/1650424672",
+          "confidence": "high"
+        },
+        "soundcloud": {
+          "artist_tracks_url": "https://soundcloud.com/pipi_ciagi/tracks",
+          "confidence": "medium",
+          "note": "Tracklist may include non-official uploads; verify before treating as complete catalog."
+        }
+      }
+    }
+  },
+
+  "culture_szn_relationship": {
+    "type": "core_ecosystem_contributor",
+    "summary": "Pipí Ciagi contributes to Culture SZN through both music credits and culture-facing design work, positioned as a builder of the movement’s visual language and collaborations.",
+    "related_entities": [
+      { "name": "XiiX", "relationship": "collaborator" },
+      { "name": "Culture SZN", "relationship": "collaborator" },
+      { "name": "Wavy Srf", "relationship": "network" },
+      { "name": "Sire", "relationship": "network" }
+    ]
+  },
+
+  "links": {
+    "music": {
+      "sabaki_soundcloud": "https://soundcloud.com/xiix-int/sabaki-ft-pipi-ciagi",
+      "sabaki_apple_music": "https://music.apple.com/mx/song/sabaki-feat-pip%C3%AD/1809545946",
+      "sabaki_youtube": "https://www.youtube.com/watch?v=w73_Upv2ZLw",
+      "gas_n_go_apple_music": "https://music.apple.com/us/album/gas-n-go-feat-wavy-srf-sire-pip%C3%AD-ciagi-xiix-single/1830335632"
+    },
+    "profiles": {
+      "apple_music_artist": "https://music.apple.com/pl/artist/pip%C3%AD-ciagi/1650424672",
+      "soundcloud_artist_tracks": "https://soundcloud.com/pipi_ciagi/tracks"
+    }
+  },
+
+  "media_assets": {
+    "hero_image": {
+      "url": "https://res.cloudinary.com/dph79ptoz/image/upload/v1770293574/SaveClip.App_463469409_864466395441315_4754677673088593617_n_dgxte1.jpg",
+      "alt": "Pipí Ciagi portrait",
+      "status": "needed"
+    },
+    "gallery": []
+  },
+
+  "cms": {
+    "display_modules": [
+      { "key": "hero", "fields": ["identity.display_name", "positioning.one_liner", "media_assets.hero_image"] },
+      { "key": "about", "fields": ["bios.website"] },
+      { "key": "disciplines", "fields": ["disciplines.fashion", "disciplines.music"] },
+      { "key": "music_credits", "fields": ["disciplines.music.verified_tracks"] },
+      { "key": "links", "fields": ["links"] }
+    ],
+    "call_to_actions": [
+      { "label": "Book for Styling / Creative Direction", "action": "contact", "payload": { "subject": "Booking: Pipí Ciagi (Fashion/Creative)" } },
+      { "label": "Listen", "action": "external_link", "payload": { "url": "https://music.apple.com/pl/artist/pip%C3%AD-ciagi/1650424672" } }
+    ]
+  },
+
+  "verification": {
+    "high_confidence": [
+      "Apple Music origin/birth/genre fields",
+      "SABAKI credits and duration across Apple Music + SoundCloud + YouTube",
+      "GAS N GO credits via Apple Music and Amazon Music listing"
+    ],
+    "needs_first_party_confirmation": [
+      "Official fashion social handles (Instagram/TikTok/website)",
+      "Fashion portfolio (lookbooks, campaigns, runway/editorial credits)",
+      "Preferred designer statement and brand mission in his own words"
+    ]
+  },
+
+  "seo": {
+    "title": "Pipí Ciagi — Fashion Designer & Artist | Culture SZN",
+    "meta_description": "Pipí Ciagi is a multidisciplinary creator from Sabaki, Kenya — a bold fashion designer and recording artist featured on XiiX’s “SABAKI” and Culture SZN collaborations.",
+    "keywords": [
+      "Pipí Ciagi",
+      "Culture SZN",
+      "Kenyan fashion designer",
+      "Nairobi creative director",
+      "Sabaki",
+      "SABAKI XiiX",
+      "GAS N GO Culture SZN"
+    ]
+  }
+}

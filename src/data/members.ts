@@ -26,45 +26,19 @@ function artistToMember(slug: string): Member | null {
   }
 }
 
-// XiiX loaded from JSON source of truth
+// JSON-driven members
 const xiixMember = artistToMember('xiix')
+const wavyMember = artistToMember('wavy')
+const pipiMember = artistToMember('pipi')
 
 export const members: Member[] = [
   // XiiX - JSON-driven (source of truth)
   ...(xiixMember ? [xiixMember] : []),
+  // Wavy - JSON-driven (source of truth)
+  ...(wavyMember ? [wavyMember] : []),
+  // Pipi - JSON-driven (source of truth)
+  ...(pipiMember ? [pipiMember] : []),
   // Other members - hardcoded (to be migrated)
-  {
-    id: '2',
-    slug: 'wavy',
-    name: 'Wavy',
-    role: 'Vocalist & Lyricist',
-    bio: "Melodic storyteller weaving narratives of Nairobi life through fluid vocals and introspective lyricism. Wavy's voice carries the weight of urban experiences—from the hustle of downtown Nairobi to quiet moments of reflection. Her songwriting bridges Swahili poetry with contemporary R&B, creating a sound that's authentically East African yet universally resonant. She's performed at major festivals across the continent and collaborated with producers worldwide.",
-    image: '',
-    coverImage: '',
-    tags: ['Vocals', 'Songwriting', 'Performance', 'R&B', 'Afro-Soul'],
-    social: {
-      instagram: 'https://instagram.com/wavy.szn',
-      twitter: 'https://twitter.com/wavy_szn',
-      spotify: 'https://open.spotify.com/artist/wavy',
-      youtube: 'https://youtube.com/@wavyszn',
-    },
-    joinedDate: '2023-02-20',
-  },
-  {
-    id: '3',
-    slug: 'pipi',
-    name: 'Pipi',
-    role: 'Visual Designer & Art Director',
-    bio: "Creating the visual language of Culture SZN through bold graphic systems and immersive visual storytelling. Pipi's design philosophy merges Nairobi's urban aesthetic with minimalist precision, resulting in artwork that's instantly recognizable. From album covers to motion graphics, her work defines the collective's visual identity. She's worked with major brands across Africa and has been featured in design publications worldwide for her innovative approach to African visual culture.",
-    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80',
-    coverImage: 'https://images.unsplash.com/photo-1558865869-c93f6f8482af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80',
-    tags: ['Visual Design', 'Art Direction', 'Brand Identity', 'Motion Graphics', 'Photography'],
-    social: {
-      instagram: 'https://instagram.com/pipi.szn',
-      twitter: 'https://twitter.com/pipi_szn',
-    },
-    joinedDate: '2023-01-15',
-  },
   {
     id: '4',
     slug: 'kevo',

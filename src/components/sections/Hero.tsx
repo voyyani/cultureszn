@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { PlayCircle, Headphones } from 'lucide-react'
+import { Headphones } from 'lucide-react'
 import { Button } from '@/components/ui'
 import { StatCounter } from '@/components/shared'
 import { staggerContainer, fadeInUp } from '@/lib/motion'
@@ -52,13 +52,12 @@ export function Hero() {
             variants={fadeInUp}
             className="flex flex-wrap gap-4 mb-16"
           >
-            <Button variant="primary" size="lg">
-              <PlayCircle size={20} />
-              Enter The Ecosystem
-            </Button>
-            <Button variant="outline" size="lg">
-              <Headphones size={20} />
-              Latest Releases
+            
+            <Button asChild variant="outline" size="lg">
+              <a href="#releases">
+                <Headphones size={20} />
+                Latest Releases
+              </a>
             </Button>
           </motion.div>
 

@@ -198,6 +198,8 @@ export interface ImageRequirements {
 }
 
 export interface ArtistBranding {
+  cover_image: string
+  image: string
   primary_slug: string
   display_pronunciation?: string
   accent_color?: string

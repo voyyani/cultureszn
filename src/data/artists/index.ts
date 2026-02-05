@@ -17,6 +17,8 @@ import type {
 
 // Import artist JSON files
 import xiixData from './xiix.json'
+import wavyProfile from './wavyProfile'
+import pipiProfile from './pipiProfile'
 
 /* ============================================
    Artist Registry
@@ -25,6 +27,8 @@ import xiixData from './xiix.json'
 // Type assertion helper for JSON imports
 const artistRegistry: Record<string, ArtistProfile> = {
   xiix: xiixData as unknown as ArtistProfile,
+  wavy: wavyProfile,
+  pipi: pipiProfile,
 }
 
 /* ============================================
@@ -115,7 +119,8 @@ function normalizeArtist(profile: ArtistProfile): NormalizedArtist {
   if (profiles.apple_music?.artist_id) platformIds.appleMusicArtistId = profiles.apple_music.artist_id
 
   // Determine primary role from genres
-  const role = genres.primary[0] || 'Artist'
+  const baseRole = genres.primary[0] || 'Artist'
+  const role = /artist|creator/i.test(baseRole) ? baseRole : `${baseRole} Artist`
 
   return {
     // Core identity
@@ -138,7 +143,7 @@ function normalizeArtist(profile: ArtistProfile): NormalizedArtist {
     longBio: bio.long,
 
     // Classification
-    role: `${role} Artist`,
+    role,
     genres: [...genres.primary, ...genres.secondary],
     tags: genres.tags,
 

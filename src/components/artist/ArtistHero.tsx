@@ -52,6 +52,10 @@ const letterVariants = {
 export function ArtistHero({ artist }: ArtistHeroProps) {
   const [showPronunciation, setShowPronunciation] = useState(false)
   const { backgroundStyle } = useHeroParallax(0.4)
+  const locationLabel =
+    artist.location && artist.country && artist.location.toLowerCase() !== artist.country.toLowerCase()
+      ? `${artist.location}, ${artist.country}`
+      : artist.country || artist.location
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -214,7 +218,7 @@ export function ArtistHero({ artist }: ArtistHeroProps) {
             <div className="flex items-center gap-1.5 px-4 py-2 bg-white/5 rounded-full border border-white/10">
               <MapPin size={14} className="text-burnt-orange" />
               <span className="text-sm text-text-secondary">
-                {artist.location}, {artist.country}
+                {locationLabel}
               </span>
             </div>
             

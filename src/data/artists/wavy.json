@@ -1,0 +1,605 @@
+{
+  "schema": {
+    "name": "culture_szn.artist_profile",
+    "version": "1.0.0",
+    "generated_at": "2026-02-05",
+    "generated_timezone": "Africa/Nairobi",
+    "language": "en-US",
+    "purpose": "Master, citation-linked data source for the Culture Szn website artist profile for Wavy Srf. Includes an embedded expository research report, a DSP-verified track catalog, and explicit unknown/unverified markers."
+  },
+  "embedded_report": {
+    "executive_summary": "Wavy Srf is a credited featured artist and recurring collaborator within the Culture SZN/XiiX release ecosystem, with dense activity in 2025 across multiple singles (e.g., YOU WANT IT, LUCY DREAMS, TOXICC, SENSEI STATE, STORY OF MY LIFE, MOTO, GAS N GO). Across multiple DSP credit surfaces, Wavy Srf appears to be associated with the rights/credit name Marcel Adala Owen (Composer/Lyricist) and the credited name Marcel Adala (e.g., studio personnel/background vocals). As-of 2026-02-05, no official biography (DOB, birthplace, upbringing, influences) or verified social media accounts were found in the accessible primary sources; those fields are therefore left null with explicit unverified markers.",
+    "methodology": {
+      "approach": "Verification-first. Prefer DSP release pages that display credits and label metadata (Qobuz, Apple Music/Shazam) and cross-check durations/release dates across multiple DSPs where accessible.",
+      "primary_sources_used": [
+        "Apple Music artist page for Wavy Srf (catalog footprint on Apple Music)",
+        "Qobuz single/album release pages for credit lines, durations, labels",
+        "Shazam song page for composition/production credits (when available)",
+        "Spotify public track pages (limited metadata surfaced via search snippets in this environment)"
+      ],
+      "limitations": [
+        "Spotify pages could not be fully opened in this environment. Only metadata visible via search snippets was used.",
+        "No official biography/EPK/interview link was captured from the accessible sources in this pass; biography fields remain null unless verified later.",
+        "Music rights organization lookups (PRO/MRO databases) were not available as authoritative, publicly accessible sources in this pass; therefore ISRC/PRO registration and publishing splits are not asserted."
+      ]
+    },
+    "key_verified_findings": [
+      {
+        "finding": "Wavy Srf is presented as an Apple Music artist identity primarily through featured appearances, with top surfaced tracks including GAS N GO, MOTO, YOU WANT IT, STORY OF MY LIFE, LUCY DREAMS, SENSEI STATE, TOXICC, and Muse.",
+        "sources": ["turn18search3"]
+      },
+      {
+        "finding": "Across multiple 2025 collaboration releases, Marcel Adala Owen is repeatedly credited as Composer/Lyricist while Wavy SRF is credited as Featured Artist, strongly suggesting Marcel Adala Owen is Wavy Srf’s rights/credit name.",
+        "sources": ["turn9search2", "turn29view0", "turn13view0", "turn14view0", "turn14view1", "turn19search4"]
+      },
+      {
+        "finding": "The 2025 collaboration singles appear under two label identities: Culture Szn KE and 3998013 Records DK (depending on release).",
+        "sources": ["turn9search2", "turn29view0", "turn13view0", "turn14view0", "turn14view1", "turn19search4"]
+      }
+    ]
+  },
+  "artist": {
+    "name": "Wavy Srf",
+    "type": "music_artist",
+    "known_aliases": [
+      {
+        "name": "Wavy SRF",
+        "type": "credit_spelling_variant",
+        "verification": { "status": "verified", "sources": ["turn29view0", "turn13view0", "turn14view0", "turn14view1", "turn9search2", "turn19search4"] }
+      }
+    ],
+    "credited_names": [
+      {
+        "name": "Marcel Adala Owen",
+        "type": "rights_name_from_credits",
+        "notes": "Credited as Composer/Lyricist on multiple tracks where Wavy SRF is also credited as a featured artist.",
+        "verification": { "status": "verified", "sources": ["turn9search2", "turn29view0", "turn13view0", "turn14view0", "turn14view1", "turn19search4"] }
+      },
+      {
+        "name": "Marcel Adala",
+        "type": "credited_name_from_credits",
+        "notes": "Appears as studio personnel/background vocals/vocal accompaniment on multiple Qobuz credit blocks; also appears as a performing artist name on Apple Music credit surfaces for at least one track.",
+        "verification": { "status": "verified", "sources": ["turn29view0", "turn13view0", "turn14view1", "turn5search1"] }
+      }
+    ],
+    "biography": {
+      "summary": {
+        "value": "No authoritative biography text was located in the primary sources consulted in this research pass. This profile therefore focuses on a verified credit and release record.",
+        "verification": { "status": "verified_absence_in_sources", "sources": ["turn18search3"] }
+      },
+      "full_legal_name": {
+        "value": "Marcel Adala Owen",
+        "verification": {
+          "status": "credit_derived_not_biography_confirmed",
+          "sources": ["turn9search2", "turn29view0", "turn13view0", "turn14view0", "turn14view1", "turn19search4"]
+        }
+      },
+      "date_of_birth": { "value": null, "verification": { "status": "unavailable_unverified", "notes": "Not found in consulted primary sources." } },
+      "place_of_birth": { "value": null, "verification": { "status": "unavailable_unverified", "notes": "Not found in consulted primary sources." } },
+      "hometown": { "value": null, "verification": { "status": "unavailable_unverified" } },
+      "nationality": { "value": "Kenya", "verification": { "status": "unverified", "notes": "Not asserted by a captured official bio; kept as unverified context only." } },
+      "genres": { "value": ["Hip-Hop/Rap"], "verification": { "status": "partially_verified", "sources": ["turn29view0", "turn13view0", "turn14view0", "turn14view1"] } },
+      "influences": { "value": [], "verification": { "status": "unavailable_unverified" } }
+    },
+    "verified_source_pages": {
+      "apple_music_artist": {
+        "url": "https://music.apple.com/us/artist/wavy-srf/1625954701",
+        "verification": { "status": "verified", "sources": ["turn18search3"] }
+      },
+      "spotify_artist": {
+        "url": "https://open.spotify.com/artist/3QMURgEXnTL7FbNgfYsYEd",
+        "verification": { "status": "user_provided_not_fully_opened_in_pass", "notes": "Spotify artist page URL supplied by user; full page contents could not be opened in this environment." }
+      }
+    }
+  },
+  "culture_szn_affiliation": {
+    "collective_name": "Culture SZN",
+    "relationship": {
+      "value": "Frequent collaborator (featured artist; credit-derived songwriter identity via Marcel Adala Owen; occasional background vocals/studio personnel).",
+      "verification": { "status": "verified_via_release_credits", "sources": ["turn9search2", "turn29view0", "turn13view0", "turn14view0", "turn14view1", "turn19search4"] }
+    },
+    "collaboration_highlights": [
+      { "track_id": "track_you_want_it_2025", "notes": "Featured artist credit; release labeled Culture Szn KE.", "sources": ["turn9search2", "turn15search1"] },
+      { "track_id": "track_story_of_my_life_2025", "notes": "Featured artist credit; producer Bedan Kiarie; label Culture Szn KE.", "sources": ["turn13view0", "turn19search5"] },
+      { "track_id": "track_gas_n_go_2025", "notes": "Featured artist credit on Culture SZN single; executive producer credited as HIDDEN VIBES AFRICA.", "sources": ["turn14view0"] }
+    ]
+  },
+  "discography": {
+    "as_primary_artist": {
+      "summary": "No releases as a standalone primary artist were identified in the Apple Music Wavy Srf artist page capture; the Apple Music footprint surfaced here is primarily featured appearances.",
+      "releases": [],
+      "verification": { "status": "partial", "sources": ["turn18search3"] }
+    },
+    "as_featured_artist_or_collaborator": {
+      "track_ids": [
+        "track_onyo_2022",
+        "track_muse_2024",
+        "track_toxicc_2025",
+        "track_sensei_state_2025",
+        "track_lucy_dreams_2025",
+        "track_you_want_it_2025",
+        "track_story_of_my_life_2025",
+        "track_moto_2025",
+        "track_gas_n_go_2025"
+      ],
+      "verification": { "status": "verified_partial", "sources": ["turn18search3", "turn8search13", "turn7search6"] }
+    },
+    "as_songwriter_or_credited_contributor": {
+      "notes": "Songwriter attribution is tracked via repeated appearances of Marcel Adala Owen in Composer/Lyricist fields on Qobuz credits for multiple tracks where Wavy SRF is credited as featured artist.",
+      "track_ids": [
+        "track_toxicc_2025",
+        "track_sensei_state_2025",
+        "track_lucy_dreams_2025",
+        "track_you_want_it_2025",
+        "track_story_of_my_life_2025",
+        "track_moto_2025",
+        "track_gas_n_go_2025"
+      ],
+      "verification": { "status": "verified_via_credits", "sources": ["turn19search4", "turn29view0", "turn9search2", "turn13view0", "turn14view0", "turn14view1"] }
+    }
+  },
+  "tracks": [
+    {
+      "track_id": "track_onyo_2022",
+      "title": "ONYO",
+      "display_title": "ONYO",
+      "primary_artist": "Culture SZN",
+      "featured_artists": ["Wavy Srf", "Griifff"],
+      "wavy_srf_roles": ["featured_artist"],
+      "release": {
+        "release_date": { "value": null, "verification_status": "unverified" },
+        "release_year": { "value": 2022, "verification_status": "verified", "sources": ["turn8search13", "turn11search2"] },
+        "release_type": { "value": "single", "verification_status": "verified", "sources": ["turn8search13"] },
+        "label": { "value": "Culture SZN", "verification_status": "partial", "sources": ["turn8search13"] },
+        "copyright_notice": { "value": "© 2022 Culture SZN. ℗ 2022 Culture SZN.", "verification_status": "verified", "sources": ["turn8search13"] }
+      },
+      "duration": {
+        "mmss": "3:17",
+        "seconds": 197,
+        "verification_status": "verified",
+        "sources": ["turn8search13"]
+      },
+      "credits": {
+        "writers": { "value": [], "verification_status": "unavailable_unverified" },
+        "producers": { "value": [], "verification_status": "unavailable_unverified" }
+      },
+      "platforms": {
+        "spotify": { "type": "track", "url": "https://open.spotify.com/track/16sORRHONzNHwUHA90iZvY", "verification_status": "verified", "sources": ["turn8search13"] },
+        "apple_music": { "type": "unknown", "url": null, "verification_status": "unavailable_unverified" }
+      },
+      "music_videos": [],
+      "lyrics": { "status": "unavailable_unverified" },
+      "chart_performance": { "status": "no_verified_chart_data_found" },
+      "notes": "Spotify-visible metadata supports year, explicit duration, and copyright notice. Full credit breakdown (writers/producers) not available from consulted sources in this pass."
+    },
+    {
+      "track_id": "track_muse_2024",
+      "title": "Muse",
+      "display_title": "Muse (feat. Wavy SRF)",
+      "primary_artist": "$upreme",
+      "featured_artists": ["Wavy SRF"],
+      "wavy_srf_roles": ["featured_artist", "lyricist"],
+      "release": {
+        "release_date": { "value": "2024-03-22", "verification_status": "verified", "sources": ["turn30search2"] },
+        "release_type": { "value": "ep_track", "verification_status": "verified", "sources": ["turn30search2", "turn7search6"] },
+        "parent_release": { "title": "Invictus 777 - EP", "verification_status": "verified", "sources": ["turn30search2"] },
+        "label": { "value": "Plause Music", "verification_status": "verified", "sources": ["turn7search6"] }
+      },
+      "duration": { "mmss": "2:49", "seconds": 169, "verification_status": "verified", "sources": ["turn7search6"] },
+      "credits": {
+        "writers": { "value": ["Supreme Saiyan"], "verification_status": "verified", "sources": ["turn7search6"] },
+        "producers": { "value": ["Bedan Kiarie"], "verification_status": "verified", "sources": ["turn7search6"] },
+        "wavy_specific_credit": { "value": "Wavy SRF credited as Lyricist and FeaturedArtist on Qobuz.", "verification_status": "verified", "sources": ["turn7search6"] }
+      },
+      "platforms": {
+        "apple_music": { "type": "album", "url": "https://music.apple.com/bz/album/invictus-777-ep/1825201470", "verification_status": "verified", "sources": ["turn30search2"] },
+        "qobuz": { "type": "album", "url": "https://www.qobuz.com/nz-en/album/invictus-777-upreme/zlgkvspz6nroc", "verification_status": "verified", "sources": ["turn7search6"] },
+        "youtube": { "type": "video", "url": "https://www.youtube.com/watch?v=WkdLxAdRuRg", "verification_status": "user_provided_not_revalidated_in_pass" }
+      },
+      "music_videos": [{ "platform": "YouTube", "type": "video", "url": "https://www.youtube.com/watch?v=WkdLxAdRuRg", "verification_status": "user_provided_not_revalidated_in_pass" }],
+      "lyrics": { "status": "unavailable_unverified" },
+      "chart_performance": { "status": "no_verified_chart_data_found" }
+    },
+    {
+      "track_id": "track_toxicc_2025",
+      "title": "TOXICC",
+      "display_title": "TOXICC (feat. Wavy Srf)",
+      "primary_artist": "XiiX",
+      "featured_artists": ["Wavy Srf"],
+      "wavy_srf_roles": ["featured_artist", "background_vocals"],
+      "release": {
+        "release_date": { "value": "2025-04-18", "verification_status": "verified", "sources": ["turn25search1"] },
+        "release_type": { "value": "single", "verification_status": "verified", "sources": ["turn25search1"] },
+        "label": { "value": "3998013 Records DK", "verification_status": "verified", "sources": ["turn19search4", "turn25search1"] }
+      },
+      "duration": { "mmss": "3:49", "seconds": 229, "verification_status": "verified", "sources": ["turn19search4"] },
+      "explicit": { "value": true, "verification_status": "verified", "sources": ["turn19search4"] },
+      "credits": {
+        "writers": { "value": ["Lincoln Musumbi Nzioka", "Marcel Adala Owen"], "verification_status": "verified", "sources": ["turn19search4"] },
+        "producers": { "value": ["Joe wa Kiserian"], "verification_status": "verified", "sources": ["turn19search4"] },
+        "studio_personnel": { "value": [], "verification_status": "unavailable_unverified" }
+      },
+      "platforms": {
+        "apple_music": { "type": "single", "url": "https://music.apple.com/ca/album/toxicc-feat-wavy-srf-single/1809486187", "verification_status": "verified", "sources": ["turn25search1"] },
+        "spotify": { "type": "album", "url": "https://open.spotify.com/intl-de/album/76EKMgrkYZa0jSMGACmoUL", "verification_status": "verified", "sources": ["turn15search4"] },
+        "youtube": { "type": "video", "url": "https://www.youtube.com/watch?v=rCqAkapveRo", "verification_status": "user_provided_not_revalidated_in_pass" }
+      },
+      "music_videos": [{ "platform": "YouTube", "type": "video", "url": "https://www.youtube.com/watch?v=rCqAkapveRo", "verification_status": "user_provided_not_revalidated_in_pass" }],
+      "lyrics": { "status": "unavailable_unverified" },
+      "chart_performance": { "status": "no_verified_chart_data_found" }
+    },
+    {
+      "track_id": "track_sensei_state_2025",
+      "title": "SENSEI STATE",
+      "display_title": "SENSEI STATE (feat. Wavy Srf & Culture Szn)",
+      "primary_artist": "XiiX",
+      "featured_artists": ["Wavy Srf", "Culture SZN"],
+      "wavy_srf_roles": ["featured_artist", "studio_personnel"],
+      "release": {
+        "release_date": { "value": "2025-04-19", "verification_status": "verified", "sources": ["turn25search2"] },
+        "release_type": { "value": "single", "verification_status": "verified", "sources": ["turn25search2"] },
+        "label": { "value": "3998013 Records DK", "verification_status": "verified", "sources": ["turn19search4", "turn25search2"] }
+      },
+      "duration": { "mmss": "3:05", "seconds": 185, "verification_status": "verified", "sources": ["turn19search4", "turn18search5"] },
+      "explicit": { "value": true, "verification_status": "verified", "sources": ["turn19search4"] },
+      "credits": {
+        "writers": { "value": ["Lincoln Musumbi Nzioka", "Marcel Adala Owen"], "verification_status": "verified", "sources": ["turn19search4"] },
+        "producers": { "value": ["Mato Raw"], "verification_status": "verified", "sources": ["turn19search4"] },
+        "studio_personnel": { "value": ["Lincoln Musumbi"], "verification_status": "verified", "sources": ["turn19search4"] }
+      },
+      "platforms": {
+        "apple_music": { "type": "single", "url": "https://music.apple.com/us/album/sensei-state-feat-wavy-srf-culture-szn-single/1809538175", "verification_status": "verified", "sources": ["turn25search2"] },
+        "youtube": { "type": "video", "url": "https://www.youtube.com/watch?v=mg9MaH4yvtw", "verification_status": "verified", "sources": ["turn8search15"] },
+        "soundcloud": { "type": "track", "url": "https://soundcloud.com/xiix-int/sensei-state-ft-wavy-srf", "verification_status": "verified", "sources": ["turn2search7"] }
+      },
+      "music_videos": [{ "platform": "YouTube", "type": "auto_generated_audio", "url": "https://www.youtube.com/watch?v=mg9MaH4yvtw", "verification_status": "verified", "sources": ["turn8search15"] }],
+      "lyrics": { "status": "unavailable_unverified" },
+      "chart_performance": { "status": "no_verified_chart_data_found" }
+    },
+    {
+      "track_id": "track_lucy_dreams_2025",
+      "title": "LUCY DREAMS",
+      "display_title": "LUCY DREAMS (feat. Wavy Srf, Sire & Culture Szn)",
+      "primary_artist": "XiiX",
+      "featured_artists": ["Wavy Srf", "Sire", "Culture SZN"],
+      "wavy_srf_roles": ["featured_artist", "background_vocals"],
+      "release": {
+        "release_date": { "value": "2025-05-13", "verification_status": "verified", "sources": ["turn29view0"] },
+        "release_type": { "value": "single", "verification_status": "verified", "sources": ["turn29view0"] },
+        "label": { "value": "3998013 Records DK", "verification_status": "verified", "sources": ["turn29view0"] }
+      },
+      "duration": { "mmss": "2:36", "seconds": 156, "verification_status": "verified", "sources": ["turn29view0"] },
+      "explicit": { "value": true, "verification_status": "verified", "sources": ["turn29view0"] },
+      "credits": {
+        "writers": { "value": ["Lincoln Musumbi Nzioka", "Brandon King Sire", "Marcel Adala Owen"], "verification_status": "verified", "sources": ["turn29view0"] },
+        "producers": { "value": ["Bedan Kiarie"], "verification_status": "verified", "sources": ["turn29view0"] },
+        "studio_personnel": { "value": ["Lincoln Musumbi", "Brandon Sire", "Marcel Adala"], "verification_status": "verified", "sources": ["turn29view0"] }
+      },
+      "platforms": {
+        "apple_music": { "type": "song", "url": "https://music.apple.com/my/song/lucy-dreams-feat-wavy-srf-sire-culture-szn/1817687626", "verification_status": "verified", "sources": ["turn19search7"] },
+        "spotify": { "type": "track", "url": "https://open.spotify.com/track/7nVi1QMXdnFPnpTa3Ts8fp", "verification_status": "verified", "sources": ["turn15search2"] },
+        "qobuz": { "type": "album", "url": "https://www.qobuz.com/au-en/album/lucy-dreams-feat-wavy-srf-sire-culture-szn-xiix/xi8tgs7b86fnb", "verification_status": "verified", "sources": ["turn29view0"] },
+        "youtube": { "type": "video", "url": "https://m.youtube.com/watch?v=8ss_k2UCG3o", "verification_status": "verified", "sources": ["turn19search9"] }
+      },
+      "music_videos": [{ "platform": "YouTube", "type": "auto_generated_audio_or_upload", "url": "https://m.youtube.com/watch?v=8ss_k2UCG3o", "verification_status": "verified", "sources": ["turn19search9"] }],
+      "lyrics": { "status": "unavailable_unverified" },
+      "chart_performance": { "status": "no_verified_chart_data_found" }
+    },
+    {
+      "track_id": "track_you_want_it_2025",
+      "title": "YOU WANT IT",
+      "display_title": "YOU WANT IT (feat. Culture Szn, Wavy Srf & Sire)",
+      "primary_artist": "XiiX",
+      "featured_artists": ["Culture SZN", "Wavy Srf", "Sire"],
+      "wavy_srf_roles": ["featured_artist"],
+      "release": {
+        "release_date": { "value": "2025-06-21", "verification_status": "verified", "sources": ["turn25search0", "turn9search2"] },
+        "release_type": { "value": "single", "verification_status": "verified", "sources": ["turn9search2", "turn15search1"] },
+        "label": { "value": "Culture Szn KE", "verification_status": "verified", "sources": ["turn9search2", "turn15search1"] }
+      },
+      "duration": { "mmss": "3:48", "seconds": 228, "verification_status": "verified", "sources": ["turn9search2", "turn15search1", "turn25search0"] },
+      "explicit": { "value": true, "verification_status": "verified", "sources": ["turn9search2"] },
+      "credits": {
+        "writers": { "value": ["Lincoln Musumbi Nzioka", "Brandon King Sire", "Marcel Adala Owen"], "verification_status": "verified", "sources": ["turn9search2"] },
+        "producers": { "value": ["Bedan Kiaire"], "verification_status": "verified", "sources": ["turn9search2"] },
+        "executive_producers": { "value": ["Radio 254"], "verification_status": "verified", "sources": ["turn9search2"] },
+        "studio_personnel": { "value": ["Lincoln Musumbi", "Brandon Sire", "Marcel Adala"], "verification_status": "verified", "sources": ["turn9search2"] }
+      },
+      "platforms": {
+        "apple_music": { "type": "song", "url": "https://music.apple.com/my/song/you-want-it-feat-culture-szn-wavy-srf-sire/1822040269", "verification_status": "verified", "sources": ["turn25search0"] },
+        "spotify": { "type": "track", "url": "https://open.spotify.com/track/5QzSCWffdpRiSTPgLt1Ve1", "verification_status": "verified", "sources": ["turn15search1"] },
+        "qobuz": { "type": "album", "url": "https://www.qobuz.com/be-fr/album/you-want-it-feat-culture-szn-wavy-srf-sire-xiix/zqecjs5hli9sc", "verification_status": "verified", "sources": ["turn9search2"] },
+        "youtube": { "type": "topic_channel", "url": "https://www.youtube.com/channel/UCbJb5O0Wq_lhttHAK_4GZcQ", "verification_status": "user_provided_not_revalidated_in_pass" }
+      },
+      "music_videos": [],
+      "lyrics": { "status": "unavailable_unverified" },
+      "chart_performance": { "status": "no_verified_chart_data_found" }
+    },
+    {
+      "track_id": "track_story_of_my_life_2025",
+      "title": "STORY OF MY LIFE",
+      "display_title": "STORY OF MY LIFE (feat. XiiX & Wavy Srf)",
+      "primary_artist": "Culture SZN",
+      "featured_artists": ["XiiX", "Wavy Srf"],
+      "wavy_srf_roles": ["featured_artist"],
+      "release": {
+        "release_date": { "value": "2025-06-13", "verification_status": "verified", "sources": ["turn13view0", "turn19search5"] },
+        "release_type": { "value": "single", "verification_status": "verified", "sources": ["turn13view0", "turn19search5"] },
+        "label": { "value": "Culture Szn KE", "verification_status": "verified", "sources": ["turn13view0", "turn19search5"] }
+      },
+      "duration": { "mmss": "2:05", "seconds": 125, "verification_status": "verified", "sources": ["turn13view0"] },
+      "explicit": { "value": true, "verification_status": "verified", "sources": ["turn13view0"] },
+      "credits": {
+        "writers": { "value": ["Lincoln Musumbi Nzioka", "Marcel Adala Owen"], "verification_status": "verified", "sources": ["turn13view0", "turn19search5"] },
+        "producers": { "value": ["Bedan Kiarie"], "verification_status": "verified", "sources": ["turn13view0", "turn19search5"] },
+        "studio_personnel": { "value": ["Lincoln Musumbi", "Marcel Adala"], "verification_status": "verified", "sources": ["turn13view0"] }
+      },
+      "platforms": {
+        "apple_music": { "type": "single", "url": "https://music.apple.com/ch/album/story-of-my-life-feat-xiix-wavy-srf-single/1820528528", "verification_status": "verified", "sources": ["turn25search3"] },
+        "qobuz": { "type": "album", "url": "https://www.qobuz.com/us-en/album/story-of-my-life-feat-xiix-wavy-srf-culture-szn/kt6k2z3cgg8ua", "verification_status": "verified", "sources": ["turn13view0"] },
+        "youtube": { "type": "video", "url": "https://www.youtube.com/watch?v=QEmSIzEPM6g", "verification_status": "user_provided_not_revalidated_in_pass" },
+        "soundcloud": { "type": "track", "url": "https://soundcloud.com/xiix-int/story-of-my-life-ft-wavy-srf", "verification_status": "verified", "sources": ["turn2search5"] },
+        "shazam": { "type": "song", "url": "https://www.shazam.com/el-gr/song/1820528529/story-of-my-life-feat-xiix-and-wavy-srf", "verification_status": "verified", "sources": ["turn19search5"] }
+      },
+      "music_videos": [{ "platform": "YouTube", "type": "video", "url": "https://www.youtube.com/watch?v=QEmSIzEPM6g", "verification_status": "user_provided_not_revalidated_in_pass" }],
+      "lyrics": { "status": "unavailable_unverified", "notes": "Shazam page exposes a lyrics section, but lyrics text was not captured in the accessible snippet; do not assert lyrics without a captured official source." },
+      "chart_performance": { "status": "no_verified_chart_data_found" }
+    },
+    {
+      "track_id": "track_moto_2025",
+      "title": "MOTO",
+      "display_title": "MOTO (feat. Wavy Srf, XiiX, Wuann1er & Lineeeezy)",
+      "primary_artist": "Culture SZN",
+      "featured_artists": ["Wavy Srf", "XiiX", "Wuann1er", "Lineeeezy"],
+      "wavy_srf_roles": ["featured_artist"],
+      "release": {
+        "release_date": { "value": "2025-06-27", "verification_status": "verified", "sources": ["turn14view3", "turn14view1"] },
+        "release_type": { "value": "single", "verification_status": "verified", "sources": ["turn14view3"] },
+        "label": { "value": "Culture Szn KE", "verification_status": "verified", "sources": ["turn14view3", "turn14view1"] }
+      },
+      "duration": { "mmss": "3:14", "seconds": 194, "verification_status": "verified", "sources": ["turn14view1"] },
+      "explicit": { "value": true, "verification_status": "verified", "sources": ["turn14view1"] },
+      "credits": {
+        "writers": { "value": ["Lincoln Musumbi Nzioka", "Marcel Adala Owen", "Joe Kimani Wuan", "Lyno Mzera Blunted"], "verification_status": "verified", "sources": ["turn14view1"] },
+        "producers": { "value": ["Bedan Kiarie"], "verification_status": "verified", "sources": ["turn14view1"] },
+        "beat_makers": { "value": ["Bedan Kiarie"], "verification_status": "verified", "sources": ["turn14view1"] },
+        "executive_producers": { "value": ["Kizazi Africa"], "verification_status": "verified", "sources": ["turn14view1"] },
+        "studio_personnel": { "value": ["Lincoln Musumbi", "Joe Kimani", "Marcel Adala", "Lyno Mzera"], "verification_status": "verified", "sources": ["turn14view1"] }
+      },
+      "platforms": {
+        "apple_music": { "type": "single", "url": "https://music.apple.com/ch/album/moto-feat-wavy-srf-xiix-wuann1er-lineeeezy-single/1823571261", "verification_status": "user_provided_not_revalidated_in_pass" },
+        "qobuz": { "type": "album", "url": "https://www.qobuz.com/us-en/album/moto-feat-wavy-srf-xiix-wuann1er-lineeeezy-culture-szn/fk8xl1az1ifhb", "verification_status": "verified", "sources": ["turn14view1"] },
+        "youtube": { "type": "video", "url": "https://www.youtube.com/watch?v=Ke0akDtBewA", "verification_status": "user_provided_not_revalidated_in_pass" },
+        "tidal": { "type": "track", "url": "https://tidal.com/browse/track/438018382", "verification_status": "verified", "sources": ["turn3search11"] }
+      },
+      "music_videos": [{ "platform": "YouTube", "type": "video", "url": "https://www.youtube.com/watch?v=Ke0akDtBewA", "verification_status": "user_provided_not_revalidated_in_pass" }],
+      "lyrics": { "status": "unavailable_unverified" },
+      "chart_performance": { "status": "no_verified_chart_data_found" }
+    },
+    {
+      "track_id": "track_gas_n_go_2025",
+      "title": "GAS N GO",
+      "display_title": "GAS N GO (feat. Wavy Srf, Sire, Pipí Ciagi & XiiX)",
+      "primary_artist": "Culture SZN",
+      "featured_artists": ["Wavy Srf", "Sire", "Pipí Ciagi", "XiiX"],
+      "wavy_srf_roles": ["featured_artist"],
+      "release": {
+        "release_date": { "value": "2025-07-31", "verification_status": "verified", "sources": ["turn14view2"] },
+        "release_type": { "value": "single", "verification_status": "verified", "sources": ["turn14view2"] },
+        "label": { "value": "Culture Szn KE", "verification_status": "verified", "sources": ["turn14view2"] }
+      },
+      "duration": { "mmss": "2:43", "seconds": 163, "verification_status": "verified", "sources": ["turn14view0"] },
+      "explicit": { "value": true, "verification_status": "verified", "sources": ["turn14view0"] },
+      "credits": {
+        "writers": { "value": ["Lincoln Musumbi Nzioka", "Brandon King Sire", "Marcel Adala Owen", "Biko Brandon Bantu"], "verification_status": "verified", "sources": ["turn14view0"] },
+        "beat_makers": { "value": ["emn beats"], "verification_status": "verified", "sources": ["turn14view0"] },
+        "executive_producers": { "value": ["HIDDEN VIBES AFRICA"], "verification_status": "verified", "sources": ["turn14view0"] },
+        "studio_personnel": { "value": ["Lincoln Musumbi Nzioka", "Brandon King Sire", "Marcel Adala Owen", "Biko Brandon Bantu"], "verification_status": "verified", "sources": ["turn14view0"] }
+      },
+      "platforms": {
+        "apple_music": { "type": "single", "url": "https://music.apple.com/us/album/gas-n-go-feat-wavy-srf-sire-pip%C3%AD-ciagi-xiix-single/1830335632", "verification_status": "verified", "sources": ["turn8search0"] },
+        "qobuz": { "type": "album", "url": "https://www.qobuz.com/us-en/album/gas-n-go-feat-wavy-srf-sire-pipi-ciagi-xiix-culture-szn/dh5tyi29t6ybc", "verification_status": "verified", "sources": ["turn14view0"] },
+        "youtube": { "type": "topic_channel", "url": "https://www.youtube.com/channel/UCwIDZUkCgVZKJXCsS8Hqfqg", "verification_status": "user_provided_not_revalidated_in_pass" },
+        "soundcloud": { "type": "track", "url": "https://soundcloud.com/xiix-int/gas-n-go-ft-wavy-srf-pipi", "verification_status": "verified", "sources": ["turn2search18"] }
+      },
+      "music_videos": [],
+      "lyrics": { "status": "unavailable_unverified" },
+      "chart_performance": { "status": "no_verified_chart_data_found" }
+    }
+  ],
+  "reference_tables": {
+    "tracks_quick_reference": {
+      "columns": ["title", "primary_artist", "release_date", "duration", "apple_music", "spotify", "qobuz", "youtube"],
+      "rows": [
+        {
+          "title": "ONYO",
+          "primary_artist": "Culture SZN",
+          "release_date": "2022 (year only; exact date unverified)",
+          "duration": "3:17",
+          "apple_music": null,
+          "spotify": "https://open.spotify.com/track/16sORRHONzNHwUHA90iZvY",
+          "qobuz": null,
+          "youtube": null
+        },
+        {
+          "title": "Muse (feat. Wavy SRF)",
+          "primary_artist": "$upreme",
+          "release_date": "2024-03-22",
+          "duration": "2:49",
+          "apple_music": "https://music.apple.com/bz/album/invictus-777-ep/1825201470",
+          "spotify": null,
+          "qobuz": "https://www.qobuz.com/nz-en/album/invictus-777-upreme/zlgkvspz6nroc",
+          "youtube": "https://www.youtube.com/watch?v=WkdLxAdRuRg"
+        },
+        {
+          "title": "TOXICC (feat. Wavy Srf)",
+          "primary_artist": "XiiX",
+          "release_date": "2025-04-18",
+          "duration": "3:49",
+          "apple_music": "https://music.apple.com/ca/album/toxicc-feat-wavy-srf-single/1809486187",
+          "spotify": "https://open.spotify.com/intl-de/album/76EKMgrkYZa0jSMGACmoUL",
+          "qobuz": "https://www.qobuz.com/dk-en/album/ovr-due-xiix/bufqjks0ez0yc",
+          "youtube": "https://www.youtube.com/watch?v=rCqAkapveRo"
+        },
+        {
+          "title": "SENSEI STATE (feat. Wavy Srf & Culture Szn)",
+          "primary_artist": "XiiX",
+          "release_date": "2025-04-19",
+          "duration": "3:05",
+          "apple_music": "https://music.apple.com/us/album/sensei-state-feat-wavy-srf-culture-szn-single/1809538175",
+          "spotify": null,
+          "qobuz": "https://www.qobuz.com/dk-en/album/ovr-due-xiix/bufqjks0ez0yc",
+          "youtube": "https://www.youtube.com/watch?v=mg9MaH4yvtw"
+        },
+        {
+          "title": "LUCY DREAMS (feat. Wavy Srf, Sire & Culture Szn)",
+          "primary_artist": "XiiX",
+          "release_date": "2025-05-13",
+          "duration": "2:36",
+          "apple_music": "https://music.apple.com/my/song/lucy-dreams-feat-wavy-srf-sire-culture-szn/1817687626",
+          "spotify": "https://open.spotify.com/track/7nVi1QMXdnFPnpTa3Ts8fp",
+          "qobuz": "https://www.qobuz.com/au-en/album/lucy-dreams-feat-wavy-srf-sire-culture-szn-xiix/xi8tgs7b86fnb",
+          "youtube": "https://m.youtube.com/watch?v=8ss_k2UCG3o"
+        },
+        {
+          "title": "YOU WANT IT (feat. Culture Szn, Wavy Srf & Sire)",
+          "primary_artist": "XiiX",
+          "release_date": "2025-06-21",
+          "duration": "3:48",
+          "apple_music": "https://music.apple.com/my/song/you-want-it-feat-culture-szn-wavy-srf-sire/1822040269",
+          "spotify": "https://open.spotify.com/track/5QzSCWffdpRiSTPgLt1Ve1",
+          "qobuz": "https://www.qobuz.com/be-fr/album/you-want-it-feat-culture-szn-wavy-srf-sire-xiix/zqecjs5hli9sc",
+          "youtube": "https://www.youtube.com/channel/UCbJb5O0Wq_lhttHAK_4GZcQ"
+        },
+        {
+          "title": "STORY OF MY LIFE (feat. XiiX & Wavy Srf)",
+          "primary_artist": "Culture SZN",
+          "release_date": "2025-06-13",
+          "duration": "2:05",
+          "apple_music": "https://music.apple.com/ch/album/story-of-my-life-feat-xiix-wavy-srf-single/1820528528",
+          "spotify": null,
+          "qobuz": "https://www.qobuz.com/us-en/album/story-of-my-life-feat-xiix-wavy-srf-culture-szn/kt6k2z3cgg8ua",
+          "youtube": "https://www.youtube.com/watch?v=QEmSIzEPM6g"
+        },
+        {
+          "title": "MOTO (feat. Wavy Srf, XiiX, Wuann1er & Lineeeezy)",
+          "primary_artist": "Culture SZN",
+          "release_date": "2025-06-27",
+          "duration": "3:14",
+          "apple_music": "https://music.apple.com/ch/album/moto-feat-wavy-srf-xiix-wuann1er-lineeeezy-single/1823571261",
+          "spotify": null,
+          "qobuz": "https://www.qobuz.com/us-en/album/moto-feat-wavy-srf-xiix-wuann1er-lineeeezy-culture-szn/fk8xl1az1ifhb",
+          "youtube": "https://www.youtube.com/watch?v=Ke0akDtBewA"
+        },
+        {
+          "title": "GAS N GO (feat. Wavy Srf, Sire, Pipí Ciagi & XiiX)",
+          "primary_artist": "Culture SZN",
+          "release_date": "2025-07-31",
+          "duration": "2:43",
+          "apple_music": "https://music.apple.com/us/album/gas-n-go-feat-wavy-srf-sire-pip%C3%AD-ciagi-xiix-single/1830335632",
+          "spotify": null,
+          "qobuz": "https://www.qobuz.com/us-en/album/gas-n-go-feat-wavy-srf-sire-pipi-ciagi-xiix-culture-szn/dh5tyi29t6ybc",
+          "youtube": "https://www.youtube.com/channel/UCwIDZUkCgVZKJXCsS8Hqfqg"
+        }
+      ]
+    }
+  },
+  "analytics": {
+    "release_timeline": {
+      "type": "timeline",
+      "events": [
+        { "date": "2022", "track_id": "track_onyo_2022", "label": "Culture SZN (Spotify copyright)", "confidence": "year_only" },
+        { "date": "2024-03-22", "track_id": "track_muse_2024", "label": "Plause Music", "confidence": "exact_date" },
+        { "date": "2025-04-18", "track_id": "track_toxicc_2025", "label": "3998013 Records DK", "confidence": "exact_date" },
+        { "date": "2025-04-19", "track_id": "track_sensei_state_2025", "label": "3998013 Records DK", "confidence": "exact_date" },
+        { "date": "2025-05-13", "track_id": "track_lucy_dreams_2025", "label": "3998013 Records DK", "confidence": "exact_date" },
+        { "date": "2025-06-13", "track_id": "track_story_of_my_life_2025", "label": "Culture Szn KE", "confidence": "exact_date" },
+        { "date": "2025-06-21", "track_id": "track_you_want_it_2025", "label": "Culture Szn KE", "confidence": "exact_date" },
+        { "date": "2025-06-27", "track_id": "track_moto_2025", "label": "Culture Szn KE", "confidence": "exact_date" },
+        { "date": "2025-07-31", "track_id": "track_gas_n_go_2025", "label": "Culture Szn KE", "confidence": "exact_date" }
+      ]
+    },
+    "counts": {
+      "total_tracks_in_this_profile": 9,
+      "tracks_by_year": [
+        { "year": 2022, "count": 1 },
+        { "year": 2024, "count": 1 },
+        { "year": 2025, "count": 7 }
+      ],
+      "tracks_with_verified_writer_credits": 7,
+      "tracks_with_verified_producer_credits": 8
+    },
+    "collaboration_network": {
+      "top_collaborators_by_frequency_in_this_dataset": [
+        { "name": "Culture SZN", "count": 6 },
+        { "name": "XiiX", "count": 7 },
+        { "name": "Sire", "count": 3 },
+        { "name": "Bedan Kiarie", "count": 6, "note": "Frequently credited as producer/beat maker." }
+      ],
+      "verification": { "status": "derived_from_track_objects", "sources": ["turn9search2", "turn29view0", "turn13view0", "turn14view0", "turn14view1", "turn19search4", "turn7search6"] }
+    }
+  },
+  "media_and_press": {
+    "press_articles": [],
+    "interviews": [],
+    "media_appearances": [],
+    "notes": "No verified press/interview sources were captured in this research pass. Add items only when links can be validated to reputable outlets or official channels."
+  },
+  "live_performances": {
+    "notable_performances": [],
+    "notes": "No verified live performance listings were captured in this research pass."
+  },
+  "awards_and_nominations": {
+    "awards": [],
+    "nominations": [],
+    "notes": "No verified awards/nominations captured in this research pass."
+  },
+  "media_assets": {
+    "hero_image": {
+      "url": "https://res.cloudinary.com/dph79ptoz/image/upload/v1770293994/SnapInsta.to_291419379_142530201716480_9088295563240532924_n_ds2fzn.jpg",
+      "alt": "Wavy Srf portrait",
+      "status": "provided"
+    },
+    "gallery": []
+  },
+  "social_media": {
+    "verified_accounts_only_policy": true,
+    "verified_accounts": {
+      "instagram": null,
+      "x": null,
+      "tiktok": null,
+      "facebook": null,
+      "youtube_official_channel": null
+    },
+    "notes": "No verified social accounts were identified in the primary sources consulted in this pass. Do not add unverified handles."
+  },
+  "coverage_notes": {
+    "what_this_includes": [
+      "DSP-verified collaboration singles and EP tracks where Wavy Srf/Wavy SRF is listed as a featured artist in Apple Music and/or Qobuz credits.",
+      "Spotify-only inclusion of ONYO (2022) because it is explicitly credited to Culture SZN, Wavy Srf, and Griifff with a visible duration and copyright notice."
+    ],
+    "known_gaps": [
+      "Potential SoundCloud-only/unreleased/demo material is not exhaustively cataloged here due to lack of captured authoritative release metadata and the requirement to prioritize official sources.",
+      "No ISRC/UPC, publishing splits, or performance chart history was captured from authoritative public databases in this pass.",
+      "No verified biography details (DOB, birthplace, upbringing, influences) were found in the accessed sources."
+    ],
+    "recommended_next_verification_steps": [
+      "Confirm whether Marcel Adala Owen is the legal name via an official biography/EPK or verified profile statement.",
+      "Attempt PRO/MRO lookups (e.g., publisher admin or label-provided ISRC lists) for ISRCs and publishing registrations, then add them with citations.",
+      "Identify official/verified social profiles via DSP ‘About’ sections, label link hubs, or verified badges, and only then populate social handles."
+    ]
+  },
+  "source_registry": {
+    "turn18search3": { "source_type": "apple_music_artist_page", "url": "https://music.apple.com/us/artist/wavy-srf/1625954701" },
+    "turn9search2": { "source_type": "qobuz_single_page", "url": "https://www.qobuz.com/be-fr/album/you-want-it-feat-culture-szn-wavy-srf-sire-xiix/zqecjs5hli9sc" },
+    "turn29view0": { "source_type": "qobuz_single_page", "url": "https://www.qobuz.com/au-en/album/lucy-dreams-feat-wavy-srf-sire-culture-szn-xiix/xi8tgs7b86fnb" },
+    "turn19search4": { "source_type": "qobuz_album_page", "url": "https://www.qobuz.com/dk-en/album/ovr-due-xiix/bufqjks0ez0yc" },
+    "turn13view0": { "source_type": "qobuz_single_page", "url": "https://www.qobuz.com/us-en/album/story-of-my-life-feat-xiix-wavy-srf-culture-szn/kt6k2z3cgg8ua" },
+    "turn14view1": { "source_type": "qobuz_single_page", "url": "https://www.qobuz.com/us-en/album/moto-feat-wavy-srf-xiix-wuann1er-lineeeezy-culture-szn/fk8xl1az1ifhb" },
+    "turn14view0": { "source_type": "qobuz_single_page", "url": "https://www.qobuz.com/us-en/album/gas-n-go-feat-wavy-srf-sire-pipi-ciagi-xiix-culture-szn/dh5tyi29t6ybc" },
+    "turn8search13": { "source_type": "spotify_track_page", "url": "https://open.spotify.com/track/16sORRHONzNHwUHA90iZvY" },
+    "turn7search6": { "source_type": "qobuz_ep_page", "url": "https://www.qobuz.com/nz-en/album/invictus-777-upreme/zlgkvspz6nroc" },
+    "turn30search2": { "source_type": "apple_music_ep_page", "url": "https://music.apple.com/bz/album/invictus-777-ep/1825201470" },
+    "turn19search5": { "source_type": "shazam_song_page", "url": "https://www.shazam.com/el-gr/song/1820528529/story-of-my-life-feat-xiix-and-wavy-srf" }
+  }
+}

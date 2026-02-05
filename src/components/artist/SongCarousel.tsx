@@ -16,37 +16,46 @@ interface SongCarouselProps {
   releases: NormalizedRelease[]
 }
 
+
 const CARD_WIDTH = 280
 const CARD_GAP = 16
-const CARDS_PER_VIEW = 4
+
+function getCardsPerView() {
+  if (typeof window !== 'undefined' && window.innerWidth < 768) {
+    return 2
+  }
+  return 4
+}
 
 export function SongCarousel({ releases }: SongCarouselProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
+  const [cardsPerView, setCardsPerView] = useState(getCardsPerView())
   const x = useMotionValue(0)
-  
+
   // Calculate total pages
   const totalCards = releases.length
-  const maxIndex = Math.max(0, totalCards - CARDS_PER_VIEW)
-  
+  const maxIndex = Math.max(0, totalCards - cardsPerView)
+
   // Calculate container width dynamically
   const [containerWidth, setContainerWidth] = useState(0)
-  
+
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
         setContainerWidth(containerRef.current.offsetWidth)
       }
+      setCardsPerView(getCardsPerView())
     }
     updateWidth()
     window.addEventListener('resize', updateWidth)
     return () => window.removeEventListener('resize', updateWidth)
   }, [])
-  
+
   // Calculate card width based on container (responsive)
-  const responsiveCardWidth = containerWidth > 0 
-    ? (containerWidth - (CARD_GAP * (CARDS_PER_VIEW - 1))) / CARDS_PER_VIEW 
+  const responsiveCardWidth = containerWidth > 0
+    ? (containerWidth - (CARD_GAP * (cardsPerView - 1))) / cardsPerView
     : CARD_WIDTH
   
   // Navigation handlers
@@ -160,13 +169,13 @@ export function SongCarousel({ releases }: SongCarouselProps) {
       
       {/* Dots Navigation (for mobile) */}
       <div className="flex justify-center gap-2 mt-4 md:hidden">
-        {Array.from({ length: Math.ceil(totalCards / 2) }).map((_, i) => (
+        {Array.from({ length: Math.ceil(totalCards / cardsPerView) }).map((_, i) => (
           <button
             key={i}
-            onClick={() => goToIndex(i * 2)}
+            onClick={() => goToIndex(i * cardsPerView)}
             className={`
               w-2 h-2 rounded-full transition-all duration-300
-              ${Math.floor(currentIndex / 2) === i 
+              ${Math.floor(currentIndex / cardsPerView) === i 
                 ? 'bg-burnt-orange w-6' 
                 : 'bg-white/20 hover:bg-white/40'
               }

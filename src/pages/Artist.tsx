@@ -26,6 +26,9 @@ export function Artist() {
   const artist = slug ? getArtistProfile(slug) : null
   const legacyMember = slug ? getMemberBySlug(slug) : undefined
   const streamingLinks = slug ? getStreamingLinks(slug) : []
+  const aboutParagraphs = artist?.longBio
+    ? artist.longBio.split('\n\n').map((paragraph) => paragraph.trim()).filter(Boolean)
+    : []
 
   // If JSON artist exists, use premium view
   if (artist) {
@@ -69,12 +72,15 @@ export function Artist() {
                 About
               </motion.h2>
 
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg text-text-secondary leading-relaxed mb-8"
-              >
-                {artist.longBio}
-              </motion.p>
+              {aboutParagraphs.map((paragraph, index) => (
+                <motion.p
+                  key={`${artist.slug}-about-${index}`}
+                  variants={fadeInUp}
+                  className={`text-lg text-text-secondary leading-relaxed ${index === aboutParagraphs.length - 1 ? 'mb-8' : 'mb-6'}`}
+                >
+                  {paragraph}
+                </motion.p>
+              ))}
 
               {/* Tags */}
               <motion.div
