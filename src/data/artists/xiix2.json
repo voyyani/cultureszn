@@ -1,0 +1,1049 @@
+{
+  "meta": {
+    "profileVersion": "1.0.0",
+    "generatedAtLocalDate": "2026-02-05",
+    "timezone": "Africa/Nairobi",
+    "language": "en-US",
+    "intendedUse": "Culture Szn website master artist profile (authoritative JSON source-of-truth)",
+    "methodology": {
+      "sourcePriority": [
+        "Qobuz (track/album pages with durations + role-tagged credits)",
+        "Apple Music (artist/release packaging corroboration)",
+        "SoundCloud (creator-upload chronology + self-reported location)"
+      ],
+      "dataIntegrityRules": [
+        "No biography fields are inferred without an accessible authoritative statement.",
+        "Credits-derived identity signals are labeled as such (not treated as biography fact unless explicitly stated by an official bio).",
+        "Songs are de-duplicated by canonical title; releaseInstances track re-releases, album inclusion, and early uploads.",
+        "If a field is missing, it is stored as null with an explicit status note."
+      ],
+      "knownLimitations": [
+        "Verified DOB/POB and early-life narrative not found in accessible sources used.",
+        "Awards, nominations, chart performance, and verified live-performance history not found in accessible sources used.",
+        "Not every track has full cross-DSP links retrievable; Qobuz links are the most complete in the source set."
+      ]
+    }
+  },
+  "artist": {
+    "stageName": "Xiix",
+    "creditedNameVariants": ["XiiX", "XIIX"],
+    "homeBase": {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "verification": {
+        "status": "self_reported",
+        "source": "SoundCloud profile"
+      }
+    },
+    "tagline": {
+      "value": "Finding my way back to planet-nine...",
+      "verification": {
+        "status": "self_reported",
+        "source": "SoundCloud profile"
+      }
+    },
+    "probableRightsNameFromCredits": {
+      "value": "Lincoln Musumbi Nzioka",
+      "verification": {
+        "status": "credits_inferred",
+        "note": "Repeatedly appears as composer/lyricist in DSP metadata; not confirmed as 'full name' via an accessible official bio statement."
+      }
+    }
+  },
+  "biography": {
+    "fullName": {
+      "value": null,
+      "status": "unverified_unavailable"
+    },
+    "dateOfBirth": {
+      "value": null,
+      "status": "unverified_unavailable"
+    },
+    "placeOfBirth": {
+      "value": null,
+      "status": "unverified_unavailable"
+    },
+    "earlyLife": {
+      "value": null,
+      "status": "unverified_unavailable"
+    },
+    "influences": {
+      "value": [],
+      "status": "unverified_unavailable"
+    },
+    "careerMilestones": [
+      {
+        "date": "2024-03-12",
+        "event": "A 5-track project package appears on Qobuz with full tracklist, durations, and credits (LOVE/EVOL).",
+        "verification": "verified_on_qobuz"
+      },
+      {
+        "date": "2025-05-02",
+        "event": "A 9-track album package appears on Qobuz with full tracklist, durations, and credits (OVR DUE).",
+        "verification": "verified_on_qobuz"
+      },
+      {
+        "date": "2025-05-29",
+        "event": "A 7-track album package appears on Qobuz with full tracklist, durations, and credits (SIXXTAPE).",
+        "verification": "verified_on_qobuz"
+      },
+      {
+        "date": "2026-01-09",
+        "event": "Multiple singles appear on Qobuz under Culture Szn KE label, including UNFORGETTABLE and OKAY.",
+        "verification": "verified_on_qobuz"
+      }
+    ]
+  },
+  "cultureSzn": {
+    "claimedInPrompt": true,
+    "affiliationAssessment": {
+      "affiliationConfidence": "high",
+      "basis": [
+        "Repeated label association (Culture Szn KE) on Qobuz releases",
+        "Repeated CULTURE SZN appearances in track credit lines (featured artist and/or executive producer)"
+      ],
+      "verificationGap": "No accessible official biography statement explicitly confirming membership was retrieved in the source set."
+    }
+  },
+  "discography": {
+    "projects": [
+      {
+        "title": "LOVE/EVOL",
+        "type": "project",
+        "releaseDate": "2024-03-12",
+        "label": "Culture Szn KE",
+        "qobuzUrl": "https://www.qobuz.com/us-en/album/love-evol-xiix/f7vvzqm9btcma",
+        "tracks": [
+          { "title": "LATE NIGHT TEXT", "length": "03:36" },
+          { "title": "222", "length": "02:09" },
+          { "title": "SEDUCTION", "length": "01:28" },
+          { "title": "MR. WRONG NUMBER", "length": "02:45" },
+          { "title": "TWIN FLAME", "length": "05:28" }
+        ],
+        "crossPlatformNotes": [
+          {
+            "platform": "Apple Music",
+            "note": "Apple Music packaging pages may show different dates/regions; treat Qobuz as canonical for this project in this dataset.",
+            "status": "date_mismatch_not_resolved"
+          }
+        ]
+      },
+      {
+        "title": "OVR DUE",
+        "type": "album",
+        "releaseDate": "2025-05-02",
+        "label": "3998013 Records DK",
+        "qobuzUrl": "https://www.qobuz.com/us-en/album/ovr-due-xiix/bufqjks0ez0yc",
+        "tracks": [
+          { "title": "SVME SVME", "length": "04:22" },
+          { "title": "TOXICC", "length": "03:49" },
+          { "title": "BOMBASTIC", "length": "03:23" },
+          { "title": "TYPE C", "length": "02:35" },
+          { "title": "RONGUYS", "length": "03:41" },
+          { "title": "FAM NOT FRIENDS", "length": "02:39" },
+          { "title": "SENSEI STATE", "length": "03:05" },
+          { "title": "AdVengers", "length": "01:24" },
+          { "title": "UFO", "length": "03:47" }
+        ]
+      },
+      {
+        "title": "SIXXTAPE",
+        "type": "album",
+        "releaseDate": "2025-05-29",
+        "label": "3998013 Records DK",
+        "qobuzUrl": "https://www.qobuz.com/us-en/album/sixxtape-xiix/mtf67qhpnrimc",
+        "spotifyUrl": "https://open.spotify.com/album/5EC55CH3Tybf6kNJS0415L",
+        "appleMusicUrl": "https://music.apple.com/us/album/sixxtape/1817687168",
+        "tracks": [
+          { "title": "PLAN YA GOD", "length": "02:22" },
+          { "title": "LIVE LIFE", "length": "05:16" },
+          { "title": "RUKA", "length": "02:23" },
+          { "title": "CONFUSE ME", "length": "02:20" },
+          { "title": "MOVE", "length": "02:48" },
+          { "title": "LUCY DREAMS", "length": "02:36" },
+          { "title": "TELL ME", "length": "02:04" }
+        ]
+      }
+    ],
+    "songs": [
+      {
+        "title": "222",
+        "canonicalReleaseDate": "2024-01-31",
+        "length": "02:09",
+        "label": "Culture Szn KE",
+        "designation": ["single", "project_track"],
+        "projects": ["LOVE/EVOL"],
+        "featuredArtists": [],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": [],
+          "beatMakers": [],
+          "engineers": ["Kayrop Music (DAW engineer)"],
+          "executiveProducers": [],
+          "rawCreditLine": "XIIX, MainArtist - Kayrop Music, Digital audio workstation engineer - Lincoln Musumbi Nzioka, Composer, Lyricist, StudioPersonnel"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/love-evol-xiix/f7vvzqm9btcma",
+          "soundcloud": "https://soundcloud.com/xiix-int/222a1",
+          "appleMusic": null,
+          "spotify": null,
+          "youtube": null
+        },
+        "notes": [
+          "SoundCloud publishing chronology predates DSP listing in this dataset; may represent an early/demo upload."
+        ]
+      },
+      {
+        "title": "LATE NIGHT TEXT",
+        "canonicalReleaseDate": "2024-02-20",
+        "length": "03:36",
+        "label": "Culture Szn KE",
+        "designation": ["single", "project_track"],
+        "projects": ["LOVE/EVOL"],
+        "featuredArtists": [],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": [],
+          "beatMakers": ["Lorrdreal"],
+          "engineers": [],
+          "executiveProducers": [],
+          "rawCreditLine": "XIIX, MainArtist - Lorrdreal, Beat maker - Lincoln Musumbi Nzioka, Composer, Lyricist, StudioPersonnel"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/love-evol-xiix/f7vvzqm9btcma",
+          "soundcloud": null,
+          "appleMusic": null,
+          "spotify": null,
+          "youtube": null
+        }
+      },
+      {
+        "title": "SEDUCTION",
+        "canonicalReleaseDate": "2024-03-12",
+        "length": "01:28",
+        "label": "Culture Szn KE",
+        "designation": ["project_track", "single_reissue"],
+        "projects": ["LOVE/EVOL"],
+        "featuredArtists": ["Sire", "CULTURE SZN"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Brandon King Sire"],
+          "producers": ["Kayrop"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": [],
+          "rawCreditLine": "Sire, FeaturedArtist - XIIX, MainArtist - Kayrop, Producer - CULTURE SZN, FeaturedArtist - Lincoln Musumbi Nzioka, Composer, Lyricist, StudioPersonnel - Brandon King Sire, Composer, Lyricist, StudioPersonnel"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/love-evol-xiix/f7vvzqm9btcma",
+          "soundcloud": null,
+          "appleMusic": "https://music.apple.com/us/album/seduction-feat-sire-culture-szn-single/1826908279",
+          "spotify": null,
+          "youtube": null
+        },
+        "releaseInstances": [
+          { "date": "2024-03-12", "type": "project_release" },
+          { "date": "2025-07-15", "type": "single_listing_on_qobuz_discography" }
+        ]
+      },
+      {
+        "title": "MR. WRONG NUMBER",
+        "canonicalReleaseDate": "2024-03-12",
+        "length": "02:45",
+        "label": "Culture Szn KE",
+        "designation": ["project_track", "single_reissue"],
+        "projects": ["LOVE/EVOL"],
+        "featuredArtists": ["CULTURE SZN"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": [],
+          "beatMakers": [],
+          "engineers": ["Pau Tali Burn"],
+          "executiveProducers": [],
+          "rawCreditLine": "XIIX, MainArtist - CULTURE SZN, FeaturedArtist - Lincoln Musumbi, StudioPersonnel - Lincoln Musumbi Nzioka, Composer, Lyricist - Pau Tali Burn, Engineer"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/love-evol-xiix/f7vvzqm9btcma",
+          "soundcloud": null,
+          "appleMusic": "https://music.apple.com/gb/album/mr-wrong-number-feat-culture-szn-single/1823578334",
+          "spotify": null,
+          "youtube": null
+        },
+        "releaseInstances": [
+          { "date": "2024-03-12", "type": "project_release" },
+          { "date": "2025-06-27", "type": "single_listing_on_qobuz_discography" }
+        ]
+      },
+      {
+        "title": "TWIN FLAME",
+        "canonicalReleaseDate": "2024-03-12",
+        "length": "05:28",
+        "label": "Culture Szn KE",
+        "designation": ["project_track", "single_reissue"],
+        "projects": ["LOVE/EVOL"],
+        "featuredArtists": [],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": ["Lorrdreal"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": [],
+          "rawCreditLine": "XIIX, MainArtist - Lorrdreal, Producer - Lincoln Musumbi Nzioka, Composer, Lyricist, StudioPersonnel"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/love-evol-xiix/f7vvzqm9btcma",
+          "soundcloud": null,
+          "appleMusic": null,
+          "spotify": null,
+          "youtube": null
+        },
+        "releaseInstances": [
+          { "date": "2024-03-12", "type": "project_release" },
+          { "date": "2025-07-15", "type": "single_listing_on_qobuz_discography" }
+        ]
+      },
+      {
+        "title": "SABAKI",
+        "canonicalReleaseDate": "2025-04-18",
+        "length": "02:32",
+        "label": "Culture Szn KE",
+        "designation": ["single"],
+        "projects": [],
+        "featuredArtists": ["Pipí"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Brandon Biko Bantu"],
+          "producers": ["Dani"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": [],
+          "rawCreditLine": "Pipi, FeaturedArtist - Dani, Producer - XIIX, MainArtist - Lincoln Musumbi, Background Vocals - Lincoln Musumbi Nzioka, Composer, Lyricist - Brandon Biko, Vocal accompaniment - Brandon Biko Bantu, Composer, Lyricist"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/sabaki-feat-pipi-xiix/uy455adzv17pb",
+          "soundcloud": null,
+          "appleMusic": null,
+          "spotify": null,
+          "youtube": null
+        }
+      },
+      {
+        "title": "TOXICC",
+        "canonicalReleaseDate": "2025-04-18",
+        "length": "03:49",
+        "label": "3998013 Records DK",
+        "designation": ["single", "album_track"],
+        "projects": ["OVR DUE"],
+        "featuredArtists": ["Wavy SRF"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Marcel Adala Owen"],
+          "producers": ["Joe wa Kiserian"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": [],
+          "rawCreditLine": "XIIX, MainArtist - Wavy SRF, Background Vocals, FeaturedArtist - Lincoln Musumbi Nzioka, Composer, Lyricist - Joe wa Kiserian, Producer - Marcel Adala Owen, Composer, Lyricist"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/ovr-due-xiix/bufqjks0ez0yc",
+          "soundcloud": null,
+          "appleMusic": null,
+          "spotify": null,
+          "youtube": null
+        }
+      },
+      {
+        "title": "SVME SVME",
+        "canonicalReleaseDate": "2025-05-02",
+        "length": "04:22",
+        "label": "3998013 Records DK",
+        "designation": ["album_track"],
+        "projects": ["OVR DUE"],
+        "featuredArtists": ["CULTURE SZN", "Mr. T Savage", "Tiras Naf"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Ian Tiras Naf", "Steve Titus Mwalili"],
+          "producers": ["Kaka Dave"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": [],
+          "rawCreditLine": "XIIX, MainArtist - Kaka Dave, Producer - CULTURE SZN, FeaturedArtist - Lincoln Musumbi Nzioka, Composer, Lyricist - Mr. T Savage, FeaturedArtist - Ian Tiras Naf, Composer, Lyricist - Steve Titus Mwalili, Composer, Lyricist"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/ovr-due-xiix/bufqjks0ez0yc" }
+      },
+      {
+        "title": "BOMBASTIC",
+        "canonicalReleaseDate": "2025-05-02",
+        "length": "03:23",
+        "label": "3998013 Records DK",
+        "designation": ["album_track"],
+        "projects": ["OVR DUE"],
+        "featuredArtists": ["Sire", "Mr. T Savage"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Brandon King Sire", "Steve Titus Mwalili"],
+          "producers": ["Kaka Dave"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": [],
+          "rawCreditLine": "Sire, FeaturedArtist - XIIX, MainArtist - Kaka Dave, Producer - Lincoln Musumbi Nzioka, Composer, Lyricist - Brandon King Sire, Composer, Lyricist - Mr. T Savage, FeaturedArtist - Steve Titus Mwalili, Composer, Lyricist"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/ovr-due-xiix/bufqjks0ez0yc" }
+      },
+      {
+        "title": "TYPE C",
+        "canonicalReleaseDate": "2025-04-19",
+        "length": "02:35",
+        "label": "3998013 Records DK",
+        "designation": ["single", "album_track"],
+        "projects": ["OVR DUE"],
+        "featuredArtists": ["Triple N", "R.E.B.E.L", "69th Alien", "Kamefee"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Edgar Junior Maseah", "Isaac Koina Nange", "Neil Namu Nijii", "Sam Mizzol Wakaren"],
+          "producers": ["Suntah Kamefee"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": [],
+          "rawCreditLine": "Edgar Junior, Vocal accompaniment - Triple N, FeaturedArtist - XIIX, MainArtist - R.E.B.E.L, FeaturedArtist - Lincoln Musumbi Nzioka, Composer, Lyricist - 69th Alien, FeaturedArtist - ... - Suntah Kamefee, Producer"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/ovr-due-xiix/bufqjks0ez0yc" }
+      },
+      {
+        "title": "RONGUYS",
+        "canonicalReleaseDate": "2025-04-19",
+        "length": "03:41",
+        "label": "3998013 Records DK",
+        "designation": ["single", "album_track"],
+        "projects": ["OVR DUE"],
+        "featuredArtists": ["CULTURE SZN", "Junr Xlim", "Mr. T Savage"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Junior Silimi Wagero", "Titus Mwalili Mjamaa"],
+          "producers": ["Kaka Dave"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": [],
+          "rawCreditLine": "XIIX, MainArtist - Kaka Dave, Producer - CULTURE SZN, FeaturedArtist - ... - Junior Silimi Wagero, Composer, Lyricist - ... - Titus Mwalili Mjamaa, Composer, Lyricist"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/ovr-due-xiix/bufqjks0ez0yc" }
+      },
+      {
+        "title": "FAM NOT FRIENDS",
+        "canonicalReleaseDate": "2025-04-19",
+        "length": "02:39",
+        "label": "3998013 Records DK",
+        "designation": ["single", "album_track"],
+        "projects": ["OVR DUE"],
+        "featuredArtists": ["CULTURE SZN"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": ["LordReal"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": [],
+          "rawCreditLine": "XIIX, MainArtist - CULTURE SZN, FeaturedArtist - Lincoln Musumbi Nzioka, Composer, Lyricist - LordReal, Producer"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/fam-not-friends-feat-culture-szn-xiix/nnhv0ow1jv6vc"
+        }
+      },
+      {
+        "title": "SENSEI STATE",
+        "canonicalReleaseDate": "2025-04-19",
+        "length": "03:05",
+        "label": "3998013 Records DK",
+        "designation": ["single", "album_track"],
+        "projects": ["OVR DUE"],
+        "featuredArtists": ["CULTURE SZN", "Wavy SRF"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Marcel Adala Owen"],
+          "producers": ["Mato Raw"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": [],
+          "rawCreditLine": "XIIX, MainArtist - CULTURE SZN, FeaturedArtist - ... - Marcel Adala Owen, Composer, Lyricist - Mato Raw, Producer"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/ovr-due-xiix/bufqjks0ez0yc",
+          "soundcloud": "https://soundcloud.com/xiix-int/sensei-state-ft-wavy-srf",
+          "youtube": "https://www.youtube.com/watch?v=mg9MaH4yvtw"
+        }
+      },
+      {
+        "title": "AdVengers",
+        "canonicalReleaseDate": "2025-04-19",
+        "length": "01:24",
+        "label": "3998013 Records DK",
+        "designation": ["single", "album_track"],
+        "projects": ["OVR DUE"],
+        "featuredArtists": ["CULTURE SZN"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": [],
+          "beatMakers": [],
+          "engineers": ["GXD (vocal engineer)"],
+          "executiveProducers": [],
+          "rawCreditLine": "GXD, Vocal Engineer - XIIX, MainArtist - CULTURE SZN, FeaturedArtist - Lincoln Musumbi Nzioka, Composer, Lyricist"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/ovr-due-xiix/bufqjks0ez0yc" }
+      },
+      {
+        "title": "UFO",
+        "canonicalReleaseDate": "2025-04-18",
+        "length": "03:47",
+        "label": "3998013 Records DK",
+        "designation": ["single", "album_track"],
+        "projects": ["OVR DUE"],
+        "featuredArtists": [],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": ["Dani Yuso"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": [],
+          "rawCreditLine": "XIIX, MainArtist - Lincoln Musumbi Nzioka, Composer, Lyricist - Dani Yuso, Producer"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/ovr-due-xiix/bufqjks0ez0yc" }
+      },
+      {
+        "title": "TELL ME",
+        "canonicalReleaseDate": "2025-05-13",
+        "length": "02:04",
+        "label": "3998013 Records DK",
+        "designation": ["single_listing", "album_track"],
+        "projects": ["SIXXTAPE"],
+        "featuredArtists": [],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": ["Papi Gustavo"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": ["Radio 254"],
+          "rawCreditLine": "XIIX, MainArtist - Radio 254, Executive Producer - Papi Gustavo, Producer - Lincoln Musumbi Nzioka, Composer, Lyricist"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/sixxtape-xiix/mtf67qhpnrimc" }
+      },
+      {
+        "title": "LUCY DREAMS",
+        "canonicalReleaseDate": "2025-05-13",
+        "length": "02:36",
+        "label": "3998013 Records DK",
+        "designation": ["single", "album_track"],
+        "projects": ["SIXXTAPE"],
+        "featuredArtists": ["Sire", "CULTURE SZN", "Wavy SRF"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Brandon King Sire", "Marcel Adala Owen"],
+          "producers": ["Bedan Kiarie"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": ["Radio 254"],
+          "rawCreditLine": "Sire, FeaturedArtist - XIIX, MainArtist - Bedan Kiarie, Producer - Radio 254, Executive Producer - CULTURE SZN, FeaturedArtist - Wavy SRF, FeaturedArtist - ... - Brandon King Sire, Composer, Lyricist - Marcel Adala Owen, Composer, Lyricist"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/sixxtape-xiix/mtf67qhpnrimc",
+          "appleMusic": "https://music.apple.com/gh/album/lucy-dreams-feat-wavy-srf-sire-culture-szn-single/1814132711"
+        }
+      },
+      {
+        "title": "PLAN YA GOD",
+        "canonicalReleaseDate": "2025-05-18",
+        "length": "02:22",
+        "label": "3998013 Records DK",
+        "designation": ["single", "album_track"],
+        "projects": ["SIXXTAPE"],
+        "featuredArtists": ["CULTURE SZN"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": [],
+          "beatMakers": [],
+          "engineers": ["Bedan Kiarie"],
+          "executiveProducers": ["Radio 254"],
+          "rawCreditLine": "XIIX, MainArtist - Bedan Kiarie, Engineer - Radio 254, Executive Producer - CULTURE SZN, FeaturedArtist - Lincoln Musumbi Nzioka, Composer, Lyricist"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/sixxtape-xiix/mtf67qhpnrimc",
+          "appleMusic": "https://music.apple.com/us/album/plan-ya-god-feat-culture-szn-single/1815219666"
+        }
+      },
+      {
+        "title": "MOVE",
+        "canonicalReleaseDate": "2025-05-18",
+        "length": "02:48",
+        "label": "3998013 Records DK",
+        "designation": ["single_listing", "album_track"],
+        "projects": ["SIXXTAPE"],
+        "featuredArtists": ["CULTURE SZN"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": ["Bedan Kiarie"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": ["Radio 254"],
+          "rawCreditLine": "XIIX, MainArtist - Bedan Kiarie, Producer - Radio 254, Executive Producer - CULTURE SZN, FeaturedArtist - Lincoln Musumbi Nzioka, Composer, Lyricist"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/sixxtape-xiix/mtf67qhpnrimc" }
+      },
+      {
+        "title": "CONFUSE ME",
+        "canonicalReleaseDate": "2025-05-18",
+        "length": "02:20",
+        "label": "3998013 Records DK",
+        "designation": ["single_listing", "album_track"],
+        "projects": ["SIXXTAPE"],
+        "featuredArtists": ["CULTURE SZN"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": ["Bedan Kiarie"],
+          "beatMakers": ["Kxffy Dr3aming"],
+          "engineers": [],
+          "executiveProducers": ["Radio 254"],
+          "rawCreditLine": "XIIX, MainArtist - Bedan Kiarie, Producer - Radio 254, Executive Producer - CULTURE SZN, FeaturedArtist - ... - Kxffy Dr3aming, Beat maker"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/sixxtape-xiix/mtf67qhpnrimc" }
+      },
+      {
+        "title": "RUKA",
+        "canonicalReleaseDate": "2025-05-22",
+        "length": "02:23",
+        "label": "3998013 Records DK",
+        "designation": ["single_listing", "album_track"],
+        "projects": ["SIXXTAPE"],
+        "featuredArtists": ["CULTURE SZN"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": ["Kxffy Dr3aming"],
+          "beatMakers": [],
+          "engineers": ["Bedan Kiarie"],
+          "executiveProducers": ["Radio 254"],
+          "rawCreditLine": "XIIX, MainArtist - Bedan Kiarie, Engineer - Radio 254, Executive Producer - CULTURE SZN, FeaturedArtist - ... - Kxffy Dr3aming, Producer"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/sixxtape-xiix/mtf67qhpnrimc" }
+      },
+      {
+        "title": "LIVE LIFE",
+        "canonicalReleaseDate": "2025-05-29",
+        "length": "05:16",
+        "label": "3998013 Records DK",
+        "designation": ["album_track"],
+        "projects": ["SIXXTAPE"],
+        "featuredArtists": ["Wakanema", "LA 7AY"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Bussa Jermaine Wakanema", "Jay Jay Stopit"],
+          "producers": ["Bedan Kiarie"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": ["Radio 254"],
+          "rawCreditLine": "XIIX, MainArtist - Bedan Kiarie, Producer - Radio 254, Executive Producer - ... - Wakanema, FeaturedArtist - LA 7AY, FeaturedArtist - ... - Bussa Jermaine Wakanema, Composer, Lyricist - Jay Jay Stopit, Composer, Lyricist"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/sixxtape-xiix/mtf67qhpnrimc",
+          "youtube": "https://www.youtube.com/watch?v=c74F84W_NQ8"
+        }
+      },
+      {
+        "title": "TOP BOII",
+        "canonicalReleaseDate": "2025-06-13",
+        "length": null,
+        "label": "Culture Szn KE",
+        "designation": ["single"],
+        "projects": [],
+        "featuredArtists": ["Wuann1er", "CULTURE SZN"],
+        "credits": {
+          "writers": [],
+          "producers": [],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": [],
+          "status": "unverified_missing_track_page",
+          "note": "Listed on Qobuz discography, but track detail page (duration/credits) was not retrievable within the accessible source set."
+        },
+        "links": {
+          "qobuzDiscographyListing": "https://www.qobuz.com/us-en/interpreter/xiix/6136938/page/2",
+          "qobuz": null,
+          "soundcloud": null,
+          "appleMusic": null,
+          "spotify": null,
+          "youtube": null
+        }
+      },
+      {
+        "title": "YOU WANT IT",
+        "canonicalReleaseDate": "2025-06-21",
+        "length": "03:48",
+        "label": "Culture Szn KE",
+        "designation": ["single"],
+        "projects": [],
+        "featuredArtists": ["CULTURE SZN", "Wavy SRF", "Sire"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Brandon King Sire", "Marcel Adala Owen"],
+          "producers": ["Bedan Kiarie"],
+          "beatMakers": [],
+          "engineers": [],
+          "executiveProducers": ["Radio 254"],
+          "rawCreditLine": "Sire, FeaturedArtist - XIIX, MainArtist - Radio 254, Executive Producer - CULTURE SZN, FeaturedArtist - Wavy SRF, FeaturedArtist - ... - Bedan Kiarie, Producer"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/you-want-it-feat-culture-szn-wavy-srf-sire-xiix/zqecjs5hli9sc" }
+      },
+      {
+        "title": "FIREMAN",
+        "canonicalReleaseDate": "2025-07-31",
+        "length": "02:34",
+        "label": "Culture Szn KE",
+        "designation": ["single"],
+        "projects": [],
+        "featuredArtists": ["CULTURE SZN", "Sire"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": [],
+          "beatMakers": ["emn beats"],
+          "engineers": [],
+          "executiveProducers": ["HIDDEN VIBES AFRICA"],
+          "rawCreditLine": "Sire, FeaturedArtist - XIIX, MainArtist - emn beats, Beat maker - CULTURE SZN, FeaturedArtist - HIDDEN VIBES AFRICA, Executive Producer - Lincoln Musumbi Nzioka, Composer, Lyricist"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/fireman-feat-culture-szn-sire-xiix/ocg5gqq1r9mub",
+          "soundcloud": "https://m.soundcloud.com/xiix-int/fireman-ft-sir6"
+        }
+      },
+      {
+        "title": "Monday To Monday",
+        "canonicalReleaseDate": "2025-07-31",
+        "length": "02:57",
+        "label": "Culture Szn KE",
+        "designation": ["single"],
+        "projects": [],
+        "featuredArtists": ["Sire", "CULTURE SZN"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Brandon King Sire"],
+          "producers": [],
+          "beatMakers": ["emn beats"],
+          "engineers": [],
+          "executiveProducers": ["HIDDEN VIBES AFRICA"],
+          "rawCreditLine": "Sire, FeaturedArtist - XIIX, MainArtist - emn beats, Beat maker - CULTURE SZN, FeaturedArtist - HIDDEN VIBES AFRICA, Executive Producer - Lincoln Musumbi Nzioka, Composer, Lyricist - Brandon King Sire, Composer, Lyricist"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/monday-to-monday-feat-sire-culture-szn-xiix/mmj24qce4somb" }
+      },
+      {
+        "title": "SI UONGO",
+        "canonicalReleaseDate": "2025-09-26",
+        "length": "03:03",
+        "label": "Culture Szn KE",
+        "designation": ["single"],
+        "projects": [],
+        "featuredArtists": [],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": [],
+          "beatMakers": ["Maricho Richard"],
+          "engineers": [],
+          "executiveProducers": ["CULTURE SZN"],
+          "rawCreditLine": "XIIX, MainArtist - CULTURE SZN, Executive Producer - Lincoln Musumbi Nzioka, Composer, Lyricist - Maricho Richard, Beat maker"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/si-uongo-xiix/q43u2kdxrvmdb" }
+      },
+      {
+        "title": "CHEKI",
+        "canonicalReleaseDate": "2025-10-03",
+        "length": "01:57",
+        "label": "Culture Szn KE",
+        "designation": ["single"],
+        "projects": [],
+        "featuredArtists": ["Uncle Sliqè"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": [],
+          "beatMakers": ["Victor Mwila"],
+          "engineers": ["Victor Mwila (vocal engineer)"],
+          "executiveProducers": [],
+          "rawCreditLine": "XIIX, MainArtist - Uncle Sliqè, FeaturedArtist - Lincoln Musumbi Nzioka, Composer, Lyricist - Victor Mwila, Background Vocals, Vocal Engineer, Beat maker"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/cheki-feat-uncle-sliqe-xiix/vqtmmrhfxxisc" }
+      },
+      {
+        "title": "DAY 2 DAY",
+        "canonicalReleaseDate": "2025-11-06",
+        "length": "01:51",
+        "label": "Culture Szn KE",
+        "designation": ["single"],
+        "projects": [],
+        "featuredArtists": ["Rysenzio"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Ryan Muasya Nzioka"],
+          "producers": ["Zare"],
+          "beatMakers": ["Zare"],
+          "engineers": [],
+          "executiveProducers": ["CULTURE SZN"],
+          "rawCreditLine": "Zare, Producer, Beat maker - XIIX, MainArtist - CULTURE SZN, Executive Producer - Lincoln Musumbi Nzioka, Composer, Lyricist - Ryan Muasya Nzioka, Composer, Lyricist - Rysenzio, FeaturedArtist"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/day-2-day-feat-rysenzio-xiix/ga5o825tnqzva" }
+      },
+      {
+        "title": "6 AGAIN",
+        "canonicalReleaseDate": "2025-11-14",
+        "length": "03:16",
+        "label": "Culture Szn KE",
+        "designation": ["single"],
+        "projects": [],
+        "featuredArtists": [],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": ["Zare"],
+          "beatMakers": ["Zare"],
+          "engineers": ["Boeyylee"],
+          "executiveProducers": ["CULTURE SZN"],
+          "rawCreditLine": "XIIX, MainArtist - Lincoln Musumbi Nzioka, Lyricist, Composer - Zare, Beat maker, Producer - Boeyylee, Engineer - CULTURE SZN, Executive Producer"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/6-again-xiix/tq1jd3wbh7hab" }
+      },
+      {
+        "title": "UNFORGETTABLE",
+        "canonicalReleaseDate": "2026-01-09",
+        "length": "02:18",
+        "label": "Culture Szn KE",
+        "designation": ["single"],
+        "projects": [],
+        "featuredArtists": [],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka"],
+          "producers": [],
+          "beatMakers": ["Bedan Kiarie"],
+          "engineers": [],
+          "executiveProducers": ["CULTURE SZN"],
+          "rawCreditLine": "XIIX, MainArtist - Lincoln Musumbi Nzioka, Lyricist, Composer - Bedan Kiarie, Beat maker - CULTURE SZN, Executive Producer"
+        },
+        "links": { "qobuz": "https://www.qobuz.com/us-en/album/unforgettable-xiix/tm2kf69l0m31i" }
+      },
+      {
+        "title": "OKAY",
+        "canonicalReleaseDate": "2026-01-09",
+        "length": "03:09",
+        "label": "Culture Szn KE",
+        "designation": ["single"],
+        "projects": [],
+        "featuredArtists": ["Uncle Sliqè"],
+        "credits": {
+          "writers": ["Lincoln Musumbi Nzioka", "Victor Kangwa Mwila"],
+          "producers": [],
+          "beatMakers": ["Regiii"],
+          "engineers": [],
+          "executiveProducers": [],
+          "rawCreditLine": "XIIX, MainArtist - Uncle Sliqè, FeaturedArtist - Lincoln Musumbi Nzioka, Lyricist, Composer - Victor Kangwa Mwila, Lyricist, Composer - Regiii, Beat maker"
+        },
+        "links": {
+          "qobuz": "https://www.qobuz.com/us-en/album/okay-feat-uncle-sliqe-xiix/o9bxrow8et86c",
+          "youtube": "https://www.youtube.com/watch?v=JhOVIyWeqLM"
+        }
+      }
+    ],
+    "soundcloudOnlyNotVerifiedOnDSPs": [
+      {
+        "title": "GeneXiiX",
+        "publishedAt": "2024-11-10T17:02:11Z",
+        "length": null,
+        "status": "soundcloud_only_unverified_on_dsps",
+        "soundcloudProfileEvidence": "Listed on SoundCloud artist page under tracks."
+      },
+      {
+        "title": "Wannabe's",
+        "publishedAt": "2024-11-10T17:12:15Z",
+        "length": null,
+        "status": "soundcloud_only_unverified_on_dsps",
+        "soundcloudProfileEvidence": "Listed on SoundCloud artist page under tracks."
+      },
+      {
+        "title": "RIGHT MY WRONGS",
+        "publishedAt": "2023-04-12T19:29:57Z",
+        "length": null,
+        "status": "soundcloud_only_unverified_on_dsps",
+        "soundcloudProfileEvidence": "Listed on SoundCloud artist page under tracks."
+      },
+      {
+        "title": "BE STILL (ft Uncle Sliqe)",
+        "publishedAt": "2025-09-10T04:11:22Z",
+        "length": null,
+        "status": "soundcloud_only_unverified_on_dsps",
+        "soundcloudProfileEvidence": "Listed on SoundCloud artist page under tracks."
+      },
+      {
+        "title": "ALL DAY (FT 3 PVNCH)",
+        "publishedAt": "2024-11-10T17:35:01Z",
+        "length": null,
+        "status": "partial_verification",
+        "notes": [
+          "Appears on SoundCloud as a creator upload; Apple Music artist page indicates an ALL DAY single/EP packaging in 2026, but a DSP track-level metadata page was not retrievable in the accessible source set."
+        ],
+        "links": {
+          "soundcloud": "https://soundcloud.com/xiix-int/all-day-ft-3-pvnch",
+          "appleMusicArtistPage": "https://music.apple.com/us/artist/xiix/1664159539"
+        }
+      }
+    ]
+  },
+  "collaborations": {
+    "asFeaturedArtist": [
+      {
+        "title": "MOTO (feat. Wavy Srf, XiiX, Wuann1er & Lineeeezy)",
+        "primaryArtist": "Culture SZN",
+        "releaseDate": "2025-06-27",
+        "verification": {
+          "status": "listed_on_label_page",
+          "note": "Duration/credits not retrieved in accessible source set."
+        },
+        "links": {
+          "qobuzLabelPage": "https://www.qobuz.com/us-en/label/culture-szn-ke/download-streaming-albums/8355607"
+        }
+      },
+      {
+        "title": "GAS N GO (feat. Wavy Srf, Sire, Pipí Ciagi & XiiX)",
+        "primaryArtist": "Culture SZN",
+        "releaseDate": "2025-07-31",
+        "verification": {
+          "status": "listed_on_label_page",
+          "note": "Duration/credits not retrieved in accessible source set."
+        },
+        "links": {
+          "qobuzLabelPage": "https://www.qobuz.com/us-en/label/culture-szn-ke/download-streaming-albums/8355607"
+        }
+      },
+      {
+        "title": "STORY OF MY LIFE (feat. XiiX & Wavy Srf)",
+        "primaryArtist": "Culture SZN",
+        "releaseDate": "2025-06-13",
+        "verification": {
+          "status": "listed_on_label_page",
+          "note": "Duration/credits not retrieved in accessible source set."
+        },
+        "links": {
+          "qobuzLabelPage": "https://www.qobuz.com/us-en/label/culture-szn-ke/download-streaming-albums/8355607"
+        }
+      },
+      {
+        "title": "Groovy (feat. XiiX, 50K Large & Sheaffèr Hez)",
+        "primaryArtist": "3 PVNCH",
+        "releaseDate": "2024-04-17",
+        "verification": {
+          "status": "apple_music_listing",
+          "note": "Included as a notable non-Culture Szn external feature; track-level credits not retrieved in this dataset."
+        },
+        "links": {
+          "appleMusic": "https://music.apple.com/nl/album/groovy-feat-xiix-50k-large-sheaff%C3%A8r-hez-single/1739858720"
+        }
+      }
+    ]
+  },
+  "livePerformances": {
+    "items": [],
+    "status": "not_found_in_sources_used",
+    "todo": [
+      "Collect gig posters/lineups from official venues/festivals",
+      "Confirm via ticketing listings or verified media coverage"
+    ]
+  },
+  "awardsAndNominations": {
+    "items": [],
+    "status": "not_found_in_sources_used",
+    "todo": [
+      "Check Kenyan awards databases and reputable press coverage",
+      "Confirm via award organizers (official lists)"
+    ]
+  },
+  "pressAndMedia": {
+    "interviews": [],
+    "pressArticles": [],
+    "status": "not_found_in_sources_used",
+    "todo": [
+      "Add verified interviews, if any exist, from reputable outlets",
+      "Add podcast/radio appearances with timestamped evidence"
+    ]
+  },
+  "externalLinks": {
+    "appleMusicArtistPage": "https://music.apple.com/us/artist/xiix/1664159539",
+    "qobuzArtistPage": "https://www.qobuz.com/us-en/interpreter/xiix/6136938",
+    "soundcloudArtistPage": "https://soundcloud.com/xiix-int",
+    "spotifyKnownAlbumLink": "https://open.spotify.com/album/5EC55CH3Tybf6kNJS0415L",
+    "verification": {
+      "appleMusicArtistPage": "official_artist_page",
+      "qobuzArtistPage": "official_artist_page",
+      "soundcloudArtistPage": "creator_profile_unverified_badge_status",
+      "spotifyKnownAlbumLink": "official_release_page"
+    }
+  },
+  "quickReference": {
+    "songTable": [
+      { "title": "222", "length": "02:09", "releaseDate": "2024-01-31", "primaryLink": "https://www.qobuz.com/us-en/album/love-evol-xiix/f7vvzqm9btcma" },
+      { "title": "LATE NIGHT TEXT", "length": "03:36", "releaseDate": "2024-02-20", "primaryLink": "https://www.qobuz.com/us-en/album/love-evol-xiix/f7vvzqm9btcma" },
+      { "title": "SEDUCTION", "length": "01:28", "releaseDate": "2024-03-12", "primaryLink": "https://www.qobuz.com/us-en/album/love-evol-xiix/f7vvzqm9btcma" },
+      { "title": "MR. WRONG NUMBER", "length": "02:45", "releaseDate": "2024-03-12", "primaryLink": "https://www.qobuz.com/us-en/album/love-evol-xiix/f7vvzqm9btcma" },
+      { "title": "TWIN FLAME", "length": "05:28", "releaseDate": "2024-03-12", "primaryLink": "https://www.qobuz.com/us-en/album/love-evol-xiix/f7vvzqm9btcma" },
+      { "title": "SABAKI", "length": "02:32", "releaseDate": "2025-04-18", "primaryLink": "https://www.qobuz.com/us-en/album/sabaki-feat-pipi-xiix/uy455adzv17pb" },
+      { "title": "TOXICC", "length": "03:49", "releaseDate": "2025-04-18", "primaryLink": "https://www.qobuz.com/us-en/album/ovr-due-xiix/bufqjks0ez0yc" },
+      { "title": "UFO", "length": "03:47", "releaseDate": "2025-04-18", "primaryLink": "https://www.qobuz.com/us-en/album/ovr-due-xiix/bufqjks0ez0yc" },
+      { "title": "TOP BOII", "length": null, "releaseDate": "2025-06-13", "primaryLink": "https://www.qobuz.com/us-en/interpreter/xiix/6136938/page/2" },
+      { "title": "YOU WANT IT", "length": "03:48", "releaseDate": "2025-06-21", "primaryLink": "https://www.qobuz.com/us-en/album/you-want-it-feat-culture-szn-wavy-srf-sire-xiix/zqecjs5hli9sc" },
+      { "title": "FIREMAN", "length": "02:34", "releaseDate": "2025-07-31", "primaryLink": "https://www.qobuz.com/us-en/album/fireman-feat-culture-szn-sire-xiix/ocg5gqq1r9mub" },
+      { "title": "Monday To Monday", "length": "02:57", "releaseDate": "2025-07-31", "primaryLink": "https://www.qobuz.com/us-en/album/monday-to-monday-feat-sire-culture-szn-xiix/mmj24qce4somb" },
+      { "title": "SI UONGO", "length": "03:03", "releaseDate": "2025-09-26", "primaryLink": "https://www.qobuz.com/us-en/album/si-uongo-xiix/q43u2kdxrvmdb" },
+      { "title": "CHEKI", "length": "01:57", "releaseDate": "2025-10-03", "primaryLink": "https://www.qobuz.com/us-en/album/cheki-feat-uncle-sliqe-xiix/vqtmmrhfxxisc" },
+      { "title": "DAY 2 DAY", "length": "01:51", "releaseDate": "2025-11-06", "primaryLink": "https://www.qobuz.com/us-en/album/day-2-day-feat-rysenzio-xiix/ga5o825tnqzva" },
+      { "title": "6 AGAIN", "length": "03:16", "releaseDate": "2025-11-14", "primaryLink": "https://www.qobuz.com/us-en/album/6-again-xiix/tq1jd3wbh7hab" },
+      { "title": "UNFORGETTABLE", "length": "02:18", "releaseDate": "2026-01-09", "primaryLink": "https://www.qobuz.com/us-en/album/unforgettable-xiix/tm2kf69l0m31i" },
+      { "title": "OKAY", "length": "03:09", "releaseDate": "2026-01-09", "primaryLink": "https://www.qobuz.com/us-en/album/okay-feat-uncle-sliqe-xiix/o9bxrow8et86c" }
+    ],
+    "releaseTimeline": [
+      { "date": "2024-01-31", "title": "222" },
+      { "date": "2024-02-20", "title": "LATE NIGHT TEXT" },
+      { "date": "2024-03-12", "title": "LOVE/EVOL (project package)" },
+      { "date": "2025-04-18", "title": "SABAKI" },
+      { "date": "2025-05-02", "title": "OVR DUE (album package)" },
+      { "date": "2025-05-29", "title": "SIXXTAPE (album package)" },
+      { "date": "2025-06-13", "title": "TOP BOII" },
+      { "date": "2025-06-21", "title": "YOU WANT IT" },
+      { "date": "2025-07-31", "title": "FIREMAN" },
+      { "date": "2025-07-31", "title": "Monday To Monday" },
+      { "date": "2025-09-26", "title": "SI UONGO" },
+      { "date": "2025-10-03", "title": "CHEKI" },
+      { "date": "2025-11-06", "title": "DAY 2 DAY" },
+      { "date": "2025-11-14", "title": "6 AGAIN" },
+      { "date": "2026-01-09", "title": "UNFORGETTABLE" },
+      { "date": "2026-01-09", "title": "OKAY" }
+    ],
+    "chartData": {
+      "songsPerYearVerifiedInDSPMetadata": [
+        { "year": 2024, "count": 5 },
+        { "year": 2025, "count": 25 },
+        { "year": 2026, "count": 2 }
+      ],
+      "asciiBar": [
+        "2024 | ##### (5)",
+        "2025 | ######################### (25)",
+        "2026 | ## (2)"
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "soundcloud_profile",
+      "type": "platform_profile",
+      "url": "https://soundcloud.com/xiix-int",
+      "accessedAtLocalDate": "2026-02-05"
+    },
+    {
+      "id": "qobuz_artist_discography",
+      "type": "platform_discography",
+      "url": "https://www.qobuz.com/us-en/interpreter/xiix/6136938",
+      "accessedAtLocalDate": "2026-02-05"
+    },
+    {
+      "id": "qobuz_love_evol",
+      "type": "platform_album",
+      "url": "https://www.qobuz.com/us-en/album/love-evol-xiix/f7vvzqm9btcma",
+      "accessedAtLocalDate": "2026-02-05"
+    },
+    {
+      "id": "qobuz_ovr_due",
+      "type": "platform_album",
+      "url": "https://www.qobuz.com/us-en/album/ovr-due-xiix/bufqjks0ez0yc",
+      "accessedAtLocalDate": "2026-02-05"
+    },
+    {
+      "id": "qobuz_sixxtape",
+      "type": "platform_album",
+      "url": "https://www.qobuz.com/us-en/album/sixxtape-xiix/mtf67qhpnrimc",
+      "accessedAtLocalDate": "2026-02-05"
+    }
+  ]
+}

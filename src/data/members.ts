@@ -1,31 +1,46 @@
 import type { Member } from '@/types'
+import { getArtistProfile } from './artists'
+
+// Convert normalized artist to legacy Member format
+function artistToMember(slug: string): Member | null {
+  const artist = getArtistProfile(slug)
+  if (!artist) return null
+
+  return {
+    id: slug,
+    slug: artist.slug,
+    name: artist.name,
+    role: artist.role,
+    bio: artist.longBio,
+    image: artist.image,
+    coverImage: artist.coverImage,
+    tags: artist.tags,
+    social: {
+      instagram: artist.social.instagram,
+      twitter: artist.social.twitter,
+      spotify: artist.social.spotify,
+      soundcloud: artist.social.soundcloud,
+      youtube: artist.social.youtube,
+    },
+    joinedDate: '2023-01-15', // TODO: Add to artist JSON
+  }
+}
+
+// XiiX loaded from JSON source of truth
+const xiixMember = artistToMember('xiix')
 
 export const members: Member[] = [
-  {
-    id: '1',
-    slug: 'xiix',
-    name: 'Xiix',
-    role: 'Music Producer & Sonic Architect',
-    bio: "Redefining Nairobi's soundscape with atmospheric production that bridges traditional rhythms with future-forward textures. Xiix crafts immersive sonic experiences that transport listeners through the city's nocturnal landscapes, blending ambient electronics with African percussion and hypnotic bass lines. His work has been featured in international playlists and has become the soundtrack for a new generation of Nairobi's creative scene.",
-    image: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
-    coverImage: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
-    tags: ['Production', 'Sound Design', 'Arrangement', 'Mixing', 'Ambient'],
-    social: {
-      instagram: 'https://instagram.com/xiix.szn',
-      twitter: 'https://twitter.com/xiix_szn',
-      spotify: 'https://open.spotify.com/artist/xiix',
-      soundcloud: 'https://soundcloud.com/xiix',
-    },
-    joinedDate: '2023-01-15',
-  },
+  // XiiX - JSON-driven (source of truth)
+  ...(xiixMember ? [xiixMember] : []),
+  // Other members - hardcoded (to be migrated)
   {
     id: '2',
     slug: 'wavy',
     name: 'Wavy',
     role: 'Vocalist & Lyricist',
     bio: "Melodic storyteller weaving narratives of Nairobi life through fluid vocals and introspective lyricism. Wavy's voice carries the weight of urban experiences—from the hustle of downtown Nairobi to quiet moments of reflection. Her songwriting bridges Swahili poetry with contemporary R&B, creating a sound that's authentically East African yet universally resonant. She's performed at major festivals across the continent and collaborated with producers worldwide.",
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80',
-    coverImage: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=1474&q=80',
+    image: '',
+    coverImage: '',
     tags: ['Vocals', 'Songwriting', 'Performance', 'R&B', 'Afro-Soul'],
     social: {
       instagram: 'https://instagram.com/wavy.szn',

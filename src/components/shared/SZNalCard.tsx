@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Calendar, Clock } from 'lucide-react'
-import { Card, CardImage, CardContent, Text } from '@/components/ui'
+import { Card, CardContent, Text } from '@/components/ui'
 import type { SZNal } from '@/types'
 
 interface SZNalCardProps {
@@ -11,13 +11,6 @@ export function SZNalCard({ sznal }: SZNalCardProps) {
   return (
     <Link to={`/sznals/${sznal.slug}`}>
       <Card variant="bordered" className="h-full border border-white/5 hover:border-sunset-purple/30">
-        <CardImage className="h-[200px]">
-          <img
-            src={sznal.image}
-            alt={sznal.title}
-            className="w-full h-full object-cover"
-          />
-        </CardImage>
         <CardContent>
           <Text
             color="purple"

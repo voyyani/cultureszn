@@ -58,9 +58,9 @@ export const FOOTER_LINKS = {
  * Hero stats
  */
 export const HERO_STATS = [
-  { value: 8, suffix: '+', label: 'Creative Members' },
-  { value: 24, suffix: '+', label: 'Projects Released' },
-  { value: 3, suffix: '', label: 'Disciplines Converged' },
+  { value: 5, suffix: '', label: 'Creative Members' },
+  { value: 35, suffix: '+', label: 'Tracks Released' },
+  { value: 3, suffix: '', label: 'Projects Dropped' },
 ] as const
 
 /**

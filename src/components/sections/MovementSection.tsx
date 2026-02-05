@@ -10,16 +10,6 @@ export function MovementSection() {
       id="movement"
       className="section-szn relative overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-10"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80')`,
-          }}
-        />
-      </div>
-
       <div className="container-szn relative z-10">
         <motion.div
           variants={staggerContainer}

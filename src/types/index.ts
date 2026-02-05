@@ -66,3 +66,28 @@ export interface Stat {
   suffix: string
   label: string
 }
+
+// Re-export artist types
+export type {
+  ArtistProfile,
+  NormalizedArtist,
+  NormalizedRelease,
+  NormalizedProject,
+  NormalizedCollaboration,
+  ArtistIdentity,
+  ArtistProfiles,
+  ArtistGenres,
+  ArtistBio,
+  ArtistDiscography,
+  ArtistBranding,
+  ArtistSEO,
+} from './artist'
+
+// Re-export XiiX profile types
+export type {
+  XiiXProfileV2,
+  ProfileStats,
+  SongV2,
+  ProjectV2,
+  SongCredits,
+} from './xiix-profile'

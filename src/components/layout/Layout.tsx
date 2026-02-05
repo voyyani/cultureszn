@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Header } from './Header'
 import { Footer } from './Footer'
-import { ModeSwitch } from '@/components/shared/ModeSwitch'
 import { pageTransition } from '@/lib/motion'
 
 export function Layout() {
@@ -19,7 +18,6 @@ export function Layout() {
         <Outlet />
       </motion.main>
       <Footer />
-      <ModeSwitch />
     </div>
   )
 }

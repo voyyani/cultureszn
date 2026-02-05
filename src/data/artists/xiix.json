@@ -1,0 +1,257 @@
+{
+  "schema_version": "1.0.0",
+  "entity_type": "music_artist",
+  "source_of_truth_policy": {
+    "canonical_id_priority": ["spotify_artist_id", "apple_music_artist_id", "soundcloud_handle"],
+    "notes": [
+      "Use Spotify Artist ID to disambiguate from other similarly named artists (e.g., XIIX/TenTwenty Japan).",
+      "All socials below are confirmed true by Culture SZN."
+    ]
+  },
+  "identity": {
+    "display_name": "XiiX",
+    "stylization": "XiiX",
+    "country": "Kenya",
+    "base_location": {
+      "name": "Sabaki",
+      "country": "Kenya"
+    },
+    "also_known_as": ["Mr. Wrong number", "Ras Houdini"],
+    "disambiguation": {
+      "not_the_same_as": [
+        {
+          "name": "XIIX / TenTwenty",
+          "country": "Japan",
+          "note": "Different artist entity; do not merge."
+        }
+      ]
+    }
+  },
+  "profiles": {
+    "spotify": {
+      "artist_id": "4JwhMRnhXNf44gaWN2VlDO",
+      "url": "https://open.spotify.com/artist/4JwhMRnhXNf44gaWN2VlDO"
+    },
+    "apple_music": {
+      "artist_id": "1757687727",
+      "url": "https://music.apple.com/us/artist/xiix-music/1757687727"
+    },
+    "soundcloud": {
+      "handle": "xiix-int",
+      "url": "https://soundcloud.com/xiix-int"
+    },
+    "youtube": {
+      "handle": "@XiiXint",
+      "url": "https://www.youtube.com/@XiiXint"
+    },
+    "instagram": {
+      "handle": "@___xi.ix___",
+      "url": "https://www.instagram.com/___xi.ix___/"
+    }
+  },
+  "affiliations": [
+    {
+      "name": "Culture Szn",
+      "type": "collective",
+      "relationship": "collaborator"
+    }
+  ],
+  "genres": {
+    "primary": ["Hip-Hop", "Rap"],
+    "secondary": [],
+    "tags": ["Kenyan Hip-Hop", "East African Rap", "Poetic Rap"]
+  },
+  "bio": {
+    "short": "XiiX is a Kenya-based hip-hop artist from Sabaki known for poetic, genre-flexible rap and frequent collaborations with Culture Szn.",
+    "long": "XiiX is a Kenya-based hip-hop artist associated with the Culture Szn movement. Based in Sabaki, his work leans into lyrical, poetic rap while staying flexible across modern rap textures. He is also known by the monikers “Mr. Wrong number” and “Ras Houdini,” and has released collaborative records with Culture Szn."
+  },
+  "discography": {
+    "highlights": [
+      {
+        "title": "SABAKI (feat. Pipí)",
+        "type": "single",
+        "release_date": "2025-04-18",
+        "credits": {
+          "primary_artist": "XiiX",
+          "featured_artists": ["Pipí"],
+          "producers": ["Dani"]
+        },
+        "links": {}
+      },
+      {
+        "title": "TOP BOII (feat. Wuann1er, Culture Szn)",
+        "type": "single",
+        "release_date": "2025-06-13",
+        "credits": {
+          "primary_artist": "XiiX",
+          "featured_artists": ["Wuann1er", "Culture Szn"]
+        },
+        "links": {}
+      },
+      {
+        "title": "YOU WANT IT (feat. Culture Szn, Wavy SRF, Sire)",
+        "type": "single",
+        "release_date": "2025-06-21",
+        "credits": {
+          "primary_artist": "XiiX",
+          "featured_artists": ["Culture Szn", "Wavy SRF", "Sire"],
+          "producers": ["Bedan Kiarie"]
+        },
+        "links": {}
+      },
+      {
+        "title": "FIREMAN (feat. Culture Szn, Sire)",
+        "type": "single",
+        "release_date": "2025-07-31",
+        "credits": {
+          "primary_artist": "XiiX",
+          "featured_artists": ["Culture Szn", "Sire"]
+        },
+        "links": {
+          "soundcloud": "https://m.soundcloud.com/xiix-int/fireman-ft-sir6"
+        }
+      },
+      {
+        "title": "Monday To Monday (feat. Sire, Culture Szn)",
+        "type": "single",
+        "release_date": "2025-07-31",
+        "credits": {
+          "primary_artist": "XiiX",
+          "featured_artists": ["Sire", "Culture Szn"]
+        },
+        "links": {}
+      },
+      {
+        "title": "SI UONGO",
+        "type": "single",
+        "release_date": "2025-09-26",
+        "credits": {
+          "primary_artist": "XiiX",
+          "featured_artists": []
+        },
+        "links": {}
+      },
+      {
+        "title": "CHEKI (feat. Uncle Sliqè)",
+        "type": "single",
+        "release_date": "2025-10-03",
+        "credits": {
+          "primary_artist": "XiiX",
+          "featured_artists": ["Uncle Sliqè"]
+        },
+        "links": {}
+      },
+      {
+        "title": "DAY 2 DAY (feat. Rysenzio)",
+        "type": "single",
+        "release_date": "2025-11-06",
+        "credits": {
+          "primary_artist": "XiiX",
+          "featured_artists": ["Rysenzio"],
+          "producers": ["Zare"]
+        },
+        "links": {}
+      },
+      {
+        "title": "6 AGAIN",
+        "type": "single",
+        "release_date": "2025-11-14",
+        "credits": {
+          "primary_artist": "XiiX",
+          "featured_artists": [],
+          "producers": ["Zare"]
+        },
+        "links": {}
+      },
+      {
+        "title": "UNFORGETTABLE",
+        "type": "single",
+        "release_date": "2026-01-09",
+        "credits": {
+          "primary_artist": "XiiX",
+          "featured_artists": []
+        },
+        "links": {}
+      },
+      {
+        "title": "OKAY (feat. Uncle Sliqè)",
+        "type": "single",
+        "release_date": "2026-01-09",
+        "credits": {
+          "primary_artist": "XiiX",
+          "featured_artists": ["Uncle Sliqè"]
+        },
+        "links": {
+          "youtube": "https://www.youtube.com/watch?v=JhOVIyWeqLM"
+        }
+      }
+    ],
+    "projects": [
+      {
+        "title": "LOVE/EVOL",
+        "type": "ep",
+        "status": "released",
+        "release_date": "2024-03-12",
+        "tracks": ["222", "LATE NIGHT TEXT", "SEDUCTION", "MR. WRONG NUMBER", "TWIN FLAME"],
+        "links": {
+          "apple_music": null,
+          "spotify_album": null
+        }
+      },
+      {
+        "title": "OVR DUE",
+        "type": "album",
+        "status": "released",
+        "release_date": "2025-05-02",
+        "tracks": ["SVME SVME", "TOXICC", "BOMBASTIC", "TYPE C", "RONGUYS", "FAM NOT FRIENDS", "SENSEI STATE", "AdVengers", "UFO"],
+        "links": {
+          "apple_music": null,
+          "spotify_album": null
+        }
+      },
+      {
+        "title": "SIXXTAPE",
+        "type": "album",
+        "status": "released",
+        "release_date": "2025-05-29",
+        "tracks": ["TELL ME", "LUCY DREAMS", "PLAN YA GOD", "MOVE", "CONFUSE ME", "RUKA", "LIVE LIFE"],
+        "links": {
+          "apple_music": "https://music.apple.com/us/album/sixxtape/1817687168",
+          "spotify_album": "https://open.spotify.com/album/5EC55CH3Tybf6kNJS0415L"
+        }
+      }
+    ]
+  },
+  "collaborations": [
+    {
+      "with": "Culture Szn",
+      "evidence": ["PLAN YA GOD (feat. Culture Szn)", "MR. WRONG NUMBER (feat. Culture Szn)"]
+    },
+    {
+      "with": ["Wavy Srf", "Sire"],
+      "evidence": ["Spotify track credit: YOU WANT IT"]
+    }
+  ],
+  "branding": {
+    "primary_slug": "xiix",
+    "display_pronunciation": "ZEE-iks",
+    "image": "https://res.cloudinary.com/dph79ptoz/image/upload/v1770287296/SaveClip.App_621681944_18107153134673313_6513464581845031078_n_qdthcw.jpg",
+    "cover_image": "https://res.cloudinary.com/dph79ptoz/image/upload/v1770287296/SaveClip.App_621681944_18107153134673313_6513464581845031078_n_qdthcw.jpg",
+    "image_requirements": {
+      "hero": {
+        "recommended_aspect_ratio": "1:1 or 4:5",
+        "min_resolution_px": [2000, 2000],
+        "safe_zone_notes": "Leave top-left safe zone for name overlay on mobile."
+      }
+    }
+  },
+  "seo": {
+    "title": "XiiX | Culture SZN",
+    "meta_description": "Official Culture SZN artist profile for XiiX — Kenya-based hip-hop artist from Sabaki. Music, releases, and verified socials."
+  },
+  "audit": {
+    "verified_fields_by_owner": ["profiles.youtube", "profiles.instagram"],
+    "last_updated": "2026-02-05",
+    "maintainer": "Culture SZN"
+  }
+}

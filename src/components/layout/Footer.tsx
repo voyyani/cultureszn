@@ -147,9 +147,6 @@ export function Footer() {
           <Text color="secondary" size="sm">
             © {new Date().getFullYear()} Culture SZN. All rights reserved. Nairobi, Kenya.
           </Text>
-          <Text color="muted" size="sm" className="mt-2">
-            World-class branding from an authentically Nairobi perspective.
-          </Text>
         </div>
       </div>
     </footer>
