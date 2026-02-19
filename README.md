@@ -1,73 +1,89 @@
-# React + TypeScript + Vite
+# Culture SZN
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Culture SZN is the multidisciplinary ecosystem amplifying Nairobi's next-generation creatives. Where music, design, and cultural expression converge.
 
-Currently, two official plugins are available:
+## 🚀 Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Quick Start
 
-## React Compiler
+```bash
+# Install dependencies
+npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app will be available at `http://localhost:5173` (or next available port).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Development Notes
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Offline Mode in Development:**
+- API endpoints (`/api/spotify/*`) are Vercel serverless functions that **don't run locally** with `npm run dev`
+- The app automatically falls back to static data in development mode
+- This is **expected behavior** - you'll see "Offline" status indicator
+- All features work with static data (browsing releases, artists, etc.)
+
+**Testing with Live API:**
+```bash
+# Install Vercel CLI globally
+npm i -g vercel
+
+# Run with API endpoints
+vercel dev
 ```
+
+This starts both the frontend and serverless functions locally.
+
+### Building for Production
+
+```bash
+# Type-check and build
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 📁 Project Structure
+
+```
+cultureszn/
+├── src/
+│   ├── components/    # React components
+│   ├── hooks/         # Custom React hooks
+│   ├── lib/           # Utilities and libraries
+│   ├── pages/         # Page components
+│   ├── data/          # Static data
+│   └── types/         # TypeScript types
+├── api/               # Vercel serverless functions
+│   └── spotify/       # Spotify API endpoints
+└── docs/              # Documentation
+```
+
+## 🎵 Features
+
+- **Latest Releases**: Live Spotify integration with offline fallback
+- **Artist Profiles**: Rich artist pages with Spotify embeds
+- **Smart Caching**: Multi-layer caching (memory + localStorage)
+- **Offline Support**: Graceful degradation to static data
+- **Responsive Design**: Mobile-first, adaptive layouts
+
+## 🔧 Tech Stack
+
+- **Frontend**: React 19 + TypeScript + Vite
+- **Styling**: Tailwind CSS 4
+- **Animations**: Framer Motion
+- **API**: Vercel Serverless Functions
+- **Deployment**: Vercel
+
+## 📖 Documentation
+
+See `/docs` folder for detailed documentation:
+- [PRD](./docs/PRD.md) - Product Requirements
+- [Roadmap](./docs/ROADMAP.md) - Development roadmap
+- Implementation reports for each phase
+
+---
+
+**Built with ❤️ in Nairobi**

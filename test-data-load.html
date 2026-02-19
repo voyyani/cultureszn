@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Static Data Load</title>
+</head>
+<body>
+    <h1>Testing Static Data Load</h1>
+    <div id="output"></div>
+    
+    <script>
+        // Simple test to verify localStorage
+        const key = 'latest-releases:all:10';
+        const cached = localStorage.getItem(key);
+        
+        const output = document.getElementById('output');
+        
+        if (cached) {
+            try {
+                const parsed = JSON.parse(cached);
+                output.innerHTML = `
+                    <h2>Cache Found</h2>
+                    <p>Source: ${parsed.source}</p>
+                    <p>Data count: ${parsed.data ? parsed.data.length : 0}</p>
+                    <p>Timestamp: ${parsed.timestamp}</p>
+                    <h3>First release:</h3>
+                    <pre>${JSON.stringify(parsed.data[0], null, 2)}</pre>
+                `;
+            } catch (e) {
+                output.innerHTML = `<h2>Parse Error</h2><p>${e.message}</p>`;
+            }
+        } else {
+            output.innerHTML = '<h2>No Cache Found</h2>';
+        }
+    </script>
+</body>
+</html>

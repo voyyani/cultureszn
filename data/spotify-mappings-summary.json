@@ -1,0 +1,26 @@
+{
+  "extractedAt": "2026-02-17T14:56:21.946Z",
+  "totalArtists": 3,
+  "artistsWithSpotifyId": 1,
+  "totalReleases": 2,
+  "artists": [
+    {
+      "slug": "xiix",
+      "name": "XiiX",
+      "spotifyId": "4JwhMRnhXNf44gaWN2VlDO",
+      "releaseCount": 2
+    },
+    {
+      "slug": "wavy",
+      "name": "wavy",
+      "spotifyId": "",
+      "releaseCount": 0
+    },
+    {
+      "slug": "pipi",
+      "name": "Pipí Ciagi",
+      "spotifyId": "",
+      "releaseCount": 0
+    }
+  ]
+}

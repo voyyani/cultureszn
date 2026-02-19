@@ -68,6 +68,77 @@ export interface Stat {
   label: string
 }
 
+/**
+ * Enriched Release Interface
+ * Combines static data with live Spotify metadata
+ */
+export interface EnrichedRelease {
+  // Static data (always present)
+  id: string
+  slug: string
+  artistSlug: string
+  artist: string
+  type: 'single' | 'ep' | 'album' | 'visual-album' | 'instrumental'
+  featured: boolean
+  description?: string
+  
+  // Merged data (Spotify > Static)
+  title: string
+  coverArt: string
+  releaseDate: string
+  
+  // Spotify-only data (may be null)
+  spotifyId?: string
+  spotifyUri?: string // For playback
+  durationMs?: number
+  explicit?: boolean
+  popularity?: number
+  previewUrl?: string
+  availableMarkets?: string[]
+  tracks?: string[] // For albums
+  
+  // Computed metadata
+  isPlayable: boolean
+  source: 'spotify' | 'static' | 'mixed'
+  
+  // Streaming links
+  streamingLinks: {
+    spotify?: string
+    appleMusic?: string
+    soundcloud?: string
+    youtube?: string
+    audiomack?: string
+    boomplay?: string
+  }
+}
+
+/**
+ * Latest Releases API Response
+ */
+export interface LatestReleasesResponse {
+  success: boolean
+  data: EnrichedRelease[]
+  cached: boolean
+  fallback: boolean
+  syncedAt: string // ISO 8601 timestamp
+  meta: {
+    limit: number
+    total: number
+    spotifyApiCalled: boolean
+    cacheHit: boolean
+    responseTime: number // milliseconds
+  }
+}
+
+/**
+ * Cached Releases Data
+ */
+export interface CachedReleases {
+  data: EnrichedRelease[]
+  timestamp: Date
+  source: 'spotify' | 'cache' | 'fallback'
+}
+
 // Re-export artist types
 export type {
   ArtistProfile,

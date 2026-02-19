@@ -5,23 +5,6 @@
    Nairobi's Creative Ecosystem
    ============================================ */
 
-/* Custom Fonts */
-@font-face {
-  font-family: 'Space Grotesk';
-  src: url('https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2') format('woff2');
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50.woff2') format('woff2');
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ============================================
    CSS CUSTOM PROPERTIES - DESIGN TOKENS
    ============================================ */

@@ -11,4 +11,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  // Note: API endpoints are deployed to Vercel as serverless functions
+  // In development, API calls will fail and automatically fall back to static data
+  // To test with live API, use: vercel dev
 })

@@ -144,9 +144,19 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/5 text-center">
-          <Text color="secondary" size="sm">
-            © {new Date().getFullYear()} Culture SZN. All rights reserved. Nairobi, Kenya.
-          </Text>
+            
+            <p className="text-sm text-text-secondary mt-2">
+            Crafted by{' '}
+            <a 
+              href="https://voyani.tech" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-blue-400 transition-colors underline font-medium"
+            >
+              VOYANI
+            </a>{' '}
+            for the Culture SZN team.
+            </p>
         </div>
       </div>
     </footer>

@@ -1,0 +1,33 @@
+[
+  {
+    "slug": "xiix",
+    "artistName": "XiiX",
+    "spotifyArtistId": "4JwhMRnhXNf44gaWN2VlDO",
+    "releases": [
+      {
+        "title": "SIXXTAPE",
+        "spotifyAlbumId": "5EC55CH3Tybf6kNJS0415L",
+        "url": "https://open.spotify.com/album/5EC55CH3Tybf6kNJS0415L",
+        "type": "album"
+      },
+      {
+        "title": "6 AM",
+        "spotifyAlbumId": "1Qbztqv7IDwQolRJquhxMk",
+        "url": "https://open.spotify.com/album/1Qbztqv7IDwQolRJquhxMk",
+        "type": "album"
+      }
+    ]
+  },
+  {
+    "slug": "wavy",
+    "artistName": "wavy",
+    "spotifyArtistId": "",
+    "releases": []
+  },
+  {
+    "slug": "pipi",
+    "artistName": "Pipí Ciagi",
+    "spotifyArtistId": "",
+    "releases": []
+  }
+]

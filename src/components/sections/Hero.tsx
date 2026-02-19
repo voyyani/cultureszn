@@ -52,13 +52,12 @@ export function Hero() {
             variants={fadeInUp}
             className="flex flex-wrap gap-4 mb-16"
           >
-            
-            <Button asChild variant="outline" size="lg">
-              <a href="#releases">
+            <a href="#releases" className="inline-block">
+              <Button variant="outline" size="lg">
                 <Headphones size={20} />
                 Latest Releases
-              </a>
-            </Button>
+              </Button>
+            </a>
           </motion.div>
 
           {/* Stats */}
