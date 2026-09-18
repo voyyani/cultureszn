@@ -16,9 +16,8 @@ class IntersectionObserverStub {
 if (!('IntersectionObserver' in globalThis)) {
   Object.defineProperty(globalThis, 'IntersectionObserver', { value: IntersectionObserverStub, writable: true })
 }
-if (!('scrollTo' in window) || typeof window.scrollTo !== 'function') {
-  Object.defineProperty(window, 'scrollTo', { value: () => {}, writable: true })
-}
+// jsdom's own scrollTo logs "Not implemented" — always replace it
+Object.defineProperty(window, 'scrollTo', { value: () => {}, writable: true })
 if (!window.matchMedia) {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,

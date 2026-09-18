@@ -1,6 +1,6 @@
 export { releases } from './releases'
 export { getAllReleases, getReleaseBySlug, getFeaturedRelease, getRecentReleases, getReleasesByArtist, getPlaylists } from '@/lib/catalog'
-export { sznals, getSZNalBySlug, getAllSZNals, getRecentSZNals, getSZNalsByCategory } from './sznals'
+export { getAllSZNals, getDraftSZNals, getSZNalBySlug } from '@/content/sznals'
 
 // Artist profile system (JSON-driven source of truth)
 export {

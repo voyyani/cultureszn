@@ -17,17 +17,6 @@ export interface Release {
   source: 'static' | 'catalog' | 'merged'
 }
 
-export interface SZNal {
-  id: string
-  slug: string
-  title: string
-  excerpt: string
-  category: string
-  image: string
-  author: string
-  publishedDate: string
-  readTime: string
-}
 
 export interface NavLink {
   name: string

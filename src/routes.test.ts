@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { matchesRoute, ROUTES } from './routes'
 import { NAV_LINKS, FOOTER_LINKS } from '@/lib/constants'
 import { renderAt } from '@/test/render'
-import { getAllArtists, releases, sznals } from '@/data'
+import { getAllArtists, releases, getAllSZNals, getDraftSZNals } from '@/data'
 
 describe('matchesRoute', () => {
   it('matches declared routes and rejects unknown ones', () => {
@@ -36,6 +36,6 @@ describe('link integrity', () => {
 
   it('the declared route list covers every content type', () => {
     expect(ROUTES.map((r) => r.path)).toEqual(expect.arrayContaining(['/sznals/:slug', '/join']))
-    expect(sznals.length).toBeGreaterThan(0)
+    expect([...getAllSZNals(), ...getDraftSZNals()].length).toBeGreaterThan(0)
   })
 })

@@ -3,11 +3,13 @@ import { motion } from 'framer-motion'
 import { BookOpen } from 'lucide-react'
 import { Button, SectionHeader } from '@/components/ui'
 import { SZNalCard } from '@/components/shared'
-import { getRecentSZNals } from '@/data'
+import { getAllSZNals, getDraftSZNals } from '@/content/sznals'
 import { staggerContainer, fadeInUp } from '@/lib/motion'
 
 export function SZNalsSection() {
-  const recentSZNals = getRecentSZNals(3)
+  const published = getAllSZNals().slice(0, 3)
+  const teasers = published.length > 0 ? published : getDraftSZNals().slice(0, 3)
+  const isTeaser = published.length === 0
 
   return (
     <section id="sznals" className="section-szn">
@@ -29,9 +31,9 @@ export function SZNalsSection() {
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
           >
-            {recentSZNals.map((sznal) => (
-              <motion.div key={sznal.id} variants={fadeInUp}>
-                <SZNalCard sznal={sznal} />
+            {teasers.map((sznal) => (
+              <motion.div key={sznal.slug} variants={fadeInUp}>
+                <SZNalCard sznal={sznal} asLink={!isTeaser} />
               </motion.div>
             ))}
           </motion.div>
