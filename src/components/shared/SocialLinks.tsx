@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
-import { Instagram, Twitter, Youtube, Music2, ExternalLink } from 'lucide-react'
+import { Instagram, Twitter, ExternalLink } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import { BrandIcon } from '@/components/icons'
+import type { PlatformKey } from '@/config/platforms'
 
 interface SocialLink {
   platform: string
@@ -22,10 +24,8 @@ interface SocialLinksProps {
 const iconMap: Record<string, LucideIcon> = {
   instagram: Instagram,
   twitter: Twitter,
-  spotify: Music2,
-  soundcloud: Music2,
-  youtube: Youtube,
 }
+const BRAND: Partial<Record<string, PlatformKey>> = { spotify: 'spotify', soundcloud: 'soundcloud', youtube: 'youtube' }
 
 const sizeMap = {
   sm: { wrapper: 'w-8 h-8', icon: 16 },
@@ -45,6 +45,7 @@ export function SocialLinks({ links, size = 'md', className }: SocialLinksProps)
   return (
     <div className={`flex gap-3 ${className}`}>
       {socialLinks.map(({ platform, url }) => {
+        const brand = BRAND[platform]
         const Icon = iconMap[platform] || ExternalLink
 
         return (
@@ -62,7 +63,7 @@ export function SocialLinks({ links, size = 'md', className }: SocialLinksProps)
             whileTap={{ scale: 0.95 }}
             aria-label={`Visit ${platform}`}
           >
-            <Icon size={icon} />
+            {brand ? <BrandIcon platform={brand} size={icon} /> : <Icon size={icon} />}
           </motion.a>
         )
       })}

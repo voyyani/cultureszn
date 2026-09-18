@@ -23,7 +23,7 @@ export function Artist() {
   const { slug } = useParams<{ slug: string }>()
   
   const artist = slug ? getArtistProfile(slug) : null
-  const streamingLinks = slug ? getStreamingLinks(slug) : []
+  const streamingLinks = slug ? getStreamingLinks(slug) : {}
   const aboutParagraphs = artist?.longBio
     ? artist.longBio.split('\n\n').map((paragraph) => paragraph.trim()).filter(Boolean)
     : []

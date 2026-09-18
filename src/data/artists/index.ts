@@ -14,6 +14,7 @@ import type {
   NormalizedProject,
   NormalizedCollaboration,
 } from '@/types/artist'
+import type { PlatformKey } from '@/config/platforms'
 
 // Import artist JSON files
 import xiixData from './xiix.json'
@@ -239,25 +240,14 @@ export function getSpotifyEmbedId(slug: string): string | null {
 /**
  * Get artist's streaming links for quick access bar
  */
-export function getStreamingLinks(slug: string): { platform: string; url: string; label: string }[] {
+export function getStreamingLinks(slug: string): Partial<Record<PlatformKey, string>> {
   const artist = getArtistProfile(slug)
-  if (!artist) return []
-
-  const links: { platform: string; url: string; label: string }[] = []
-
-  if (artist.social.spotify) {
-    links.push({ platform: 'spotify', url: artist.social.spotify, label: 'Spotify' })
-  }
-  if (artist.social.apple) {
-    links.push({ platform: 'apple', url: artist.social.apple, label: 'Apple Music' })
-  }
-  if (artist.social.soundcloud) {
-    links.push({ platform: 'soundcloud', url: artist.social.soundcloud, label: 'SoundCloud' })
-  }
-  if (artist.social.youtube) {
-    links.push({ platform: 'youtube', url: artist.social.youtube, label: 'YouTube' })
-  }
-
+  if (!artist) return {}
+  const links: Partial<Record<PlatformKey, string>> = {}
+  if (artist.social.youtube) links.youtube = artist.social.youtube
+  if (artist.social.spotify) links.spotify = artist.social.spotify
+  if (artist.social.apple) links.appleMusic = artist.social.apple
+  if (artist.social.soundcloud) links.soundcloud = artist.social.soundcloud
   return links
 }
 

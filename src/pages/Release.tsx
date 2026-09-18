@@ -1,19 +1,13 @@
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Play, ExternalLink } from 'lucide-react'
+import { ArrowLeft, ExternalLink } from 'lucide-react'
 import { Button, Text, Badge } from '@/components/ui'
 import { getReleaseBySlug } from '@/data'
 import { staggerContainer, fadeInUp } from '@/lib/motion'
 
 import { formatDate, formatDuration } from '@/lib/format'
-const streamingPlatforms = [
-  { key: 'spotify', name: 'Spotify', color: '#1DB954' },
-  { key: 'appleMusic', name: 'Apple Music', color: '#FA2D48' },
-  { key: 'youtube', name: 'YouTube', color: '#FF0000' },
-  { key: 'soundcloud', name: 'SoundCloud', color: '#FF5500' },
-  { key: 'audiomack', name: 'Audiomack', color: '#FFA500' },
-  { key: 'boomplay', name: 'Boomplay', color: '#00D4FF' },
-] as const
+import { platformLinks } from '@/config/platforms'
+import { BrandIcon } from '@/components/icons'
 
 export function Release() {
   const { slug } = useParams<{ slug: string }>()
@@ -40,9 +34,7 @@ export function Release() {
     )
   }
 
-  const availablePlatforms = streamingPlatforms.filter(
-    (platform) => release.streamingLinks[platform.key as keyof typeof release.streamingLinks]
-  )
+  const availablePlatforms = platformLinks(release.streamingLinks)
 
   return (
     <div className="min-h-screen pt-24">
@@ -147,7 +139,7 @@ export function Release() {
                   {availablePlatforms.map((platform) => (
                     <a
                       key={platform.key}
-                      href={release.streamingLinks[platform.key as keyof typeof release.streamingLinks]}
+                      href={platform.url}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -158,8 +150,8 @@ export function Release() {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        <Play size={16} />
-                        {platform.name}
+                        <span style={{ color: platform.color }}><BrandIcon platform={platform.key} size={16} /></span>
+                        {platform.label}
                         <ExternalLink size={14} className="opacity-50" />
                       </motion.button>
                     </a>
