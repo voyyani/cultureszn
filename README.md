@@ -80,9 +80,10 @@ cultureszn/
 ## 📖 Documentation
 
 See `/docs` folder for detailed documentation:
-- [PRD](./docs/PRD.md) - Product Requirements
-- [Roadmap](./docs/ROADMAP.md) - Development roadmap
-- Implementation reports for each phase
+- [PRODUCT.md](./PRODUCT.md) - Product truth (users, purpose, principles)
+- [Assets & Facts Needed](./docs/ASSETS-NEEDED.md) - What the team must supply, with specs and where each lands
+- [Content Guide](./docs/CONTENT-GUIDE.md) - How to write and publish a SZNal
+- [Rebuild plan](./docs/superpowers/plans/2026-09-18-world-class-rebuild-and-revamp.md) - The current roadmap
 
 ---
 
