@@ -10,19 +10,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * Format a date string to a readable format
- */
-export function formatDate(date: string | Date, options?: Intl.DateTimeFormatOptions): string {
-  const defaultOptions: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    ...options,
-  }
-  return new Date(date).toLocaleDateString('en-US', defaultOptions)
-}
-
-/**
  * Generate a slug from a string
  */
 export function slugify(text: string): string {
@@ -39,13 +26,6 @@ export function slugify(text: string): string {
 export function truncate(text: string, length: number): string {
   if (text.length <= length) return text
   return text.slice(0, length).trim() + '...'
-}
-
-/**
- * Generate random ID
- */
-export function generateId(): string {
-  return Math.random().toString(36).substring(2, 9)
 }
 
 /**

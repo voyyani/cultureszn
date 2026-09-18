@@ -7,6 +7,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { formatDate } from '@/lib/format'
 import { 
   Music, 
   Play, 
@@ -82,14 +83,6 @@ function getRelativeTime(dateString: string): string {
   return `${Math.floor(diffDays / 365)} years ago`
 }
 
-// Get formatted date
-function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  })
-}
 
 // Extract Spotify track ID from URL
 function getSpotifyTrackId(url: string): string | null {

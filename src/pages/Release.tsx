@@ -5,6 +5,7 @@ import { Button, Text, Badge } from '@/components/ui'
 import { getReleaseBySlug } from '@/data'
 import { staggerContainer, fadeInUp } from '@/lib/motion'
 
+import { formatDate } from '@/lib/format'
 const streamingPlatforms = [
   { key: 'spotify', name: 'Spotify', color: '#1DB954' },
   { key: 'appleMusic', name: 'Apple Music', color: '#FA2D48' },
@@ -100,11 +101,7 @@ export function Release() {
                 className="text-text-muted mb-8"
               >
                 Released{' '}
-                {new Date(release.releaseDate).toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric',
-                })}
+                {formatDate(release.releaseDate)}
               </motion.p>
 
               {release.description && (

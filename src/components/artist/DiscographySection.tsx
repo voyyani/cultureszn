@@ -23,6 +23,7 @@ import { SongCarousel } from './SongCarousel'
 import { staggerContainer, fadeInUp } from '@/lib/motion'
 import type { NormalizedRelease, NormalizedProject } from '@/types/artist'
 
+import { formatDate } from '@/lib/format'
 interface DiscographySectionProps {
   releases: NormalizedRelease[]
   projects: NormalizedProject[]
@@ -83,10 +84,7 @@ function AlbumCard({ project }: { project: NormalizedProject }) {
             </Badge>
             {project.releaseDate && (
               <span className="text-sm text-white/80 font-medium">
-                {new Date(project.releaseDate).toLocaleDateString('en-US', { 
-                  year: 'numeric',
-                  month: 'short'
-                })}
+                {formatDate(project.releaseDate, { day: undefined, month: 'short' })}
               </span>
             )}
           </div>
@@ -352,10 +350,7 @@ export function DiscographySection({
                                   single
                                 </span>
                                 <span className="text-text-muted text-xs">
-                                  {new Date(release.releaseDate).toLocaleDateString('en-US', { 
-                                    month: 'short', 
-                                    day: 'numeric' 
-                                  })}
+                                  {formatDate(release.releaseDate, { month: 'short', year: undefined })}
                                 </span>
                               </div>
                               <h5 className="font-semibold text-white group-hover:text-burnt-orange transition-colors truncate">

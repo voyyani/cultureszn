@@ -12,6 +12,7 @@ import type { PanInfo } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Play, Music2, ExternalLink } from 'lucide-react'
 import type { NormalizedRelease } from '@/types/artist'
 
+import { formatDate } from '@/lib/format'
 interface SongCarouselProps {
   releases: NormalizedRelease[]
 }
@@ -275,11 +276,7 @@ function SongCard({ release, index, width, isDragging }: SongCardProps) {
           )}
           
           <p className="text-xs text-text-muted/60">
-            {new Date(release.releaseDate).toLocaleDateString('en-US', { 
-              month: 'short', 
-              day: 'numeric',
-              year: 'numeric'
-            })}
+            {formatDate(release.releaseDate, { month: 'short' })}
           </p>
         </div>
         

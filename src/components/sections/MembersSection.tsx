@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion'
 import { Users } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { Button, SectionHeader } from '@/components/ui'
-import { MemberCard } from '@/components/shared'
-import { getAllMembers } from '@/data'
+import { ArtistCard } from '@/components/shared'
+import { getAllArtists } from '@/data'
 import { staggerContainer, fadeInUp } from '@/lib/motion'
 
 export function MembersSection() {
-  const members = getAllMembers().slice(0, 3) // Show first 3 members
+  const artists = getAllArtists()
 
   return (
     <section id="members" className="section-szn">
@@ -28,18 +29,20 @@ export function MembersSection() {
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
           >
-            {members.map((member) => (
-              <motion.div key={member.id} variants={fadeInUp}>
-                <MemberCard member={member} />
+            {artists.map((artist) => (
+              <motion.div key={artist.slug} variants={fadeInUp}>
+                <ArtistCard artist={artist} />
               </motion.div>
             ))}
           </motion.div>
 
           <motion.div variants={fadeInUp} className="text-center">
-            <Button variant="outline" size="lg">
-              <Users size={20} />
-              View All Creatives
-            </Button>
+            <Link to="/artists" className="inline-block">
+              <Button variant="outline" size="lg">
+                <Users size={20} />
+                View All Creatives
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

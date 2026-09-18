@@ -28,6 +28,9 @@ export function useDocumentHead({
   meta = [],
   jsonLd,
 }: DocumentHeadOptions) {
+  // Serialise object deps so a new-but-equal array/object doesn't re-run the effect (F16)
+  const metaKey = JSON.stringify(meta)
+  const jsonLdKey = jsonLd ? JSON.stringify(jsonLd) : ''
   useEffect(() => {
     // Store original title for cleanup
     const originalTitle = document.title
@@ -105,5 +108,5 @@ export function useDocumentHead({
       document.title = originalTitle
       createdElements.forEach((el) => el.remove())
     }
-  }, [title, description, canonical, meta, jsonLd])
+  }, [title, description, canonical, metaKey, jsonLdKey]) // eslint-disable-line react-hooks/exhaustive-deps
 }

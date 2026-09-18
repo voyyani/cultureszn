@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Calendar, Clock } from 'lucide-react'
 import { Card, CardContent, Text } from '@/components/ui'
 import type { SZNal } from '@/types'
+import { formatDate } from '@/lib/format'
 
 interface SZNalCardProps {
   sznal: SZNal
@@ -29,11 +30,7 @@ export function SZNalCard({ sznal }: SZNalCardProps) {
           <div className="flex items-center justify-between pt-4 border-t border-white/5 text-text-muted text-sm">
             <span className="flex items-center gap-1.5">
               <Calendar size={14} />
-              {new Date(sznal.publishedDate).toLocaleDateString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric',
-              })}
+              {formatDate(sznal.publishedDate, { month: 'short' })}
             </span>
             <span className="flex items-center gap-1.5">
               <Clock size={14} />

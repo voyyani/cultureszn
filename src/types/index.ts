@@ -1,22 +1,3 @@
-export interface Member {
-  id: string
-  slug: string
-  name: string
-  role: string
-  bio: string
-  image: string
-  coverImage?: string
-  tags: string[]
-  social: {
-    instagram?: string
-    twitter?: string
-    spotify?: string
-    soundcloud?: string
-    youtube?: string
-  }
-  joinedDate: string
-}
-
 export interface Release {
   id: string
   slug: string

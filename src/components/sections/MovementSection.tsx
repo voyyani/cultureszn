@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion'
 import { Text } from '@/components/ui'
-import { StatCounter } from '@/components/shared'
 import { staggerContainer, fadeInUp } from '@/lib/motion'
-import { MOVEMENT_STATS } from '@/lib/constants'
 
 export function MovementSection() {
   return (
@@ -59,21 +57,6 @@ export function MovementSection() {
             </Text>
           </motion.div>
 
-          {/* Stats */}
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-wrap justify-center gap-12 md:gap-20"
-          >
-            {MOVEMENT_STATS.map((stat) => (
-              <StatCounter
-                key={stat.label}
-                value={stat.value}
-                suffix={stat.suffix}
-                label={stat.label}
-                className="text-center"
-              />
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </section>

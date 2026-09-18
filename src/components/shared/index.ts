@@ -1,6 +1,5 @@
-export { StatCounter } from './StatCounter'
 export { SocialLinks } from './SocialLinks'
-export { MemberCard } from './MemberCard'
+export { ArtistCard } from './ArtistCard'
 export { ReleaseCard } from './ReleaseCard'
 export { ReleaseCardSkeleton } from './ReleaseCardSkeleton'
 export type { ReleaseCardSkeletonProps } from './ReleaseCardSkeleton'

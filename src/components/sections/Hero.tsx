@@ -1,21 +1,13 @@
 import { motion } from 'framer-motion'
 import { Headphones } from 'lucide-react'
 import { Button } from '@/components/ui'
-import { StatCounter } from '@/components/shared'
 import { staggerContainer, fadeInUp } from '@/lib/motion'
-import { HERO_STATS } from '@/lib/constants'
 
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1558865869-c93f6f8482af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80')`,
-          }}
-        />
         <div className="absolute inset-0 bg-gradient-sunset opacity-40 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-matte-black via-matte-black/50 to-transparent" />
       </div>
@@ -50,7 +42,7 @@ export function Hero() {
           {/* CTAs */}
           <motion.div
             variants={fadeInUp}
-            className="flex flex-wrap gap-4 mb-16"
+            className="flex flex-wrap gap-4"
           >
             <a href="#releases" className="inline-block">
               <Button variant="outline" size="lg">
@@ -60,20 +52,6 @@ export function Hero() {
             </a>
           </motion.div>
 
-          {/* Stats */}
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-wrap gap-10 md:gap-16"
-          >
-            {HERO_STATS.map((stat) => (
-              <StatCounter
-                key={stat.label}
-                value={stat.value}
-                suffix={stat.suffix}
-                label={stat.label}
-              />
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </section>

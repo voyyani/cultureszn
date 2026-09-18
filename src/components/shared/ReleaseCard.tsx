@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Card, CardImage, CardContent, Text } from '@/components/ui'
 import type { Release } from '@/types'
 
+import { formatDate } from '@/lib/format'
 interface ReleaseCardProps {
   release: Release
   variant?: 'default' | 'compact'
@@ -36,10 +37,7 @@ export function ReleaseCard({
               {release.artist} • {release.type.charAt(0).toUpperCase() + release.type.slice(1)}
             </Text>
             <Text color="muted" size="sm">
-              {new Date(release.releaseDate).toLocaleDateString('en-US', {
-                month: 'long',
-                year: 'numeric',
-              })}
+              {formatDate(release.releaseDate, { day: undefined })}
             </Text>
           </div>
         </motion.div>
@@ -65,10 +63,7 @@ export function ReleaseCard({
             {release.artist}
           </Text>
           <Text color="muted" size="sm">
-            {new Date(release.releaseDate).toLocaleDateString('en-US', {
-              month: 'long',
-              year: 'numeric',
-            })}
+            {formatDate(release.releaseDate, { day: undefined })}
           </Text>
         </CardContent>
       </Card>

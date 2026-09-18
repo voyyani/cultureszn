@@ -9,22 +9,20 @@ import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft } from 'lucide-react'
 import { Button, Text, Badge } from '@/components/ui'
-import { SocialLinks, ShareButton } from '@/components/shared'
+import { ShareButton } from '@/components/shared'
 import { 
   ArtistHero, 
   StreamingBar, 
   DiscographySection, 
   ArtistSEO
 } from '@/components/artist'
-import { getArtistProfile, getStreamingLinks, getMemberBySlug } from '@/data'
+import { getArtistProfile, getStreamingLinks } from '@/data'
 import { staggerContainer, fadeInUp } from '@/lib/motion'
 
 export function Artist() {
   const { slug } = useParams<{ slug: string }>()
   
-  // Try JSON-driven artist first, fall back to legacy member
   const artist = slug ? getArtistProfile(slug) : null
-  const legacyMember = slug ? getMemberBySlug(slug) : undefined
   const streamingLinks = slug ? getStreamingLinks(slug) : []
   const aboutParagraphs = artist?.longBio
     ? artist.longBio.split('\n\n').map((paragraph) => paragraph.trim()).filter(Boolean)
@@ -133,116 +131,22 @@ export function Artist() {
     )
   }
 
-  // Fallback to legacy member view if no JSON artist
-  if (!legacyMember) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-[family-name:var(--font-heading)] font-bold mb-4">
-            Artist Not Found
-          </h1>
-          <Text color="secondary" className="mb-8">
-            The creative you're looking for doesn't exist or has been moved.
-          </Text>
-          <Link to="/">
-            <Button variant="primary">
-              <ArrowLeft size={20} />
-              Back to Home
-            </Button>
-          </Link>
-        </div>
-      </div>
-    )
-  }
-
-  // Legacy member view (for non-JSON members)
   return (
-    <div className="min-h-screen">
-      {/* Simplified hero for legacy members */}
-      <section className="relative min-h-[70vh] flex items-end pb-16">
-        <div className="absolute inset-0 z-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${legacyMember.coverImage || legacyMember.image})`,
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-matte-black via-matte-black/70 to-matte-black/30" />
-        </div>
-
-        <div className="container-szn relative z-10">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            animate="animate"
-          >
-            <motion.div variants={fadeInUp} className="mb-8">
-              <Link to="/#members">
-                <Button variant="ghost" size="sm">
-                  <ArrowLeft size={18} />
-                  Back to Members
-                </Button>
-              </Link>
-            </motion.div>
-
-            <motion.h1
-              variants={fadeInUp}
-              className="text-5xl sm:text-6xl md:text-7xl font-[family-name:var(--font-heading)] font-bold mb-4"
-            >
-              {legacyMember.name}
-            </motion.h1>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl md:text-2xl text-burnt-orange font-medium mb-6"
-            >
-              {legacyMember.role}
-            </motion.p>
-
-            <motion.div variants={fadeInUp}>
-              <SocialLinks links={legacyMember.social} size="lg" />
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* About */}
-      <section className="section-szn">
-        <div className="container-szn">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="max-w-4xl"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl font-[family-name:var(--font-heading)] font-bold mb-6"
-            >
-              About
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-text-secondary leading-relaxed mb-8"
-            >
-              {legacyMember.bio}
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-wrap gap-3"
-            >
-              {legacyMember.tags.map((tag) => (
-                <Badge key={tag} variant="default" size="md">
-                  {tag}
-                </Badge>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-4xl font-[family-name:var(--font-heading)] font-bold mb-4">
+          Artist Not Found
+        </h1>
+        <Text color="secondary" className="mb-8">
+          The creative you're looking for doesn't exist or has been moved.
+        </Text>
+        <Link to="/">
+          <Button variant="primary">
+            <ArrowLeft size={20} />
+            Back to Home
+          </Button>
+        </Link>
+      </div>
     </div>
   )
 }
