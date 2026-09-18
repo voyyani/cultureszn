@@ -1,6 +1,8 @@
 import type { ArtistProfile, Collaboration, DiscographyHighlight } from '@/types/artist'
 import pipiSource from './pipi.json'
 
+const FALLBACK_ARTIST_IMAGE = '/images/artists/placeholder.svg'
+
 interface PipiIdentityVariant {
   name?: string | null
 }
@@ -153,7 +155,7 @@ const tags = uniqueList([...primaryGenres, ...secondaryTags]).slice(0, 9)
 
 const verifiedTracks = pipiData.disciplines?.music?.verified_tracks || []
 const highlights: DiscographyHighlight[] = verifiedTracks
-  .map((track, index) => {
+  .map((track): DiscographyHighlight | null => {
     const title = track.title
     if (!title) return null
 
@@ -165,7 +167,7 @@ const highlights: DiscographyHighlight[] = verifiedTracks
 
     return {
       title: buildFeatureTitle(title, creditedForTitle, displayName),
-      type: 'single',
+      type: 'single' as const,
       release_date: releaseDate,
       cover_art: track.cover_art || undefined,
       credits: {
@@ -179,7 +181,7 @@ const highlights: DiscographyHighlight[] = verifiedTracks
       },
     }
   })
-  .filter((item): item is DiscographyHighlight => Boolean(item))
+  .filter((item): item is DiscographyHighlight => item !== null)
 
 const collaborations: Collaboration[] = uniqueList(
   (pipiData.culture_szn_relationship?.related_entities || []).map((entity) => entity.name || '')
@@ -232,8 +234,8 @@ const pipiProfile: ArtistProfile = {
   collaborations,
   branding: {
     primary_slug: 'pipi',
-    image: pipiData.media_assets?.hero_image?.url || undefined,
-    cover_image: pipiData.media_assets?.hero_image?.url || undefined,
+    image: pipiData.media_assets?.hero_image?.url || FALLBACK_ARTIST_IMAGE,
+    cover_image: pipiData.media_assets?.hero_image?.url || FALLBACK_ARTIST_IMAGE,
   },
   seo: {
     title: pipiData.seo?.title || `${displayName} | Culture SZN`,

@@ -1,6 +1,8 @@
 import type { ArtistProfile, Collaboration, DiscographyHighlight } from '@/types/artist'
 import wavySource from './wavy.json'
 
+const FALLBACK_ARTIST_IMAGE = '/images/artists/placeholder.svg'
+
 interface WavyTrack {
   title?: string
   display_title?: string
@@ -100,7 +102,7 @@ function normalizeReleaseType(value?: string | null, isPrimaryArtist?: boolean):
 
 function buildHighlights(tracks: WavyTrack[], isWavyName: (name: string) => boolean, fallbackArtist: string): DiscographyHighlight[] {
   return tracks
-    .map((track) => {
+    .map((track): DiscographyHighlight | null => {
       const releaseDate = track.release?.release_date?.value
       if (!releaseDate || !releaseDate.includes('-')) return null
 
@@ -141,7 +143,7 @@ function buildHighlights(tracks: WavyTrack[], isWavyName: (name: string) => bool
         links,
       }
     })
-    .filter((item): item is DiscographyHighlight => Boolean(item))
+    .filter((item): item is DiscographyHighlight => item !== null)
 }
 
 function buildCollaborations(tracks: WavyTrack[], isWavyName: (name: string) => boolean): Collaboration[] {
@@ -259,8 +261,8 @@ const wavyProfile: ArtistProfile = {
   collaborations,
   branding: {
     primary_slug: 'wavy',
-    image: wavyData.media_assets?.hero_image?.url || undefined,
-    cover_image: wavyData.media_assets?.hero_image?.url || undefined,
+    image: wavyData.media_assets?.hero_image?.url || FALLBACK_ARTIST_IMAGE,
+    cover_image: wavyData.media_assets?.hero_image?.url || FALLBACK_ARTIST_IMAGE,
   },
   seo: {
     title: `${name} | Culture SZN`,
