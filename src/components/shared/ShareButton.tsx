@@ -346,29 +346,3 @@ function ShareOption({ href, onClick, icon, label, color }: ShareOptionProps) {
     </button>
   )
 }
-
-/**
- * Hook for programmatic sharing
- */
-export function useShare() {
-  const [isSharing, setIsSharing] = useState(false)
-
-  const share = useCallback(async (data: ShareData): Promise<boolean> => {
-    if (!canShare) {
-      return false
-    }
-
-    setIsSharing(true)
-    
-    try {
-      await navigator.share(data)
-      return true
-    } catch {
-      return false
-    } finally {
-      setIsSharing(false)
-    }
-  }, [])
-
-  return { share, isSharing, canShare }
-}

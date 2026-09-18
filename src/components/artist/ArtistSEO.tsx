@@ -194,32 +194,3 @@ export function ArtistSEO({ artist, baseUrl = 'https://cultureszn.com' }: Artist
   // This component doesn't render anything visible
   return null
 }
-
-/**
- * Pre-render hints for performance
- * Can be used in index.html or added dynamically
- */
-export function generatePreconnectLinks(): string[] {
-  return [
-    'https://open.spotify.com',
-    'https://music.apple.com',
-    'https://i.scdn.co', // Spotify CDN
-    'https://is1-ssl.mzstatic.com', // Apple Music CDN
-  ]
-}
-
-/**
- * Generate Open Graph image URL
- * For use with dynamic OG image generation services
- */
-export function generateOgImageUrl(artist: NormalizedArtist, baseUrl: string): string {
-  // This would integrate with Vercel OG or similar service
-  const params = new URLSearchParams({
-    title: artist.name,
-    subtitle: `${artist.genres[0]} Artist from ${artist.country}`,
-    image: artist.image || '',
-    theme: 'dark',
-  })
-  
-  return `${baseUrl}/api/og?${params.toString()}`
-}

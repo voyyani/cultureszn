@@ -35,7 +35,7 @@ const sizeMap = {
 
 export function SocialLinks({ links, size = 'md', className }: SocialLinksProps) {
   const socialLinks: SocialLink[] = Object.entries(links)
-    .filter(([_, url]) => url)
+    .filter(([, url]) => url)
     .map(([platform, url]) => ({ platform, url: url! }))
 
   if (socialLinks.length === 0) return null

@@ -80,7 +80,8 @@ export function ScrollBehavior() {
     if (!hash) {
       window.scrollTo({ top: 0, behavior: 'instant' })
     }
-  }, []) // Only on mount (page load/reload)
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- intentionally only on mount (page load/reload)
+  }, [])
 
   useEffect(() => {
     if (hash) {

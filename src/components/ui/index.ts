@@ -1,4 +1,4 @@
-export { Button, buttonVariants, type ButtonProps } from './Button'
+export { Button, type ButtonProps } from './Button'
 export { Card, CardImage, CardContent } from './Card'
 export { Input, type InputProps } from './Input'
 export { Badge } from './Badge'
