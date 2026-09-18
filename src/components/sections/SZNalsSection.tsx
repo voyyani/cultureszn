@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { BookOpen } from 'lucide-react'
 import { Button, SectionHeader } from '@/components/ui'
@@ -36,10 +37,12 @@ export function SZNalsSection() {
           </motion.div>
 
           <motion.div variants={fadeInUp} className="text-center">
-            <Button variant="outline" size="lg">
-              <BookOpen size={20} />
-              Explore All SZNals
-            </Button>
+            <Link to="/sznals" className="inline-block">
+              <Button variant="outline" size="lg">
+                <BookOpen size={20} />
+                Explore All SZNals
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

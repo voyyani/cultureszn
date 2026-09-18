@@ -1,25 +1,39 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom'
 import { Layout } from '@/components/layout'
-import { Home, Artist, Release, NotFound } from '@/pages'
+import { Home, Artist, Artists, Release, Releases, SZNals, SZNal, Join, NotFound } from '@/pages'
 import { ScrollBehavior } from '@/components/shared'
 
-function App() {
+function MemberRedirect() {
+  const { slug } = useParams<{ slug: string }>()
+  return <Navigate to={`/artists/${slug}`} replace />
+}
+
+export function AppRoutes() {
   return (
-    <BrowserRouter>
+    <>
       <ScrollBehavior />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          {/* Artist page for JSON-driven profiles */}
+          <Route path="/artists" element={<Artists />} />
           <Route path="/artists/:slug" element={<Artist />} />
-          {/* Legacy member route - redirects to artist for JSON profiles */}
-          <Route path="/members/:slug" element={<Artist />} />
+          <Route path="/members/:slug" element={<MemberRedirect />} />
+          <Route path="/releases" element={<Releases />} />
           <Route path="/releases/:slug" element={<Release />} />
+          <Route path="/sznals" element={<SZNals />} />
+          <Route path="/sznals/:slug" element={<SZNal />} />
+          <Route path="/join" element={<Join />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </>
   )
 }
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  )
+}

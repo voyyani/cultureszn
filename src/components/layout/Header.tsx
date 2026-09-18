@@ -71,9 +71,11 @@ export function Header() {
                 {item.name}
               </NavLink>
             ))}
-            <Button variant="outline" size="md">
-              Join SZN
-            </Button>
+            <Link to="/join" className="inline-block">
+              <Button variant="outline" size="md">
+                Join SZN
+              </Button>
+            </Link>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -120,9 +122,11 @@ export function Header() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: NAV_LINKS.length * 0.1 }}
               >
-                <Button variant="primary" size="lg" className="w-full mt-4">
-                  Join SZN
-                </Button>
+                <Link to="/join" className="block" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button variant="primary" size="lg" className="w-full mt-4">
+                    Join SZN
+                  </Button>
+                </Link>
               </motion.div>
             </nav>
           </motion.div>

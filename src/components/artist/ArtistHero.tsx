@@ -124,10 +124,10 @@ export function ArtistHero({ artist }: ArtistHeroProps) {
         >
           {/* Back Button */}
           <motion.div variants={fadeInUp} className="self-start mb-12">
-            <Link to="/#members">
+            <Link to="/artists">
               <Button variant="ghost" size="sm" className="group">
                 <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-                Back to Members
+                Back to Artists
               </Button>
             </Link>
           </motion.div>

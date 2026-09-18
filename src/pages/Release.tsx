@@ -54,7 +54,7 @@ export function Release() {
         >
           {/* Back Button */}
           <motion.div variants={fadeInUp} className="mb-8">
-            <Link to="/#releases">
+            <Link to="/releases">
               <Button variant="ghost" size="sm">
                 <ArrowLeft size={18} />
                 Back to Releases
