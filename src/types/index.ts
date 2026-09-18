@@ -1,3 +1,5 @@
+export interface ReleaseTrack { name: string; durationMs?: number; artists?: string[] }
+
 export interface Release {
   id: string
   slug: string
@@ -8,16 +10,11 @@ export interface Release {
   releaseDate: string
   coverArt: string
   description?: string
-  tracks?: string[]
-  streamingLinks: {
-    spotify?: string
-    appleMusic?: string
-    youtube?: string
-    soundcloud?: string
-    audiomack?: string
-    boomplay?: string
-  }
+  tracks?: ReleaseTrack[]
+  streamingLinks: { spotify?: string; appleMusic?: string; youtube?: string; soundcloud?: string; audiomack?: string; boomplay?: string }
   featured?: boolean
+  spotifyAlbumId?: string
+  source: 'static' | 'catalog' | 'merged'
 }
 
 export interface SZNal {

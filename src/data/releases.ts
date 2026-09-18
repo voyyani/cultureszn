@@ -11,11 +11,12 @@ export const releases: Release[] = [
     type: 'album',
     releaseDate: '2026-01-31',
     coverArt: 'https://res.cloudinary.com/dph79ptoz/image/upload/v1770302177/Screenshot_from_2026-02-05_17-36-05_jits6m.png',
-    tracks: ['UNFORGETTABLE', 'SI UONGO', '6 AGAIN', 'DAY 2 DAY', 'ALL DAY'],
+    tracks: [{ name: 'UNFORGETTABLE' }, { name: 'SI UONGO' }, { name: '6 AGAIN' }, { name: 'DAY 2 DAY' }, { name: 'ALL DAY' }],
     streamingLinks: {
       spotify: 'https://open.spotify.com/album/1Qbztqv7IDwQolRJquhxMk',
     },
     featured: true,
+    source: 'static',
   },
   {
     id: 'all-day',
@@ -30,6 +31,7 @@ export const releases: Release[] = [
       soundcloud: 'https://soundcloud.com/xiix-int/all-day-ft-3-pvnch',
     },
     featured: false,
+    source: 'static',
   },
   // SIXXTAPE - Album
   {
@@ -47,6 +49,7 @@ export const releases: Release[] = [
       appleMusic: 'https://music.apple.com/us/album/sixxtape/1817687168',
     },
     featured: false,
+    source: 'static',
   },
   // XiiX Latest Singles
   {
@@ -63,6 +66,7 @@ export const releases: Release[] = [
       youtube: 'https://www.youtube.com/watch?v=JhOVIyWeqLM',
     },
     featured: false,
+    source: 'static',
   },
   {
     id: 'unforgettable',
@@ -76,6 +80,7 @@ export const releases: Release[] = [
     description: "A melodic reflection on moments and memories that stay with us forever.",
     streamingLinks: {},
     featured: false,
+    source: 'static',
   },
   {
     id: '6-again',
@@ -89,6 +94,7 @@ export const releases: Release[] = [
     description: "XiiX reflects on cycles, growth, and returning to familiar places with new perspective. Produced by Zare.",
     streamingLinks: {},
     featured: false,
+    source: 'static',
   },
   // Legacy releases kept for other artists
   {
@@ -104,6 +110,7 @@ export const releases: Release[] = [
     streamingLinks: {
     },
     featured: false,
+    source: 'static',
   },
   {
     id: '5',
@@ -119,27 +126,6 @@ export const releases: Release[] = [
       audiomack: 'https://audiomack.com/kevo-szn/album/street-gospel',
     },
     featured: false,
+    source: 'static',
   },
 ]
-
-export function getReleaseBySlug(slug: string): Release | undefined {
-  return releases.find((release) => release.slug === slug)
-}
-
-export function getAllReleases(): Release[] {
-  return releases
-}
-
-export function getFeaturedRelease(): Release | undefined {
-  return releases.find((release) => release.featured)
-}
-
-export function getRecentReleases(count: number = 5): Release[] {
-  return [...releases]
-    .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
-    .slice(0, count)
-}
-
-export function getReleasesByArtist(artistSlug: string): Release[] {
-  return releases.filter((release) => release.artistSlug === artistSlug)
-}

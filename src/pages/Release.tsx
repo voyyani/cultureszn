@@ -5,7 +5,7 @@ import { Button, Text, Badge } from '@/components/ui'
 import { getReleaseBySlug } from '@/data'
 import { staggerContainer, fadeInUp } from '@/lib/motion'
 
-import { formatDate } from '@/lib/format'
+import { formatDate, formatDuration } from '@/lib/format'
 const streamingPlatforms = [
   { key: 'spotify', name: 'Spotify', color: '#1DB954' },
   { key: 'appleMusic', name: 'Apple Music', color: '#FA2D48' },
@@ -111,6 +111,31 @@ export function Release() {
                 >
                   {release.description}
                 </motion.p>
+              )}
+
+              {/* Tracklist */}
+              {release.tracks && release.tracks.length > 0 && (
+                <motion.div variants={fadeInUp} className="mb-10">
+                  <h3 className="text-lg font-[family-name:var(--font-heading)] font-semibold mb-4">
+                    Tracklist
+                  </h3>
+                  <ol className="divide-y divide-white/5 border-y border-white/5">
+                    {release.tracks.map((track, index) => (
+                      <li key={`${track.name}-${index}`} className="flex items-center gap-4 py-3 text-text-secondary">
+                        <span className="w-6 text-right text-text-muted tabular-nums">{index + 1}</span>
+                        <span className="flex-1 text-text-primary">
+                          {track.name}
+                          {track.artists && track.artists.length > 1 && (
+                            <span className="text-text-muted"> · {track.artists.join(', ')}</span>
+                          )}
+                        </span>
+                        {typeof track.durationMs === 'number' && (
+                          <span className="text-text-muted tabular-nums">{formatDuration(track.durationMs)}</span>
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+                </motion.div>
               )}
 
               {/* Streaming Links */}
