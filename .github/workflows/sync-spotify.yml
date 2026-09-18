@@ -1,0 +1,25 @@
+name: Sync Spotify catalog
+on:
+  schedule:
+    - cron: '0 3 * * *'   # 06:00 Nairobi
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - run: node scripts/sync-spotify.mjs
+        env:
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+      - name: Commit if changed
+        run: |
+          git config user.name "cultureszn-bot"
+          git config user.email "bot@cultureszn.com"
+          git add src/data/generated/spotify-catalog.json
+          git diff --cached --quiet || git commit -m "chore(data): sync Spotify catalog"
+          git push

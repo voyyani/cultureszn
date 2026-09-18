@@ -11,7 +11,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "preview": "vite preview",
-    "check:size": "node scripts/check-bundle-size.mjs"
+    "check:size": "node scripts/check-bundle-size.mjs",
+    "sync:spotify": "node scripts/sync-spotify.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
