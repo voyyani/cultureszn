@@ -1,5 +1,4 @@
 export { Home } from './Home'
-export { Member } from './Member'
 export { Artist } from './Artist'
 export { Release } from './Release'
 export { NotFound } from './NotFound'

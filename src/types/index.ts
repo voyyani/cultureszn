@@ -83,12 +83,3 @@ export type {
   ArtistBranding,
   ArtistSEO,
 } from './artist'
-
-// Re-export XiiX profile types
-export type {
-  XiiXProfileV2,
-  ProfileStats,
-  SongV2,
-  ProjectV2,
-  SongCredits,
-} from './xiix-profile'
