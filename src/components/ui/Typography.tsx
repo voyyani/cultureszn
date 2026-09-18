@@ -8,6 +8,7 @@ interface HeadingProps {
   gradient?: boolean
   children: ReactNode
   className?: string
+  id?: string
 }
 
 export function Heading({
@@ -16,6 +17,7 @@ export function Heading({
   gradient = false,
   children,
   className,
+  id,
 }: HeadingProps) {
   const Component = as || size
 
@@ -30,6 +32,7 @@ export function Heading({
 
   return (
     <Component
+      id={id}
       className={cn(
         'font-[family-name:var(--font-heading)] font-bold leading-tight',
         sizes[size],
@@ -110,6 +113,7 @@ interface SectionHeaderProps {
   subtitle?: string
   centered?: boolean
   className?: string
+  id?: string
 }
 
 export function SectionHeader({
@@ -117,10 +121,11 @@ export function SectionHeader({
   subtitle,
   centered = true,
   className,
+  id,
 }: SectionHeaderProps) {
   return (
     <div className={cn(centered && 'text-center', 'mb-16', className)}>
-      <Heading size="h2" className="mb-4">
+      <Heading id={id} size="h2" className="mb-4">
         {title}
       </Heading>
       {subtitle && (
