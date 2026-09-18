@@ -34,6 +34,7 @@ export function mapPlaylist(raw) {
 }
 
 export function stripVolatile(catalog) {
-  const { syncedAt: _ignored, ...rest } = catalog
+  const rest = { ...catalog }
+  delete rest.syncedAt
   return rest
 }
