@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-21T11:28:41Z",
+  "title": "Design System: Culture SZN",
+  "extensions": {
+    "colorMeta": {
+      "gloss-black":    { "role": "neutral",   "displayName": "Gloss Black",       "canonical": "#0b0b0d", "tonalRamp": ["#0b0b0d", "#17171c", "#2c2c34", "#45454f", "#6a6a76", "#9a9aa6", "#b4b4c0", "#f4f4f6"] },
+      "panel-black":    { "role": "neutral",   "displayName": "Panel Black",       "canonical": "#17171c", "tonalRamp": ["#0b0b0d", "#17171c", "#2c2c34", "#45454f", "#6a6a76", "#9a9aa6", "#b4b4c0", "#f4f4f6"] },
+      "white-vinyl":    { "role": "neutral",   "displayName": "White Vinyl",       "canonical": "#f4f4f6", "tonalRamp": ["#0b0b0d", "#17171c", "#2c2c34", "#45454f", "#6a6a76", "#9a9aa6", "#b4b4c0", "#f4f4f6"] },
+      "chrome-tint":    { "role": "neutral",   "displayName": "Chrome Tint",       "canonical": "#b4b4c0", "tonalRamp": ["#0b0b0d", "#17171c", "#2c2c34", "#45454f", "#6a6a76", "#9a9aa6", "#b4b4c0", "#f4f4f6"] },
+      "brushed-chrome": { "role": "neutral",   "displayName": "Brushed Chrome",    "canonical": "#9a9aa6", "tonalRamp": ["#0b0b0d", "#17171c", "#2c2c34", "#45454f", "#6a6a76", "#9a9aa6", "#b4b4c0", "#f4f4f6"] },
+      "hairline":       { "role": "neutral",   "displayName": "Hairline",          "canonical": "#2c2c34", "tonalRamp": ["#0b0b0d", "#17171c", "#2c2c34", "#45454f", "#6a6a76", "#9a9aa6", "#b4b4c0", "#f4f4f6"] },
+      "led-green":      { "role": "primary",   "displayName": "LED Green",         "canonical": "#39ff14", "tonalRamp": ["oklch(20% 0.09 142)", "oklch(32% 0.14 142)", "oklch(45% 0.19 142)", "oklch(58% 0.23 142)", "oklch(70% 0.26 142)", "oklch(84% 0.28 142)", "oklch(90% 0.2 142)", "oklch(96% 0.08 142)"] },
+      "led-green-ink":  { "role": "primary",   "displayName": "LED Green Ink",     "canonical": "#05100a", "tonalRamp": ["#05100a", "#0b1f14", "#123321", "#1a4a2e", "#23663e", "#2e8a52", "#39ff14", "#c9ffbf"] },
+      "board-yellow":   { "role": "secondary", "displayName": "Route-Board Yellow","canonical": "#ffd400", "tonalRamp": ["oklch(22% 0.06 95)", "oklch(35% 0.09 95)", "oklch(48% 0.12 95)", "oklch(62% 0.15 95)", "oklch(75% 0.17 95)", "oklch(88% 0.19 95)", "oklch(93% 0.14 95)", "oklch(97% 0.06 95)"] },
+      "led-purple":     { "role": "secondary", "displayName": "LED Purple",        "canonical": "#7b2cff", "tonalRamp": ["oklch(18% 0.12 300)", "oklch(28% 0.18 300)", "oklch(38% 0.24 300)", "oklch(50% 0.28 300)", "oklch(62% 0.24 300)", "oklch(74% 0.18 300)", "oklch(86% 0.1 300)", "oklch(95% 0.04 300)"] },
+      "reflective-red": { "role": "tertiary",  "displayName": "Reflective Red",    "canonical": "#e8232a", "tonalRamp": ["oklch(18% 0.09 25)", "oklch(30% 0.14 25)", "oklch(42% 0.19 25)", "oklch(56% 0.23 25)", "oklch(66% 0.2 25)", "oklch(78% 0.14 25)", "oklch(88% 0.08 25)", "oklch(96% 0.03 25)"] }
+    },
+    "typographyMeta": {
+      "display":  { "displayName": "Display (signage)", "purpose": "One name per page at hero scale: page name, artist name, release title." },
+      "headline": { "displayName": "Headline",          "purpose": "Section names; followed by an LED rule via SectionHeader." },
+      "title":    { "displayName": "Title",             "purpose": "Item names in lists and cards; 1rem is the floor for Bungee." },
+      "body":     { "displayName": "Body",              "purpose": "Reading copy in the phone's own system sans, capped at 64ch." },
+      "label":    { "displayName": "Label (board lettering)", "purpose": "Destinations, plates, stop numbers, meta lines, buttons; condensed caps, 0.08em." }
+    },
+    "shadows": [
+      { "name": "led-glow",    "value": "0 1px 6px color-mix(in srgb, var(--accent) 90%, transparent), 0 10px 28px color-mix(in srgb, var(--accent) 55%, transparent)", "purpose": "The lit green LED rule and the Play button; a tight halo then bleed falling downward." },
+      { "name": "band-glow",   "value": "0 2px 10px color-mix(in srgb, var(--band) 90%, transparent), 0 14px 40px color-mix(in srgb, var(--band) 60%, transparent)", "purpose": "The 8px purple ambient band above the join section and footer." },
+      { "name": "board-inset", "value": "inset 0 1px 0 color-mix(in srgb, var(--chrome) 45%, transparent), inset 0 -1px 0 color-mix(in srgb, var(--bg) 80%, transparent)", "purpose": "The route board's chrome inset edge; the only non-LED shadow." },
+      { "name": "lit-dot",     "value": "drop-shadow(0 0 6px var(--accent))", "purpose": "Filter on the active destination's LedDot." }
+    ],
+    "motion": [
+      { "name": "ease-out",        "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The only authored easing; pull-in and switch-on." },
+      { "name": "pull-in",         "value": "opacity 0→1, x 32px→0, 600ms ease-out; stagger 70ms, delay 50ms; once at 15% in view", "purpose": "Panels and list items arriving like the bus pulling in." },
+      { "name": "switch-on",       "value": "clip-path inset(0 100% 0 0)→inset(0), 700ms ease-out", "purpose": "LED elements powering up left to right." },
+      { "name": "page-transition", "value": "fade in 250ms easeOut, fade out 150ms easeIn", "purpose": "The cut between routes." },
+      { "name": "hover",           "value": "200ms ease-out on background-color, color, border-color, transform", "purpose": "Controls; active state translates 1px down." },
+      { "name": "image-zoom",      "value": "transform 500ms ease-out, scale 1.02 (cards) / 1.03 (panels)", "purpose": "Cover art on hover inside its frame." },
+      { "name": "led-warm",        "value": "opacity 0.25→1→0.25, 1.2s ease-in-out infinite", "purpose": "Loading state on a .led strip." },
+      { "name": "reduced-motion",  "value": "all animation/transition durations 0.01ms; Reveal renders plain; ?motion=off forces it", "purpose": "prefers-reduced-motion and screenshot rounds." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "container", "value": "1400px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one LED-green action per view: Play, Join SZN, Share on WhatsApp.",
+      "html": "<button class=\"ds-btn ds-btn-primary\"><svg aria-hidden width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M7 4v16l13-8z\"/></svg>Play</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 2.75rem; padding: 0 1.25rem; border: 2px solid; border-radius: var(--radius, 4px); font-family: var(--font-label, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; cursor: pointer; user-select: none; transition: background-color 0.2s ease-out, color 0.2s ease-out, border-color 0.2s ease-out, transform 0.2s ease-out; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid var(--accent, #39ff14); outline-offset: 3px; } .ds-btn:disabled { opacity: 0.5; pointer-events: none; } .ds-btn-primary { background: var(--accent, #39ff14); color: var(--accent-fg, #05100a); border-color: var(--accent, #39ff14); } .ds-btn-primary:hover { background: var(--fg, #f4f4f6); border-color: var(--fg, #f4f4f6); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Chrome-edged second door beside a primary control.",
+      "html": "<button class=\"ds-btn ds-btn-secondary\">Join SZN</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 2.75rem; padding: 0 1.25rem; border: 2px solid; border-radius: var(--radius, 4px); font-family: var(--font-label, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; cursor: pointer; transition: background-color 0.2s ease-out, color 0.2s ease-out, border-color 0.2s ease-out, transform 0.2s ease-out; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid var(--accent, #39ff14); outline-offset: 3px; } .ds-btn-secondary { background: transparent; color: var(--fg, #f4f4f6); border-color: var(--chrome, #9a9aa6); } .ds-btn-secondary:hover { border-color: var(--fg, #f4f4f6); background: var(--bg-raised, #17171c); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Tertiary action with no visible border (Copy link).",
+      "html": "<button class=\"ds-btn ds-btn-ghost\">Copy link</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 2.75rem; padding: 0 1.25rem; border: 2px solid; border-radius: var(--radius, 4px); font-family: var(--font-label, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; cursor: pointer; transition: background-color 0.2s ease-out, color 0.2s ease-out, border-color 0.2s ease-out, transform 0.2s ease-out; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid var(--accent, #39ff14); outline-offset: 3px; } .ds-btn-ghost { background: transparent; color: var(--fg-muted, #b4b4c0); border-color: transparent; } .ds-btn-ghost:hover { color: var(--fg, #f4f4f6); background: var(--bg-raised, #17171c); }"
+    },
+    {
+      "name": "Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Panel-black field with a hairline that turns LED green on focus.",
+      "html": "<input class=\"ds-input\" type=\"email\" placeholder=\"you@example.com\" aria-label=\"Email\">",
+      "css": ".ds-input { width: 100%; min-height: 2.75rem; padding: 0 1rem; background: var(--bg-raised, #17171c); color: var(--fg, #f4f4f6); border: 2px solid var(--line, #2c2c34); border-radius: var(--radius, 4px); font: inherit; caret-color: var(--accent, #39ff14); outline: none; transition: border-color 0.2s ease-out; } .ds-input::placeholder { color: var(--fg-muted, #b4b4c0); } .ds-input:focus { border-color: var(--accent, #39ff14); } .ds-input:disabled { opacity: 0.5; cursor: not-allowed; }"
+    },
+    {
+      "name": "Route Board",
+      "kind": "nav",
+      "refersTo": "board",
+      "description": "The chrome-edged destination strip; the current stop is lit with an LED dot.",
+      "html": "<nav aria-label=\"Primary\" class=\"ds-nav\"><ul class=\"ds-board\"><li><a class=\"ds-dest ds-dest-active\" href=\"#\" aria-current=\"page\"><svg aria-hidden width=\"12\" height=\"12\" viewBox=\"0 0 12 12\"><circle cx=\"6\" cy=\"6\" r=\"5.5\" fill=\"currentColor\" opacity=\"0.25\"/><circle cx=\"6\" cy=\"6\" r=\"3\" fill=\"currentColor\"/></svg>Artists</a></li><li><a class=\"ds-dest\" href=\"#\"><svg aria-hidden width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" style=\"opacity:0\"><circle cx=\"6\" cy=\"6\" r=\"3\" fill=\"currentColor\"/></svg>Releases</a></li><li><a class=\"ds-dest\" href=\"#\"><svg aria-hidden width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" style=\"opacity:0\"><circle cx=\"6\" cy=\"6\" r=\"3\" fill=\"currentColor\"/></svg>SZNals</a></li></ul><a class=\"ds-join\" href=\"#\">Join SZN</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 1.25rem; background: var(--bg, #0b0b0d); padding: 0.75rem; } .ds-board { display: flex; align-items: stretch; margin: 0; padding: 0; list-style: none; background: var(--bg-raised, #17171c); border: 1px solid var(--line, #2c2c34); border-radius: var(--radius, 4px); box-shadow: inset 0 1px 0 color-mix(in srgb, var(--chrome, #9a9aa6) 45%, transparent), inset 0 -1px 0 color-mix(in srgb, var(--bg, #0b0b0d) 80%, transparent); } .ds-board li + li { border-left: 1px solid var(--line, #2c2c34); } .ds-dest { display: flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; padding: 0 1rem; color: var(--board, #ffd400); font-family: var(--font-label, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-weight: 600; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1; text-decoration: none; transition: color 0.2s ease-out; } .ds-dest:hover { color: var(--fg, #f4f4f6); } .ds-dest-active { color: var(--accent, #39ff14); } .ds-dest-active svg { filter: drop-shadow(0 0 6px var(--accent, #39ff14)); } .ds-dest:focus-visible { outline: 2px solid var(--accent, #39ff14); outline-offset: 3px; } .ds-join { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1.25rem; background: var(--accent, #39ff14); color: var(--accent-fg, #05100a); border: 2px solid var(--accent, #39ff14); border-radius: var(--radius, 4px); font-family: var(--font-label, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; transition: background-color 0.2s ease-out, border-color 0.2s ease-out; } .ds-join:hover { background: var(--fg, #f4f4f6); border-color: var(--fg, #f4f4f6); }"
+    },
+    {
+      "name": "Plate",
+      "kind": "chip",
+      "refersTo": "plate",
+      "description": "Vinyl-cut caption plate for roles, types, categories and dates; dark variant when laid on colour.",
+      "html": "<span class=\"ds-plate\">Producer</span> <span class=\"ds-plate ds-plate-dark\">Nairobi, Kenya</span> <span class=\"ds-plate ds-plate-mark\">New</span>",
+      "css": ".ds-plate { display: inline-block; padding: 0.35em 0.6em 0.3em; background: var(--board, #ffd400); color: var(--bg, #0b0b0d); border-radius: var(--radius, 4px); font-family: var(--font-label, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; } .ds-plate-dark { background: var(--bg, #0b0b0d); color: var(--fg, #f4f4f6); } .ds-plate-mark { background: var(--mark, #e8232a); color: var(--fg, #f4f4f6); }"
+    },
+    {
+      "name": "Panel Card",
+      "kind": "card",
+      "refersTo": "card-panel",
+      "description": "A panel of the bus: panel black, hairline edge, cut-vinyl corners, no shadow.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-img\"></div><div class=\"ds-card-body\"><p class=\"ds-card-title\">Si Uongo</p><p class=\"ds-card-meta\">XiiX · Single · Aug 2026</p></div></div>",
+      "css": ".ds-card { overflow: hidden; background: var(--bg-raised, #17171c); border: 1px solid var(--line, #2c2c34); border-radius: var(--radius, 4px); max-width: 16rem; } .ds-card-img { aspect-ratio: 1 / 1; background: var(--bg, #0b0b0d); } .ds-card-body { padding: 1rem; } .ds-card-title { margin: 0; font-family: var(--font-display, 'Bungee', 'Arial Black', sans-serif); font-weight: 400; font-size: 1.125rem; line-height: 1.25; color: var(--fg, #f4f4f6); text-transform: uppercase; } .ds-card:hover .ds-card-title { color: var(--board, #ffd400); } .ds-card-meta { margin: 0.25rem 0 0; font-family: var(--font-label, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; color: var(--fg-muted, #b4b4c0); }"
+    },
+    {
+      "name": "LED Rule",
+      "kind": "custom",
+      "refersTo": "board",
+      "description": "The luminous separator: a 4px green light whose bleed falls onto the panel below; 8px purple for the ambient band.",
+      "html": "<div class=\"ds-led-wrap\"><div class=\"ds-led\"></div><div class=\"ds-led ds-led-band\"></div></div>",
+      "css": ".ds-led-wrap { background: var(--bg, #0b0b0d); padding: 1.5rem 0; display: grid; gap: 3rem; } .ds-led { height: 4px; background: var(--accent, #39ff14); border-radius: 999px; box-shadow: 0 1px 6px color-mix(in srgb, var(--accent, #39ff14) 90%, transparent), 0 10px 28px color-mix(in srgb, var(--accent, #39ff14) 55%, transparent); } .ds-led-band { height: 8px; background: var(--band, #7b2cff); box-shadow: 0 2px 10px color-mix(in srgb, var(--band, #7b2cff) 90%, transparent), 0 14px 40px color-mix(in srgb, var(--band, #7b2cff) 60%, transparent); }"
+    },
+    {
+      "name": "Artist Panel",
+      "kind": "custom",
+      "refersTo": "card-panel",
+      "description": "A 4:5 painted panel: the name at sign scale when there is no cover art, captions as two plates bottom-left.",
+      "html": "<a class=\"ds-panel ds-panel-band\" href=\"#\"><span class=\"ds-panel-paint\" aria-hidden>XiiX</span><span class=\"ds-panel-caps\"><span class=\"ds-panel-name\">XiiX</span><span class=\"ds-panel-role\">Rapper · Nairobi</span></span></a>",
+      "css": ".ds-panel { position: relative; display: block; overflow: hidden; aspect-ratio: 4 / 5; max-width: 16rem; border: 1px solid var(--line, #2c2c34); border-radius: var(--radius, 4px); text-decoration: none; } .ds-panel-band { background: var(--band, #7b2cff); color: var(--fg, #f4f4f6); } .ds-panel-paint { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 1rem; font-family: var(--font-display, 'Bungee', 'Arial Black', sans-serif); font-weight: 400; font-size: clamp(3rem, 14vw, 7rem); line-height: 0.85; opacity: 0.9; text-transform: uppercase; } .ds-panel-caps { position: absolute; inset: auto 0 0 0; display: flex; flex-direction: column; align-items: flex-start; gap: 0.25rem; padding: 1rem; } .ds-panel-name { display: inline-block; padding: 0.35em 0.6em 0.3em; background: var(--bg, #0b0b0d); color: var(--fg, #f4f4f6); border-radius: var(--radius, 4px); font-family: var(--font-display, 'Bungee', 'Arial Black', sans-serif); font-size: 1.35rem; line-height: 1; text-transform: uppercase; } .ds-panel-role { display: inline-block; padding: 0.35em 0.6em 0.3em; background: var(--bg, #0b0b0d); color: var(--board, #ffd400); border-radius: var(--radius, 4px); font-family: var(--font-label, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; } .ds-panel:focus-visible { outline: 2px solid var(--accent, #39ff14); outline-offset: 3px; }"
+    },
+    {
+      "name": "Chevron Tape",
+      "kind": "custom",
+      "refersTo": "badge-mark",
+      "description": "Reflective red/white hazard tape, authored SVG; the NEW mark, straddling a panel edge.",
+      "html": "<div class=\"ds-tape-wrap\"><svg class=\"ds-tape\" aria-hidden preserveAspectRatio=\"none\" viewBox=\"0 0 64 16\"><defs><pattern id=\"ds-chev\" patternUnits=\"userSpaceOnUse\" width=\"16\" height=\"16\"><rect width=\"16\" height=\"16\" fill=\"var(--fg, #f4f4f6)\"/><path d=\"M0 0l8 8 8-8v8l-8 8-8-8z\" fill=\"var(--mark, #e8232a)\"/></pattern></defs><rect width=\"100%\" height=\"100%\" fill=\"url(#ds-chev)\"/></svg><span class=\"ds-tape-plate\">New</span></div>",
+      "css": ".ds-tape-wrap { position: relative; display: flex; height: 2rem; width: 16rem; } .ds-tape { display: block; width: 100%; height: 100%; } .ds-tape-plate { position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%); padding: 0.375rem 0.625rem; background: var(--bg, #0b0b0d); color: var(--fg, #f4f4f6); font-family: var(--font-label, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; }"
+    },
+    {
+      "name": "Play Button",
+      "kind": "button",
+      "refersTo": "play-button",
+      "description": "The 56px LED-green plate with a cut-vinyl triangle that sits over a poster until the tap.",
+      "html": "<div class=\"ds-poster\"><button class=\"ds-play\" aria-label=\"Play on YouTube\"><svg aria-hidden width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M7 4v16l13-8z\"/></svg></button></div>",
+      "css": ".ds-poster { position: relative; aspect-ratio: 16 / 9; max-width: 20rem; background: var(--bg-raised, #17171c); border-radius: var(--radius, 4px); overflow: hidden; } .ds-play { position: absolute; inset: 0; margin: auto; display: flex; align-items: center; justify-content: center; width: 3.5rem; height: 3.5rem; border: 0; border-radius: var(--radius, 4px); background: var(--accent, #39ff14); color: var(--accent-fg, #05100a); cursor: pointer; box-shadow: 0 1px 6px color-mix(in srgb, var(--accent, #39ff14) 90%, transparent), 0 10px 28px color-mix(in srgb, var(--accent, #39ff14) 55%, transparent); transition: transform 0.2s ease-out; } .ds-play:hover { transform: scale(1.05); } .ds-play:active { transform: scale(0.95); } .ds-play:focus-visible { outline: 2px solid var(--accent, #39ff14); outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Nganya",
+    "overview": "Culture SZN is a Nairobi matatu at night. The site is the vehicle: a chrome-edged route board across the top for wayfinding, painted panels down the side for the artists, and a sound system pinned along the bottom carrying the newest drop. The ground is gloss black because the bus is black and the phone is the light source; every colour on it is either paint (route-board yellow, reflective red) or light (LED green, LED purple). Nothing is tinted, blended or blurred: a fixed palette with hard edges, depth by overlap and light, state as a mark.\n\nThe world is dense and direct. Names are painted at sign scale in Bungee; everything that tells you where you are (destinations, categories, dates, stop numbers) is set as condensed caps on the board; body copy is the phone's own system sans so the bundle stays small on metered data. Motion is three authored moves: panels pull in from the right like the bus arriving, LED elements switch on left to right, routes cut with a short fade. Under prefers-reduced-motion all three collapse to a plain render.\n\nThe direction round rejected the label-site default in both its forms: the incumbent (near-black ground, orange-purple-blue gradient wordmark, glass cards) and its opposite (cream paper, serif display, terracotta). The rendition guard the build had to clear: it must read as a bus, not \"near-black plus one neon accent plus glow\".",
+    "keyCharacteristics": [
+      "Gloss-black ground with a fixed eleven-colour role palette; every surface styles with role tokens and nothing else.",
+      "LED green is the only action colour. If it is green, it is the thing to tap.",
+      "Bungee signage for names and headings; Barlow Condensed 600 caps for every label; system sans for reading.",
+      "The LED rule is a real light: a single luminous 4px bar whose bleed falls onto the panel below.",
+      "Vinyl-cut caption plates (4px radius) carry roles, types, categories and dates.",
+      "Red/white chevron tape, authored as SVG, is the NEW mark.",
+      "Honest states: no stand-in photos, no invented facts, no CTA for a link that does not exist."
+    ],
+    "rules": [
+      { "name": "The One Light Rule", "body": "LED green is the only action colour and appears only on things that respond to a tap (or on the LED rule that separates zones). Yellow is paint for reading the route; it is never a button.", "section": "colors" },
+      { "name": "The Paint or Light Rule", "body": "Every colour on the bus is either paint (yellow, red, the blacks, the whites) or light (green, purple). Light glows; paint never does. No colour is tinted with another and nothing is blended.", "section": "colors" },
+      { "name": "The No Grey-on-Grey Rule", "body": "Muted text is chrome-tinted (--fg-muted), always on a black, and the two blacks are the only surfaces text sits on besides a plate.", "section": "colors" },
+      { "name": "The Scale Is the Hierarchy Rule", "body": "Headings are one face at one weight; hierarchy comes from size alone. No eyebrow or kicker sits above a heading. A label beneath a heading (the hero subline, a plate row under a name) is caption, not kicker.", "section": "typography" },
+      { "name": "The Painted Name Rule", "body": "A missing cover art or photo is never a stand-in image. The name itself is painted at sign scale (Bungee, clamp(3rem, 14vw, 7rem), 0.85, 90% opacity) on a solid colour panel, or a release title is set in chrome Bungee centred in its square.", "section": "typography" },
+      { "name": "The Light Source Rule", "body": "A shadow exists only where there is a light. No card, panel, image or button carries a shadow at rest; a glow belongs to a green or purple element and falls downward.", "section": "elevation" },
+      { "name": "The No Glass Rule", "body": "No backdrop blur, no translucent white, no frosted panel. Layering is opaque black on black, plate on panel, tape half over an edge.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do style every surface with the role tokens in src/styles/tokens.css and their Tailwind names (bg-bg-raised, text-board, border-line); never introduce a hue by hex in a component.",
+      "Do keep LED green for actions only: one primary control per view, the focus ring, the caret, the lit dot, the LED rule.",
+      "Do set wayfinding (destinations, stop numbers, categories, types, dates) as .label in board yellow or chrome-tint on black, with .tabular on numbers.",
+      "Do separate a header from its body with a single .led rule, and end a page with the purple .led--band before the footer.",
+      "Do frame every image in a hairline at 4px radius, square for covers and 4:5 for people, and paint the name when the image is missing.",
+      "Do number lists as <ol> with hairline rules, 2-digit yellow numbers and 3rem-plus rows.",
+      "Do mark NEW with the chevron Tape straddling an edge, never covering the artwork's title.",
+      "Do use Reveal for every entrance and let it fall back to a plain element under reduced motion.",
+      "Do keep 2.75rem minimum tap targets and a 2px green focus ring at 3px offset on everything focusable.",
+      "Do load an iframe only after a tap; put a PlayButton over a poster until then."
+    ],
+    "donts": [
+      "Don't use gradient text, gradient fills, or any blended colour; the palette is flat paint and flat light.",
+      "Don't use glass: no backdrop blur, no translucent white or black panels.",
+      "Don't put a kicker or eyebrow above a heading; the size of the Bungee is the hierarchy.",
+      "Don't add a tonal or offset shadow to a card, panel, button or image; glow belongs only to green and purple LEDs and falls downward.",
+      "Don't lay out same-size card grids as the page's structure; the first viewport is a route board, a panel row and a strip, and lists are numbered stops.",
+      "Don't use unicode characters, emoji or text abbreviations as icons; use the authored glyphs or BrandIcon.",
+      "Don't use a placeholder photo, an invented number, a date in a non-en-KE format, or a control for a link that is not configured.",
+      "Don't set Bungee below 1rem or track it; drop to a .label instead.",
+      "Don't make LED green a heading, body or plate colour, and don't make yellow a button.",
+      "Don't add a fourth motion move or animate on scroll for its own sake; pull-in, switch-on and the page cut are the whole grammar."
+    ]
+  }
+}

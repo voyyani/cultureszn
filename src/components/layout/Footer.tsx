@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
-import { BrandIcon } from '@/components/icons'
+import { siInstagram, siTiktok, siYoutube, siSpotify } from 'simple-icons'
 import { FOOTER_LINKS } from '@/lib/constants'
 import { SITE } from '@/config/site'
-import type { PlatformKey } from '@/config/platforms'
 
 const SOCIAL_LABEL: Record<keyof typeof SITE.socials, string> = { instagram: 'Instagram', youtube: 'YouTube', spotify: 'Spotify', tiktok: 'TikTok' }
-const SOCIAL_ICON: Partial<Record<keyof typeof SITE.socials, PlatformKey>> = { youtube: 'youtube', spotify: 'spotify' }
+const SOCIAL_PATH: Record<keyof typeof SITE.socials, string> = { instagram: siInstagram.path, youtube: siYoutube.path, spotify: siSpotify.path, tiktok: siTiktok.path }
 
 const socials = (Object.keys(SOCIAL_LABEL) as Array<keyof typeof SITE.socials>)
   .filter((key) => Boolean(SITE.socials[key]))
@@ -27,7 +26,7 @@ export function Footer() {
                   <li key={s.key}>
                     <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.name}
                        className="flex h-11 w-11 items-center justify-center rounded-szn border border-line text-fg-muted transition-colors hover:border-fg hover:text-fg">
-                      {SOCIAL_ICON[s.key] ? <BrandIcon platform={SOCIAL_ICON[s.key]!} size={18} /> : <span className="label text-xs">{s.name.slice(0, 2)}</span>}
+                      <svg aria-hidden width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d={SOCIAL_PATH[s.key]} /></svg>
                     </a>
                   </li>
                 ))}
