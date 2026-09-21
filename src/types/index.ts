@@ -18,27 +18,11 @@ export interface Release {
 }
 
 
-export interface NavLink {
-  name: string
-  href: string
-}
-
-export interface SocialLink {
-  name: string
-  href: string
-  icon: string
-}
-
-export interface Stat {
-  value: number
-  suffix: string
-  label: string
-}
-
 // Re-export artist types
 export type {
   ArtistProfile,
   NormalizedArtist,
+  ArtistSummary,
   NormalizedRelease,
   NormalizedProject,
   NormalizedCollaboration,

@@ -9,27 +9,22 @@
 
 import type {
   ArtistProfile,
+  ArtistSummary,
   NormalizedArtist,
   NormalizedRelease,
   NormalizedProject,
   NormalizedCollaboration,
 } from '@/types/artist'
-import type { PlatformKey } from '@/config/platforms'
-
-// Import artist JSON files
-import xiixData from './xiix.json'
-import wavyProfile from './wavyProfile'
-import pipiProfile from './pipiProfile'
+import { ARTIST_SUMMARIES } from './summaries'
 
 /* ============================================
-   Artist Registry
+   Artist Registry — full profiles load on demand, one chunk per artist
    ============================================ */
 
-// Type assertion helper for JSON imports
-const artistRegistry: Record<string, ArtistProfile> = {
-  xiix: xiixData as unknown as ArtistProfile,
-  wavy: wavyProfile,
-  pipi: pipiProfile,
+const loaders: Record<string, () => Promise<ArtistProfile>> = {
+  xiix: () => import('./xiix.json').then((m) => m.default as unknown as ArtistProfile),
+  wavy: () => import('./wavyProfile').then((m) => m.default),
+  pipi: () => import('./pipiProfile').then((m) => m.default),
 }
 
 /* ============================================
@@ -178,108 +173,39 @@ function normalizeArtist(profile: ArtistProfile): NormalizedArtist {
    Public API
    ============================================ */
 
-/**
- * Get all available artist slugs
- */
+/** Every artist slug, in roster order. */
 export function getArtistSlugs(): string[] {
-  return Object.keys(artistRegistry)
+  return ARTIST_SUMMARIES.map((a) => a.slug)
 }
 
-/**
- * Check if an artist exists by slug
- */
 export function artistExists(slug: string): boolean {
-  return slug in artistRegistry
+  return slug in loaders
 }
 
-/**
- * Get raw artist profile data by slug
- */
-export function getArtistProfileRaw(slug: string): ArtistProfile | null {
-  return artistRegistry[slug] || null
+/** The lightweight index: what Home, the Artists page, cards and share previews read. */
+export function getAllArtists(): ArtistSummary[] {
+  return ARTIST_SUMMARIES
 }
 
-/**
- * Get normalized artist data by slug (for UI consumption)
- */
-export function getArtistProfile(slug: string): NormalizedArtist | null {
-  const profile = artistRegistry[slug]
-  if (!profile) return null
-  return normalizeArtist(profile)
+export function getArtistSummary(slug: string): ArtistSummary | undefined {
+  return ARTIST_SUMMARIES.find((a) => a.slug === slug)
 }
 
-/**
- * Get all artists (normalized)
- */
-export function getAllArtists(): NormalizedArtist[] {
-  return Object.values(artistRegistry).map(normalizeArtist)
+/** Find the on-site artist a collaborator name refers to, if any (case-insensitive). */
+export function findArtistByName(name: string): ArtistSummary | undefined {
+  const n = name.trim().toLowerCase()
+  return ARTIST_SUMMARIES.find((a) => a.name.toLowerCase() === n)
 }
 
-/**
- * Search artists by name or alias
- */
-export function searchArtists(query: string): NormalizedArtist[] {
-  const normalizedQuery = query.toLowerCase()
-  return getAllArtists().filter((artist) => {
-    const matchesName = artist.name.toLowerCase().includes(normalizedQuery)
-    const matchesAlias = artist.aliases.some((alias) =>
-      alias.toLowerCase().includes(normalizedQuery)
-    )
-    return matchesName || matchesAlias
-  })
+/** Full normalized profile; resolves null for an unknown slug. */
+export async function getArtistProfileAsync(slug: string): Promise<NormalizedArtist | null> {
+  const load = loaders[slug]
+  if (!load) return null
+  return normalizeArtist(await load())
 }
 
-/**
- * Get artist's platform embed data for Spotify
- */
-export function getSpotifyEmbedId(slug: string): string | null {
-  const artist = getArtistProfile(slug)
-  return artist?.platformIds.spotifyArtistId || null
-}
-
-/**
- * Get artist's streaming links for quick access bar
- */
-export function getStreamingLinks(slug: string): Partial<Record<PlatformKey, string>> {
-  const artist = getArtistProfile(slug)
-  if (!artist) return {}
-  const links: Partial<Record<PlatformKey, string>> = {}
-  if (artist.social.youtube) links.youtube = artist.social.youtube
-  if (artist.social.spotify) links.spotify = artist.social.spotify
-  if (artist.social.apple) links.appleMusic = artist.social.apple
-  if (artist.social.soundcloud) links.soundcloud = artist.social.soundcloud
-  return links
-}
-
-/**
- * Validate artist data integrity
- */
-export function validateArtistProfile(slug: string): { valid: boolean; errors: string[] } {
-  const profile = artistRegistry[slug]
-  const errors: string[] = []
-
-  if (!profile) {
-    return { valid: false, errors: ['Artist not found'] }
-  }
-
-  // Required fields validation
-  if (!profile.identity?.display_name) errors.push('Missing display_name')
-  if (!profile.branding?.primary_slug) errors.push('Missing primary_slug')
-  if (!profile.bio?.short) errors.push('Missing short bio')
-  if (!profile.profiles) errors.push('Missing profiles')
-  if (!profile.seo?.title) errors.push('Missing SEO title')
-
-  // Disambiguation check
-  if (profile.identity.disambiguation?.not_the_same_as?.length) {
-    // Log disambiguation for awareness
-    console.info(
-      `[Artist ${slug}] Disambiguation active:`,
-      profile.identity.disambiguation.not_the_same_as.map((d) => d.name).join(', ')
-    )
-  }
-
-  return { valid: errors.length === 0, errors }
-}
+/** Normalize a raw profile (exported for the summaries consistency test). */
+export { normalizeArtist }
 
 // Export types for consumers
-export type { ArtistProfile, NormalizedArtist, NormalizedRelease, NormalizedProject }
+export type { ArtistProfile, ArtistSummary, NormalizedArtist, NormalizedRelease, NormalizedProject }

@@ -1,152 +1,143 @@
-/**
- * Artist Page Component
- * 
- * Premium artist profile page using JSON source of truth.
- * Features cinematic hero, streaming bar, SEO, and rich content sections.
- */
-
+import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { ArrowLeft } from 'lucide-react'
-import { Button, Text, Badge } from '@/components/ui'
-import { ShareButton } from '@/components/shared'
-import { 
-  ArtistHero, 
-  StreamingBar, 
-  DiscographySection, 
-  ArtistSEO
-} from '@/components/artist'
-import { getArtistProfile, getStreamingLinks } from '@/data'
-import { staggerContainer, fadeInUp } from '@/lib/motion'
+import { LinkButton, LoadingSpinner } from '@/components/ui'
+import { ShareRow, CloudinaryImage } from '@/components/shared'
+import { ArtistSEO, DiscographyList } from '@/components/artist'
+import { buildStops } from '@/lib/stops'
+import { BrandIcon } from '@/components/icons'
+import { getArtistProfileAsync, getReleasesByArtist, findArtistByName, artistExists } from '@/data'
+import { platformLinks, type PlatformKey } from '@/config/platforms'
+import { realImage } from '@/lib/playback'
+import { SITE } from '@/config/site'
+import type { NormalizedArtist } from '@/types/artist'
 
+const SOCIAL_TO_PLATFORM: Partial<Record<keyof NormalizedArtist['social'], PlatformKey>> = { youtube: 'youtube', spotify: 'spotify', apple: 'appleMusic', soundcloud: 'soundcloud' }
+
+/* The route-board profile: the name is the destination painted across the top,
+   the discography is the numbered list of stops, bio and collaborators are side plates. */
 export function Artist() {
-  const { slug } = useParams<{ slug: string }>()
-  
-  const artist = slug ? getArtistProfile(slug) : null
-  const streamingLinks = slug ? getStreamingLinks(slug) : {}
-  const aboutParagraphs = artist?.longBio
-    ? artist.longBio.split('\n\n').map((paragraph) => paragraph.trim()).filter(Boolean)
-    : []
+  const { slug = '' } = useParams<{ slug: string }>()
+  const [loaded, setLoaded] = useState<{ slug: string; artist: NormalizedArtist | null } | null>(null)
 
-  // If JSON artist exists, use premium view
-  if (artist) {
-    // Share data for Web Share API
-    const shareData = {
-      title: `${artist.name} | Culture SZN`,
-      text: `Check out ${artist.name} on Culture SZN — ${artist.genres.join(', ')} artist from ${artist.country}`,
-      url: typeof window !== 'undefined' ? window.location.href : `https://cultureszn.com/artists/${artist.slug}`,
-    }
+  useEffect(() => {
+    let alive = true
+    getArtistProfileAsync(slug)
+      .then((artist) => alive && setLoaded({ slug, artist }))
+      .catch(() => alive && setLoaded({ slug, artist: null }))
+    return () => { alive = false }
+  }, [slug])
 
-    return (
-      <div className="min-h-screen">
-        {/* SEO Meta Tags & JSON-LD */}
-        <ArtistSEO artist={artist} />
+  if (!artistExists(slug)) return <NotOnRoute />
+  const artist = loaded?.slug === slug ? loaded.artist : undefined
+  if (artist === null) return <NotOnRoute />
+  if (artist === undefined) return <LoadingSpinner label={`Loading ${slug}`} />
 
-        {/* Floating Share Button (Mobile) */}
-        <div className="md:hidden">
-          <ShareButton data={shareData} variant="floating" />
-        </div>
-
-        {/* Cinematic Hero */}
-        <ArtistHero artist={artist} />
-
-        {/* Streaming Quick Links Bar */}
-        <StreamingBar links={streamingLinks} artistName={artist.name} />
-
-        {/* About Section */}
-        <section className="section-szn">
-          <div className="container-szn">
-            <motion.div
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              className="max-w-4xl"
-            >
-              <motion.h2
-                variants={fadeInUp}
-                className="text-3xl font-[family-name:var(--font-heading)] font-bold mb-6"
-              >
-                About
-              </motion.h2>
-
-              {aboutParagraphs.map((paragraph, index) => (
-                <motion.p
-                  key={`${artist.slug}-about-${index}`}
-                  variants={fadeInUp}
-                  className={`text-lg text-text-secondary leading-relaxed ${index === aboutParagraphs.length - 1 ? 'mb-8' : 'mb-6'}`}
-                >
-                  {paragraph}
-                </motion.p>
-              ))}
-
-              {/* Tags */}
-              <motion.div
-                variants={fadeInUp}
-                className="flex flex-wrap gap-3 mb-8"
-              >
-                {artist.tags.map((tag) => (
-                  <Badge key={tag} variant="default" size="md">
-                    {tag}
-                  </Badge>
-                ))}
-              </motion.div>
-
-              {/* Affiliations */}
-              {artist.affiliations.length > 0 && (
-                <motion.div variants={fadeInUp} className="text-text-muted">
-                  <Text size="sm" color="muted">
-                    Affiliated with: {artist.affiliations.join(', ')}
-                  </Text>
-                </motion.div>
-              )}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Discography Section */}
-        <DiscographySection 
-          releases={artist.releases}
-          projects={artist.projects}
-          artistName={artist.name}
-        />
-
-        {/* Footer Meta */}
-        <section className="py-8 border-t border-white/5">
-          <div className="container-szn">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <Text color="muted" size="sm">
-                Last updated: {artist.lastUpdated}
-                {artist.isVerified && ' • ✓ Verified Profile'}
-              </Text>
-
-              {/* Desktop Share Button */}
-              <div className="hidden md:block">
-                <ShareButton data={shareData} variant="button" size="sm" />
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    )
+  const links: Partial<Record<PlatformKey, string>> = {}
+  for (const [k, p] of Object.entries(SOCIAL_TO_PLATFORM) as [keyof NormalizedArtist['social'], PlatformKey][]) {
+    const url = artist.social[k]
+    if (url) links[p] = url
   }
+  const platforms = platformLinks(links)
+  const stops = buildStops(getReleasesByArtist(slug), artist.releases)
+  const paragraphs = artist.longBio.split('\n\n').map((p) => p.trim()).filter(Boolean)
+  const notAPerson = new Set([artist.name, SITE.name, 'culture szn'].map((n) => n.toLowerCase()))
+  const collaborators = [...new Set(artist.collaborations.flatMap((c) => c.artists))].filter((n) => !notAPerson.has(n.toLowerCase()))
+  const image = realImage(artist.image)
+  const share = { title: `${artist.name} | ${SITE.name}`, text: `${artist.name} on Culture SZN`, url: `${SITE.url}/artists/${artist.slug}` }
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-[family-name:var(--font-heading)] font-bold mb-4">
-          Artist Not Found
-        </h1>
-        <Text color="secondary" className="mb-8">
-          The creative you're looking for doesn't exist or has been moved.
-        </Text>
-        <Link to="/">
-          <Button variant="primary">
-            <ArrowLeft size={20} />
-            Back to Home
-          </Button>
-        </Link>
+    <>
+      <ArtistSEO artist={artist} />
+
+      <section aria-labelledby="artist-heading" className="border-b border-line">
+        <div className="container-szn grid gap-6 py-8 sm:py-10 md:grid-cols-[1fr_minmax(220px,320px)] md:items-end">
+          <div className="min-w-0">
+            <p className="label text-lg text-board">{artist.role} · {artist.location}, {artist.country}</p>
+            <h1 id="artist-heading" className="mt-2 text-[clamp(3rem,11vw,8rem)]">{artist.name}</h1>
+            {artist.pronunciation && <p className="label mt-2 text-sm text-fg-muted">Say it: {artist.pronunciation}</p>}
+            {platforms.length > 0 && (
+              <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${artist.name} on streaming platforms`}>
+                {platforms.map((p) => (
+                  <li key={p.key}>
+                    <a href={p.url} target="_blank" rel="noopener noreferrer"
+                       className="label inline-flex min-h-11 items-center gap-2 rounded-szn border-2 border-chrome px-4 text-sm text-fg transition-colors hover:border-fg">
+                      <span style={{ color: p.color }}><BrandIcon platform={p.key} size={16} /></span>{p.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          {image && (
+            <CloudinaryImage src={image} alt={artist.name} width={640} ar="4:5" sizes="(min-width: 768px) 320px, 100vw" priority
+              className="w-full rounded-szn border border-line object-cover md:justify-self-end" />
+          )}
+        </div>
+        <div className="led" aria-hidden />
+      </section>
+
+      <section aria-labelledby="discography-heading" className="section-szn">
+        <div className="container-szn">
+          <h2 id="discography-heading" className="mb-6 text-3xl">Discography</h2>
+          <DiscographyList stops={stops} artistName={artist.name} />
+        </div>
+      </section>
+
+      <section aria-labelledby="about-heading" className="border-t border-line">
+        <div className="container-szn grid gap-10 py-12 md:grid-cols-[2fr_1fr] sm:py-16">
+          <div>
+            <h2 id="about-heading" className="text-3xl">About</h2>
+            <div className="measure mt-5 space-y-5 text-lg text-fg-muted">
+              {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+            </div>
+            {artist.tags.length > 0 && (
+              <ul className="mt-6 flex flex-wrap gap-2" aria-label="Tags">
+                {artist.tags.map((t) => <li key={t} className="label plate text-xs">{t}</li>)}
+              </ul>
+            )}
+          </div>
+          <div className="space-y-8">
+            {collaborators.length > 0 && (
+              <div>
+                <h3 className="label text-sm text-chrome">With</h3>
+                <ul className="mt-3 space-y-2">
+                  {collaborators.map((name) => {
+                    const on = findArtistByName(name)
+                    return (
+                      <li key={name} className="font-display text-lg">
+                        {on ? <Link to={`/artists/${on.slug}`} className="text-board hover:text-fg">{on.name}</Link> : <span>{name}</span>}
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            )}
+            {artist.affiliations.length > 0 && (
+              <div>
+                <h3 className="label text-sm text-chrome">Part of</h3>
+                <p className="mt-3 font-display text-lg">{artist.affiliations.join(' · ')}</p>
+              </div>
+            )}
+            <div>
+              <h3 className="label text-sm text-chrome">Share</h3>
+              <ShareRow data={share} className="mt-3" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+
+function NotOnRoute() {
+  return (
+    <section className="section-szn" aria-labelledby="nf-heading">
+      <div className="container-szn">
+        <p className="label text-lg text-board">Not on this route</p>
+        <h1 id="nf-heading" className="mt-3 text-[clamp(2.5rem,8vw,5.5rem)]">No artist here.</h1>
+        <p className="mt-6 max-w-md text-lg text-fg-muted">The roster is short and every name is on it.</p>
+        <div className="mt-8"><LinkButton to="/artists" variant="primary" size="lg">All artists</LinkButton></div>
       </div>
-    </div>
+    </section>
   )
 }

@@ -355,3 +355,12 @@ export interface NormalizedCollaboration {
   tracks: string[]
   isCultureSZN: boolean
 }
+
+/* ============================================
+   Artist Summary (index entry; the full profile loads on demand)
+   ============================================ */
+
+export type ArtistSummary = Pick<
+  NormalizedArtist,
+  'slug' | 'name' | 'role' | 'location' | 'country' | 'image' | 'coverImage' | 'shortBio' | 'genres' | 'tags' | 'social'
+>
