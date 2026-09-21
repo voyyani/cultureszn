@@ -89,7 +89,7 @@
   .led--band {
     height: 8px;
     background: var(--band);
-    box-shadow: 0 2px 10px color-mix(in srgb, var(--band) 90%, transparent), 0 14px 40px -4px color-mix(in srgb, var(--band) 75%, transparent);
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--band) 90%, transparent), 0 14px 40px color-mix(in srgb, var(--band) 60%, transparent);
   }
   /* brushed chrome hairline */
   .chrome-rule { height: 1px; background: var(--line); }
