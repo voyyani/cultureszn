@@ -2,123 +2,127 @@
 @import "./styles/fonts.css";
 @import "./styles/tokens.css";
 
-/* ---------- base: the bus at night ---------- */
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--fg);
-  font-family: var(--font-body);
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-body.menu-open { overflow: hidden; }
+/* ---------- base: the bus at night (layered so utilities win) ---------- */
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  body.menu-open { overflow: hidden; }
 
-h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: 0;
-  text-wrap: balance;
-  overflow-wrap: anywhere;
-}
-a { color: inherit; text-decoration: none; }
-img { max-width: 100%; height: auto; display: block; }
-button, input { font: inherit; color: inherit; }
-button { cursor: pointer; }
-::selection { background: var(--board); color: var(--bg); }
-input { caret-color: var(--accent); }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: 0;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; height: auto; display: block; }
+  button, input { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  ::selection { background: var(--board); color: var(--bg); }
+  input { caret-color: var(--accent); }
 
-/* browser surfaces carry the world too */
-* { scrollbar-color: var(--chrome) var(--bg); scrollbar-width: thin; }
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--chrome); border-radius: 0; }
+  /* browser surfaces carry the world too */
+  * { scrollbar-color: var(--chrome) var(--bg); scrollbar-width: thin; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--chrome); border-radius: 0; }
 
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-/* ---------- layout rhythm ---------- */
-.container-szn {
-  width: 100%;
-  max-width: 1400px;
-  margin-inline: auto;
-  padding-inline: var(--space-4);
-}
-@media (min-width: 640px) { .container-szn { padding-inline: var(--space-6); } }
-.section-szn { padding-block: var(--space-7); }
-@media (min-width: 1024px) { .section-szn { padding-block: var(--space-8); } }
-
-/* ---------- vocabulary ---------- */
-/* route-board label: condensed caps, tracked */
-.label {
-  font-family: var(--font-label);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 1;
-}
-/* vinyl-cut caption plate */
-.plate {
-  display: inline-block;
-  padding: 0.35em 0.6em 0.3em;
-  background: var(--board);
-  color: var(--bg);
-  border-radius: var(--radius);
-}
-/* the LED rule: a real light — it bleeds downward onto the panel below */
-.led {
-  position: relative;
-  height: 3px;
-  background: var(--accent);
-  border-radius: 999px;
-  box-shadow: var(--led-glow);
-}
-.led--band { background: var(--band); box-shadow: 0 6px 18px -2px color-mix(in srgb, var(--band) 55%, transparent); }
-/* reflective chevron tape: the NEW mark */
-.tape {
-  background: repeating-linear-gradient(-45deg, var(--mark) 0 10px, var(--fg) 10px 20px);
-}
-/* brushed chrome hairline */
-.chrome-rule { height: 1px; background: var(--line); }
-.tabular { font-variant-numeric: tabular-nums; }
-.measure { max-width: var(--measure); }
-
-/* horizontal panel row: the side of the bus */
-.panel-row {
-  display: flex;
-  gap: var(--space-2);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-.panel-row::-webkit-scrollbar { display: none; }
-.panel-row > * { scroll-snap-align: start; flex: 0 0 86%; }
-@media (min-width: 768px) {
-  .panel-row { overflow: visible; scroll-snap-type: none; }
-  .panel-row > * { flex: 1 1 0; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 }
 
-/* the switch-on reveal for LED elements (Reveal.tsx orchestrates it) */
-@keyframes switch-on { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
-.switch-on { animation: switch-on 0.7s var(--ease-out) both; }
+@layer components {
+  /* ---------- layout rhythm ---------- */
+  .container-szn {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+  }
+  @media (min-width: 640px) { .container-szn { padding-inline: var(--space-6); } }
+  .section-szn { padding-block: var(--space-7); }
+  @media (min-width: 1024px) { .section-szn { padding-block: var(--space-8); } }
 
-/* skip link */
-.skip-link {
-  position: absolute;
-  top: -100%;
-  left: var(--space-4);
-  z-index: 100;
-  padding: var(--space-3) var(--space-4);
-  background: var(--accent);
-  color: var(--accent-fg);
-  font-family: var(--font-label);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  /* ---------- vocabulary ---------- */
+  /* route-board label: condensed caps, tracked */
+  .label {
+    font-family: var(--font-label);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+  /* vinyl-cut caption plate */
+  .plate {
+    display: inline-block;
+    padding: 0.35em 0.6em 0.3em;
+    background: var(--board);
+    color: var(--bg);
+    border-radius: var(--radius);
+  }
+  /* the LED rule: a real light — it bleeds downward onto the panel below */
+  .led {
+    position: relative;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 999px;
+    box-shadow: var(--led-glow);
+  }
+  .led--band { background: var(--band); box-shadow: 0 6px 18px -2px color-mix(in srgb, var(--band) 55%, transparent); }
+  /* reflective chevron tape: the NEW mark */
+  .tape {
+    background: repeating-linear-gradient(-45deg, var(--mark) 0 10px, var(--fg) 10px 20px);
+  }
+  /* brushed chrome hairline */
+  .chrome-rule { height: 1px; background: var(--line); }
+  .tabular { font-variant-numeric: tabular-nums; }
+  .measure { max-width: var(--measure); }
+
+  /* horizontal panel row: the side of the bus */
+  .panel-row {
+    display: flex;
+    gap: var(--space-2);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .panel-row::-webkit-scrollbar { display: none; }
+  .panel-row > * { scroll-snap-align: start; flex: 0 0 86%; }
+  @media (min-width: 768px) {
+    .panel-row { overflow: visible; scroll-snap-type: none; }
+    .panel-row > * { flex: 1 1 0; }
+  }
+
+  /* the switch-on reveal for LED elements (Reveal.tsx orchestrates it) */
+  @keyframes switch-on { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  .switch-on { animation: switch-on 0.7s var(--ease-out) both; }
+
+  /* skip link */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: var(--space-4);
+    z-index: 100;
+    padding: var(--space-3) var(--space-4);
+    background: var(--accent);
+    color: var(--accent-fg);
+    font-family: var(--font-label);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .skip-link:focus { top: var(--space-2); }
 }
-.skip-link:focus { top: var(--space-2); }
 
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
