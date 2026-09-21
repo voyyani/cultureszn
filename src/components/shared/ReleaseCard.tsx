@@ -1,72 +1,28 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { Card, CardImage, CardContent, Text } from '@/components/ui'
+import { CloudinaryImage } from './CloudinaryImage'
+import { formatDate } from '@/lib/format'
 import type { Release } from '@/types'
 
-import { formatDate } from '@/lib/format'
-interface ReleaseCardProps {
-  release: Release
-  variant?: 'default' | 'compact'
-}
-
-export function ReleaseCard({
-  release,
-  variant = 'default',
-}: ReleaseCardProps) {
-  if (variant === 'compact') {
-    return (
-      <Link to={`/releases/${release.slug}`}>
-        <motion.div
-          className="relative flex items-center gap-5 p-5 bg-white/[0.03] rounded-[var(--radius-szn)]
-                     border border-white/5 hover:bg-white/[0.07] transition-all duration-300 group"
-          whileHover={{ x: 10 }}
-        >
-          <div className="relative w-[70px] h-[70px] rounded-lg overflow-hidden flex-shrink-0">
-            <img
-              src={release.coverArt}
-              alt={release.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          <div className="flex-1 min-w-0">
-            <h4 className="font-[family-name:var(--font-heading)] font-semibold text-text-primary truncate">
-              {release.title}
-            </h4>
-            <Text color="secondary" size="sm">
-              {release.artist} • {release.type.charAt(0).toUpperCase() + release.type.slice(1)}
-            </Text>
-            <Text color="muted" size="sm">
-              {formatDate(release.releaseDate, { day: undefined })}
-            </Text>
-          </div>
-        </motion.div>
-      </Link>
-    )
-  }
-
+/* A release as a panel: square cover, title on a plate, artist and date as a route-board line. */
+export function ReleaseCard({ release, priority = false, isNew = false }: { release: Release; priority?: boolean; isNew?: boolean }) {
   return (
-    <Link to={`/releases/${release.slug}`}>
-      <Card variant="bordered" className="h-full border border-white/5 group">
-        <CardImage className="h-[250px] relative">
-          <img
-            src={release.coverArt}
-            alt={release.title}
-            className="w-full h-full object-cover"
-          />
-        </CardImage>
-        <CardContent>
-          <h3 className="text-lg font-[family-name:var(--font-heading)] font-bold mb-1 text-text-primary">
-            {release.title}
-          </h3>
-          <Text color="orange" weight="medium" size="sm" className="mb-2">
-            {release.artist}
-          </Text>
-          <Text color="muted" size="sm">
-            {formatDate(release.releaseDate, { day: undefined })}
-          </Text>
-        </CardContent>
-      </Card>
+    <Link to={`/releases/${release.slug}`} className="group block">
+      <div className="relative overflow-hidden rounded-szn border border-line bg-bg-raised" style={{ aspectRatio: '1 / 1' }}>
+        {release.coverArt ? (
+          <CloudinaryImage src={release.coverArt} alt="" width={480} ar="1:1" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" priority={priority}
+            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" />
+        ) : (
+          <span aria-hidden className="absolute inset-0 flex items-center justify-center p-4 text-center font-display text-3xl leading-none text-chrome">{release.title}</span>
+        )}
+        {isNew && (
+          <span className="absolute left-0 top-3 flex items-center">
+            <span className="tape h-7 w-3" aria-hidden />
+            <span className="label bg-mark px-2 py-1.5 text-xs text-fg">New</span>
+          </span>
+        )}
+      </div>
+      <p className="mt-3 font-display text-lg leading-tight text-fg group-hover:text-board sm:text-xl">{release.title}</p>
+      <p className="label mt-1 text-sm text-fg-muted">{release.artist} · {release.type} · {formatDate(release.releaseDate, { day: undefined })}</p>
     </Link>
   )
 }

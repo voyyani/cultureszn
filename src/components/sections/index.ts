@@ -1,5 +1,6 @@
 export { Hero } from './Hero'
-export { MembersSection } from './MembersSection'
+export { NowPlayingStrip } from './NowPlayingStrip'
 export { ReleasesSection } from './ReleasesSection'
-export { MovementSection } from './MovementSection'
+export { PlaylistsSection } from './PlaylistsSection'
 export { SZNalsSection } from './SZNalsSection'
+export { JoinSection } from './JoinSection'

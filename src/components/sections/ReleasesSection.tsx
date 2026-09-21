@@ -1,46 +1,21 @@
-import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
-import { Button, SectionHeader } from '@/components/ui'
+import { LinkButton, SectionHeader } from '@/components/ui'
 import { ReleaseCard } from '@/components/shared'
-import { getFeaturedRelease, getRecentReleases } from '@/data'
-import { staggerContainer, fadeInUp } from '@/lib/motion'
+import { Reveal } from '@/components/shared/Reveal'
+import { getRecentReleases } from '@/data'
 
 export function ReleasesSection() {
-  const featured = getFeaturedRelease()
-  const recent = getRecentReleases(4).filter((r) => r.id !== featured?.id).slice(0, 3)
-
+  const recent = getRecentReleases(4)
   return (
     <section id="releases" className="section-szn" aria-labelledby="releases-heading">
       <div className="container-szn">
-        <motion.div variants={staggerContainer} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.2 }}>
-          <motion.div variants={fadeInUp}>
-            <SectionHeader
-              id="releases-heading"
-              title="Latest Releases"
-              subtitle="Projects that define our sonic and visual direction."
-            />
-          </motion.div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            {featured && (
-              <motion.div variants={fadeInUp}>
-                <ReleaseCard release={featured} />
-              </motion.div>
-            )}
-            <motion.div variants={staggerContainer} className="flex flex-col gap-4">
-              {recent.map((release) => (
-                <motion.div key={release.id} variants={fadeInUp}>
-                  <ReleaseCard release={release} variant="compact" />
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-          <motion.div variants={fadeInUp} className="text-center">
-            <Link to="/releases">
-              <Button variant="outline" size="lg">All releases <ArrowRight size={18} /></Button>
-            </Link>
-          </motion.div>
-        </motion.div>
+        <SectionHeader id="releases-heading" title="Latest releases" action={<LinkButton to="/releases" variant="secondary">All releases</LinkButton>} />
+        <Reveal stagger as="ul" className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+          {recent.map((release, i) => (
+            <Reveal.Item key={release.id} as="li" className="list-none">
+              <ReleaseCard release={release} isNew={i === 0} />
+            </Reveal.Item>
+          ))}
+        </Reveal>
       </div>
     </section>
   )

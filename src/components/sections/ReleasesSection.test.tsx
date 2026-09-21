@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { ReleasesSection } from './ReleasesSection'
-import { getFeaturedRelease } from '@/data'
+import { getRecentReleases } from '@/data'
 
 describe('ReleasesSection', () => {
-  it('renders the featured release title from static data without any network', () => {
-    const featured = getFeaturedRelease()
+  it('renders the newest releases from static data without any network', () => {
+    const newest = getRecentReleases(1)[0]
     render(<MemoryRouter><ReleasesSection /></MemoryRouter>)
     expect(screen.getByRole('heading', { name: /latest releases/i })).toBeInTheDocument()
-    expect(screen.getAllByText(featured!.title).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(newest.title).length).toBeGreaterThan(0)
   })
   it('shows no sync/offline UI', () => {
     render(<MemoryRouter><ReleasesSection /></MemoryRouter>)

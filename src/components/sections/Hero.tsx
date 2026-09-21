@@ -1,59 +1,31 @@
-import { motion } from 'framer-motion'
-import { Headphones } from 'lucide-react'
-import { Button } from '@/components/ui'
-import { staggerContainer, fadeInUp } from '@/lib/motion'
+import { getAllArtists } from '@/data'
+import { ArtistPanel } from '@/components/shared/ArtistPanel'
+import { Reveal } from '@/components/shared/Reveal'
+import { NowPlayingStrip } from './NowPlayingStrip'
 
+/* The first viewport: the fascia, the side of the bus (one panel per artist), the sound system. */
 export function Hero() {
+  const artists = getAllArtists()
   return (
-    <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-sunset opacity-40 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-matte-black via-matte-black/50 to-transparent" />
+    <div className="flex min-h-[calc(100svh-4rem-3px)] flex-col">
+      <div className="container-szn pt-5 pb-3 sm:pt-7 sm:pb-4">
+        <h1 className="text-[clamp(2rem,5.5vw,4.25rem)]">
+          Made in <span className="text-board">Nairobi</span>.
+        </h1>
+        <p className="label mt-3 text-base text-fg-muted sm:text-lg">
+          Culture SZN · A music &amp; design collective · Every drop, one tap
+        </p>
       </div>
 
-      <div className="container-szn relative z-10">
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-          className="max-w-4xl"
-        >
-          {/* Headline */}
-          <motion.h1
-            variants={fadeInUp}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-[family-name:var(--font-heading)] font-bold mb-6 leading-tight"
-          >
-            Where Nairobi's{' '}
-            <span className="text-gradient">Underground</span>{' '}
-            Becomes World-Class
-          </motion.h1>
+      <Reveal stagger className="panel-row container-szn flex-1 pb-4" as="ul">
+        {artists.map((a, i) => (
+          <Reveal.Item key={a.slug} as="li" className="list-none">
+            <ArtistPanel artist={a} index={i} priority={i === 0} className="h-full" />
+          </Reveal.Item>
+        ))}
+      </Reveal>
 
-          {/* Subheadline */}
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg sm:text-xl md:text-2xl text-text-secondary mb-10 max-w-2xl"
-          >
-            Culture SZN is the multidisciplinary ecosystem amplifying Nairobi's
-            next-generation creatives. We're the city's creative nervous system—
-            where music, design, and cultural expression converge.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-wrap gap-4"
-          >
-            <a href="#releases" className="inline-block">
-              <Button variant="outline" size="lg">
-                <Headphones size={20} />
-                Latest Releases
-              </Button>
-            </a>
-          </motion.div>
-
-        </motion.div>
-      </div>
-    </section>
+      <NowPlayingStrip />
+    </div>
   )
 }
