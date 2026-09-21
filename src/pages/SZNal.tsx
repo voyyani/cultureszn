@@ -2,7 +2,7 @@ import { useEffect, useState, type ComponentType } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getSZNalBySlug, getAllSZNals, loadSZNal } from '@/content/sznals'
 import { ArticleHeader, Prose } from '@/components/journal'
-import { ShareRow, SZNalCard } from '@/components/shared'
+import { ShareRow, SZNalList } from '@/components/shared'
 import { LinkButton, LoadingSpinner } from '@/components/ui'
 import { useDocumentHead } from '@/hooks'
 import { SITE } from '@/config/site'
@@ -26,8 +26,8 @@ export function SZNal() {
     return (
       <section className="section-szn" aria-labelledby="nf-heading">
         <div className="container-szn">
-          <p className="label text-lg text-board">{meta ? 'In the works' : 'Not on this route'}</p>
-          <h1 id="nf-heading" className="mt-3 text-[clamp(2.5rem,8vw,5.5rem)]">{meta ? "This SZNal isn't out yet." : 'No SZNal here.'}</h1>
+          <h1 id="nf-heading" className="text-[clamp(2.5rem,8vw,5.5rem)]">{meta ? "This SZNal isn't out yet." : 'No SZNal here.'}</h1>
+          <p className="mt-4"><span className="label plate text-sm">{meta ? `In the works · ${meta.category}` : 'Not on this route'}</span></p>
           {meta && <p className="measure mt-6 text-lg text-fg-muted">{meta.excerpt}</p>}
           <div className="mt-8"><LinkButton to="/sznals" variant="primary" size="lg">Back to SZNals</LinkButton></div>
         </div>
@@ -58,9 +58,7 @@ export function SZNal() {
         <section aria-labelledby="more-heading" className="border-t border-line">
           <div className="container-szn py-10 sm:py-14">
             <h2 id="more-heading" className="text-2xl">More SZNals</h2>
-            <ul className="mt-6 grid gap-4 sm:gap-6 md:grid-cols-3">
-              {more.map((s) => <li key={s.slug}><SZNalCard sznal={s} /></li>)}
-            </ul>
+            <div className="mt-6"><SZNalList items={more} /></div>
           </div>
         </section>
       )}

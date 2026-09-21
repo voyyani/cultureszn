@@ -5,6 +5,7 @@ import { ShareRow, CloudinaryImage, ReleaseCard } from '@/components/shared'
 import { YouTubeFacade, SpotifyEmbed } from '@/components/media'
 import { TrackList } from '@/components/releases'
 import { BrandIcon } from '@/components/icons'
+import { PlayGlyph } from '@/components/icons/Glyphs'
 import { getReleaseBySlug, getReleasesByArtist, artistExists } from '@/data'
 import { platformLinks } from '@/config/platforms'
 import { primaryPlayback } from '@/lib/playback'
@@ -44,8 +45,8 @@ export function Release() {
     return (
       <section className="section-szn" aria-labelledby="nf-heading">
         <div className="container-szn">
-          <p className="label text-lg text-board">Not on this route</p>
-          <h1 id="nf-heading" className="mt-3 text-[clamp(2.5rem,8vw,5.5rem)]">No release here.</h1>
+          <h1 id="nf-heading" className="text-[clamp(2.5rem,8vw,5.5rem)]">No release here.</h1>
+          <p className="mt-4"><span className="label plate text-sm">Not on this route</span></p>
           <p className="mt-6 max-w-md text-lg text-fg-muted">Every drop is on the releases page.</p>
           <div className="mt-8"><LinkButton to="/releases" variant="primary" size="lg">All releases</LinkButton></div>
         </div>
@@ -72,11 +73,11 @@ export function Release() {
             )}
           </div>
           <div className="min-w-0">
-            <p className="label text-lg text-board">{release.type} · {formatDate(release.releaseDate)}</p>
-            <h1 id="release-heading" className="mt-2 text-[clamp(2.5rem,9vw,6.5rem)]">{release.title}</h1>
-            <p className="mt-3 font-display text-xl sm:text-2xl">
+            <h1 id="release-heading" className="text-[clamp(2.5rem,9vw,6.5rem)]">{release.title}</h1>
+            <p className="mt-4 font-display text-xl sm:text-2xl">
               {hasArtistPage ? <Link to={`/artists/${release.artistSlug}`} className="text-board hover:text-fg">{release.artist}</Link> : release.artist}
             </p>
+            <p className="mt-3"><span className="label plate text-sm">{release.type} · {formatDate(release.releaseDate)}</span></p>
           </div>
         </div>
 
@@ -92,7 +93,7 @@ export function Release() {
           <div className="flex flex-wrap items-center gap-2">
             {playback.kind !== 'links' && !open && (
               <Button variant="primary" size="lg" onClick={() => setOpen(true)} aria-label={`Play ${release.title}`}>
-                <svg aria-hidden width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z" /></svg>
+                <PlayGlyph />
                 Play
               </Button>
             )}

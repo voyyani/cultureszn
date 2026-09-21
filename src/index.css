@@ -62,6 +62,13 @@
     letter-spacing: 0.08em;
     line-height: 1;
   }
+  /* the route board: a chrome-edged inset strip holding the destinations */
+  .board {
+    border: 1px solid var(--line);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--chrome) 45%, transparent), inset 0 -1px 0 color-mix(in srgb, var(--bg) 80%, transparent);
+    background: var(--bg-raised);
+    border-radius: var(--radius);
+  }
   /* vinyl-cut caption plate */
   .plate {
     display: inline-block;
@@ -73,15 +80,16 @@
   /* the LED rule: a real light — it bleeds downward onto the panel below */
   .led {
     position: relative;
-    height: 3px;
+    height: 4px;
     background: var(--accent);
     border-radius: 999px;
     box-shadow: var(--led-glow);
   }
-  .led--band { background: var(--band); box-shadow: 0 6px 18px -2px color-mix(in srgb, var(--band) 55%, transparent); }
-  /* reflective chevron tape: the NEW mark */
-  .tape {
-    background: repeating-linear-gradient(-45deg, var(--mark) 0 10px, var(--fg) 10px 20px);
+  /* the ambient band: taller, and its light falls further */
+  .led--band {
+    height: 8px;
+    background: var(--band);
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--band) 90%, transparent), 0 14px 40px -4px color-mix(in srgb, var(--band) 75%, transparent);
   }
   /* brushed chrome hairline */
   .chrome-rule { height: 1px; background: var(--line); }

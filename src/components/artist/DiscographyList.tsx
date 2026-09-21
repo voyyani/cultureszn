@@ -4,6 +4,7 @@ import { YouTubeFacade, SpotifyEmbed } from '@/components/media'
 import { primaryPlayback } from '@/lib/playback'
 import { formatDate } from '@/lib/format'
 import { type Stop } from '@/lib/stops'
+import { ArrowRight, ArrowOut } from '@/components/icons/Glyphs'
 
 /* The numbered stops. The first stop carries the player inline; every other row is one tap to its page. */
 export function DiscographyList({ stops, artistName }: { stops: Stop[]; artistName: string }) {
@@ -38,7 +39,7 @@ function Row({ stop, index }: { stop: Stop; index: number }) {
         <span className="block truncate font-display text-lg leading-tight group-hover:text-board sm:text-xl">{stop.title}</span>
         <span className="label block text-sm text-fg-muted">{stop.type} · {formatDate(stop.date, { day: undefined })}</span>
       </span>
-      <span className="label text-sm text-chrome group-hover:text-fg" aria-hidden>{stop.href ? '▸' : '↗'}</span>
+      <span className="text-chrome group-hover:text-fg">{stop.href ? <ArrowRight /> : <ArrowOut />}</span>
     </>
   )
   const cls = 'group flex min-h-16 items-center gap-4 py-3'

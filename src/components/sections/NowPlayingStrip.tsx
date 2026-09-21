@@ -7,6 +7,8 @@ import { YouTubeFacade, SpotifyEmbed } from '@/components/media'
 import { CloudinaryImage } from '@/components/shared/CloudinaryImage'
 import { BrandIcon } from '@/components/icons'
 import { Button } from '@/components/ui'
+import { Tape } from '@/components/shared/Tape'
+import { PlayGlyph } from '@/components/icons/Glyphs'
 import { formatDate } from '@/lib/format'
 
 /* The sound system. Pinned along the bottom of the first viewport; tapping Play switches it on
@@ -29,7 +31,7 @@ export function NowPlayingStrip() {
         </div>
       )}
       <div className="container-szn flex flex-wrap items-center gap-x-5 gap-y-3 py-3">
-        <span className="tape h-14 w-2.5 shrink-0 rounded-szn" aria-hidden />
+        <span className="h-14 w-4 shrink-0 overflow-hidden rounded-szn" aria-hidden><Tape direction="down" className="h-full w-full" /></span>
         <Link to={`/releases/${release.slug}`} className="flex min-w-0 flex-1 items-center gap-4">
           {release.coverArt && (
             <CloudinaryImage src={release.coverArt} alt="" width={128} ar="1:1" sizes="56px" priority className="h-14 w-14 shrink-0 rounded-szn object-cover" />
@@ -43,7 +45,7 @@ export function NowPlayingStrip() {
         <div className="flex flex-wrap items-center gap-2">
           {playback.kind !== 'links' && !open && (
             <Button variant="primary" size="lg" onClick={() => setOpen(true)} aria-label={`Play ${release.title}`}>
-              <svg aria-hidden width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z" /></svg>
+              <PlayGlyph />
               Play
             </Button>
           )}

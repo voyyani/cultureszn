@@ -1,5 +1,6 @@
 export { ReleaseCard } from './ReleaseCard'
-export { SZNalCard } from './SZNalCard'
+export { SZNalRow, SZNalList } from './SZNalRow'
+export { Tape } from './Tape'
 export { CloudinaryImage } from './CloudinaryImage'
 export { ShareRow } from './ShareRow'
 export { Reveal } from './Reveal'

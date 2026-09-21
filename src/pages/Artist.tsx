@@ -52,9 +52,12 @@ export function Artist() {
       <section aria-labelledby="artist-heading" className="border-b border-line">
         <div className="container-szn grid gap-6 py-8 sm:py-10 md:grid-cols-[1fr_minmax(220px,320px)] md:items-end">
           <div className="min-w-0">
-            <p className="label text-lg text-board">{artist.role} · {artist.location}, {artist.country}</p>
-            <h1 id="artist-heading" className="mt-2 text-[clamp(3rem,11vw,8rem)]">{artist.name}</h1>
-            {artist.pronunciation && <p className="label mt-2 text-sm text-fg-muted">Say it: {artist.pronunciation}</p>}
+            <h1 id="artist-heading" className="text-[clamp(3rem,11vw,8rem)]">{artist.name}</h1>
+            <p className="mt-4 flex flex-wrap items-center gap-2">
+              <span className="label plate text-sm">{artist.role}</span>
+              <span className="label plate bg-bg-raised text-sm text-fg">{artist.location}, {artist.country}</span>
+              {artist.pronunciation && <span className="label text-sm text-fg-muted">Say it: {artist.pronunciation}</span>}
+            </p>
             {platforms.length > 0 && (
               <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${artist.name} on streaming platforms`}>
                 {platforms.map((p) => (
@@ -133,8 +136,8 @@ function NotOnRoute() {
   return (
     <section className="section-szn" aria-labelledby="nf-heading">
       <div className="container-szn">
-        <p className="label text-lg text-board">Not on this route</p>
-        <h1 id="nf-heading" className="mt-3 text-[clamp(2.5rem,8vw,5.5rem)]">No artist here.</h1>
+        <h1 id="nf-heading" className="text-[clamp(2.5rem,8vw,5.5rem)]">No artist here.</h1>
+        <p className="mt-4"><span className="label plate text-sm">Not on this route</span></p>
         <p className="mt-6 max-w-md text-lg text-fg-muted">The roster is short and every name is on it.</p>
         <div className="mt-8"><LinkButton to="/artists" variant="primary" size="lg">All artists</LinkButton></div>
       </div>

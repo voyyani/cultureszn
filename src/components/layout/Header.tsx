@@ -2,14 +2,17 @@ import { useEffect, useId, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { NAV_LINKS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
+import { LedDot } from '@/components/icons/Glyphs'
 
 const DESTINATIONS = NAV_LINKS.filter((l) => l.href !== '/join')
 
-/* The route board. Sacco name on the left, destinations in yellow condensed caps on the right,
-   Join SZN as the LED-green control. On a phone the board unfolds into a full list. */
+/* The route board: a chrome-edged board across the top of the bus. Sacco name on the left;
+   destinations set as board lettering inside the board, the current stop lit with an LED;
+   Join SZN is the LED-green control. On a phone the board unfolds into a full list. */
 export function Header() {
   const [open, setOpen] = useState(false)
   const menuId = useId()
+
   useEffect(() => {
     document.body.classList.toggle('menu-open', open)
     const main = document.getElementById('main')
@@ -26,9 +29,8 @@ export function Header() {
   }, [open])
 
   const destination = ({ isActive }: { isActive: boolean }) =>
-    cn('label relative flex min-h-11 items-center text-[1.05rem] tracking-[0.1em] text-board transition-colors hover:text-fg',
-      'after:absolute after:inset-x-0 after:-bottom-1 after:h-[3px] after:rounded-full after:bg-accent after:opacity-0 after:transition-opacity',
-      isActive && 'text-fg after:opacity-100 after:shadow-[var(--led-glow)]')
+    cn('label flex min-h-11 items-center gap-2 px-4 text-[1.05rem] tracking-[0.1em] text-board transition-colors hover:text-fg',
+      isActive && 'text-accent')
 
   return (
     <header className="sticky top-0 z-50 bg-bg">
@@ -37,12 +39,21 @@ export function Header() {
           CULTURE <span className="text-board">SZN</span>
         </NavLink>
 
-        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
-          {DESTINATIONS.map((item) => (
-            <NavLink key={item.href} to={item.href} className={destination}>
-              {item.name}
-            </NavLink>
-          ))}
+        <nav aria-label="Primary" className="hidden items-center gap-5 md:flex">
+          <ul className="board flex items-stretch divide-x divide-line">
+            {DESTINATIONS.map((item) => (
+              <li key={item.href} className="flex">
+                <NavLink to={item.href} className={destination}>
+                  {({ isActive }) => (
+                    <>
+                      <LedDot className={cn('transition-opacity', isActive ? 'opacity-100 drop-shadow-[0_0_6px_var(--accent)]' : 'opacity-0')} />
+                      {item.name}
+                    </>
+                  )}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
           <NavLink
             to="/join"
             className={({ isActive }) =>
@@ -73,22 +84,27 @@ export function Header() {
         id={menuId}
         aria-label="Primary"
         hidden={!open}
-        className="fixed inset-x-0 top-[calc(4rem+3px)] bottom-0 z-40 flex flex-col bg-bg md:hidden"
+        className="fixed inset-x-0 top-[calc(4rem+4px)] bottom-0 z-40 flex flex-col bg-bg md:hidden"
       >
-        <ul className="container-szn flex flex-col divide-y divide-line pt-2">
+        <ul className="container-szn mt-4 flex flex-col divide-y divide-line border-y border-line">
           {DESTINATIONS.map((item) => (
             <li key={item.href}>
-              <NavLink to={item.href} onClick={() => setOpen(false)} className={({ isActive }) => cn('label flex min-h-16 items-center text-3xl text-board', isActive && 'text-fg')}>
-                <span className="mr-4 text-chrome" aria-hidden>▸</span>{item.name}
+              <NavLink to={item.href} onClick={() => setOpen(false)} className={({ isActive }) => cn('label flex min-h-16 items-center gap-4 text-3xl text-board', isActive && 'text-accent')}>
+                {({ isActive }) => (
+                  <>
+                    <LedDot size={14} className={isActive ? 'opacity-100' : 'opacity-0'} />
+                    {item.name}
+                  </>
+                )}
               </NavLink>
             </li>
           ))}
-          <li className="pt-6">
-            <NavLink to="/join" onClick={() => setOpen(false)} className="label flex min-h-14 items-center justify-center rounded-szn bg-accent text-xl text-accent-fg">
-              Join SZN
-            </NavLink>
-          </li>
         </ul>
+        <div className="container-szn pt-6">
+          <NavLink to="/join" onClick={() => setOpen(false)} className="label flex min-h-14 items-center justify-center rounded-szn bg-accent text-xl text-accent-fg">
+            Join SZN
+          </NavLink>
+        </div>
       </nav>
     </header>
   )

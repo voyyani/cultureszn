@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { CloudinaryImage } from './CloudinaryImage'
+import { Tape } from './Tape'
 import { formatDate } from '@/lib/format'
 import type { Release } from '@/types'
 
@@ -15,9 +16,9 @@ export function ReleaseCard({ release, priority = false, isNew = false }: { rele
           <span aria-hidden className="absolute inset-0 flex items-center justify-center p-4 text-center font-display text-3xl leading-none text-chrome">{release.title}</span>
         )}
         {isNew && (
-          <span className="absolute left-0 top-3 flex items-center">
-            <span className="tape h-7 w-3" aria-hidden />
-            <span className="label bg-mark px-2 py-1.5 text-xs text-fg">New</span>
+          <span className="absolute inset-x-0 top-0 flex h-9 items-stretch">
+            <span className="w-full overflow-hidden" aria-hidden><Tape className="h-full w-full" /></span>
+            <span className="label absolute right-3 top-1/2 -translate-y-1/2 bg-bg px-2.5 py-1.5 text-xs text-fg">New</span>
           </span>
         )}
       </div>
