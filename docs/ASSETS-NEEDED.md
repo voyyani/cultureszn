@@ -22,9 +22,9 @@ Placeholders ship today; each item below replaces one. Nothing here is fabricate
 - [ ] A cover image per article (16:9, ≥ 1600 px) → `meta.cover`.
 
 ## Share previews
-- [ ] Default OG image 1200×630 → `public/og-default.jpg` (Task 29 generates per-route images from cover art where available).
+- [ ] Default OG image 1200×630 (Cloudinary URL) → `DEFAULT_IMAGE` in `src/entry-seo.ts` and the `og:image` in `index.html`. Artist and release routes already use their own cover art.
 
 ## Placeholder policy (in force until items land)
-- People without a portrait: typographic treatment from DESIGN.md — never a stock photo.
+- People without a portrait: the name painted at sign scale on a colour panel (see DESIGN.md) — never a stock photo.
 - Releases without cover art: title-set tile in the display face.
 - Missing links: the platform button is simply absent; never a disabled button.
