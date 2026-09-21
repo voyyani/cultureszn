@@ -1,170 +1,146 @@
+import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { ArrowLeft, ExternalLink } from 'lucide-react'
-import { Button, Text, Badge } from '@/components/ui'
-import { getReleaseBySlug } from '@/data'
-import { staggerContainer, fadeInUp } from '@/lib/motion'
-
-import { formatDate, formatDuration } from '@/lib/format'
-import { platformLinks } from '@/config/platforms'
+import { Button, LinkButton } from '@/components/ui'
+import { ShareRow, CloudinaryImage, ReleaseCard } from '@/components/shared'
+import { YouTubeFacade, SpotifyEmbed } from '@/components/media'
+import { TrackList } from '@/components/releases'
 import { BrandIcon } from '@/components/icons'
+import { getReleaseBySlug, getReleasesByArtist, artistExists } from '@/data'
+import { platformLinks } from '@/config/platforms'
+import { primaryPlayback } from '@/lib/playback'
+import { formatDate } from '@/lib/format'
+import { cloudinary } from '@/lib/cloudinary'
+import { useDocumentHead } from '@/hooks'
+import { SITE } from '@/config/site'
 
+/* The sound-system stack: cover panel, LED strip with the primary Play, the numbered display,
+   a row of chrome switches for every platform, the story, share, more from the artist. */
 export function Release() {
-  const { slug } = useParams<{ slug: string }>()
-  const release = getReleaseBySlug(slug!)
+  const { slug = '' } = useParams<{ slug: string }>()
+  const release = getReleaseBySlug(slug)
+  const [open, setOpen] = useState(false)
+
+  const url = `${SITE.url}/releases/${slug}`
+  const ogImage = release?.coverArt?.includes('res.cloudinary.com') ? cloudinary(release.coverArt, { w: 1200, ar: '1.91' }) : release?.coverArt
+  useDocumentHead({
+    title: release ? `${release.title} — ${release.artist} | ${SITE.name}` : `Release | ${SITE.name}`,
+    description: release?.description ?? (release ? `${release.title} by ${release.artist}. Listen on YouTube, Spotify, Audiomack and more.` : undefined),
+    canonical: release ? url : undefined,
+    meta: release ? [
+      { property: 'og:type', content: 'music.album' },
+      { property: 'og:title', content: `${release.title} — ${release.artist}` },
+      { property: 'og:image', content: ogImage ?? '' },
+      { property: 'og:url', content: url },
+      { name: 'twitter:card', content: 'summary_large_image' },
+    ] : [],
+    jsonLd: release ? {
+      '@context': 'https://schema.org', '@type': 'MusicAlbum', name: release.title,
+      byArtist: { '@type': 'MusicGroup', name: release.artist }, datePublished: release.releaseDate, image: ogImage, url,
+      ...(release.tracks?.length ? { numTracks: release.tracks.length, track: release.tracks.map((t, i) => ({ '@type': 'MusicRecording', name: t.name, position: i + 1 })) } : {}),
+    } : undefined,
+  })
 
   if (!release) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-[family-name:var(--font-heading)] font-bold mb-4">
-            Release Not Found
-          </h1>
-          <Text color="secondary" className="mb-8">
-            The release you're looking for doesn't exist or has been moved.
-          </Text>
-          <Link to="/">
-            <Button variant="primary">
-              <ArrowLeft size={20} />
-              Back to Home
-            </Button>
-          </Link>
+      <section className="section-szn" aria-labelledby="nf-heading">
+        <div className="container-szn">
+          <p className="label text-lg text-board">Not on this route</p>
+          <h1 id="nf-heading" className="mt-3 text-[clamp(2.5rem,8vw,5.5rem)]">No release here.</h1>
+          <p className="mt-6 max-w-md text-lg text-fg-muted">Every drop is on the releases page.</p>
+          <div className="mt-8"><LinkButton to="/releases" variant="primary" size="lg">All releases</LinkButton></div>
         </div>
-      </div>
+      </section>
     )
   }
 
-  const availablePlatforms = platformLinks(release.streamingLinks)
+  const playback = primaryPlayback(release)
+  const platforms = platformLinks(release.streamingLinks)
+  const more = getReleasesByArtist(release.artistSlug).filter((r) => r.id !== release.id).slice(0, 4)
+  const hasArtistPage = artistExists(release.artistSlug)
+  const title = `${release.title} — ${release.artist}`
+  const share = { title: `${title} | ${SITE.name}`, text: title, url }
 
   return (
-    <div className="min-h-screen pt-24">
-      <div className="container-szn">
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-        >
-          {/* Back Button */}
-          <motion.div variants={fadeInUp} className="mb-8">
-            <Link to="/releases">
-              <Button variant="ghost" size="sm">
-                <ArrowLeft size={18} />
-                Back to Releases
-              </Button>
-            </Link>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Album Art */}
-            <motion.div variants={fadeInUp}>
-              <div className="aspect-square rounded-[var(--radius-szn)] overflow-hidden shadow-card">
-                <img
-                  src={release.coverArt}
-                  alt={release.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </motion.div>
-
-            {/* Release Info */}
-            <motion.div variants={staggerContainer}>
-              <motion.div variants={fadeInUp}>
-                <Badge variant="outline" className="mb-4">
-                  {release.type.charAt(0).toUpperCase() + release.type.slice(1)}
-                </Badge>
-              </motion.div>
-
-              <motion.h1
-                variants={fadeInUp}
-                className="text-4xl sm:text-5xl md:text-6xl font-[family-name:var(--font-heading)] font-bold mb-4"
-              >
-                {release.title}
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-xl md:text-2xl text-burnt-orange font-medium mb-2"
-              >
-                {release.artist}
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-text-muted mb-8"
-              >
-                Released{' '}
-                {formatDate(release.releaseDate)}
-              </motion.p>
-
-              {release.description && (
-                <motion.p
-                  variants={fadeInUp}
-                  className="text-lg text-text-secondary leading-relaxed mb-10"
-                >
-                  {release.description}
-                </motion.p>
-              )}
-
-              {/* Tracklist */}
-              {release.tracks && release.tracks.length > 0 && (
-                <motion.div variants={fadeInUp} className="mb-10">
-                  <h3 className="text-lg font-[family-name:var(--font-heading)] font-semibold mb-4">
-                    Tracklist
-                  </h3>
-                  <ol className="divide-y divide-white/5 border-y border-white/5">
-                    {release.tracks.map((track, index) => (
-                      <li key={`${track.name}-${index}`} className="flex items-center gap-4 py-3 text-text-secondary">
-                        <span className="w-6 text-right text-text-muted tabular-nums">{index + 1}</span>
-                        <span className="flex-1 text-text-primary">
-                          {track.name}
-                          {track.artists && track.artists.length > 1 && (
-                            <span className="text-text-muted"> · {track.artists.join(', ')}</span>
-                          )}
-                        </span>
-                        {typeof track.durationMs === 'number' && (
-                          <span className="text-text-muted tabular-nums">{formatDuration(track.durationMs)}</span>
-                        )}
-                      </li>
-                    ))}
-                  </ol>
-                </motion.div>
-              )}
-
-              {/* Streaming Links */}
-              <motion.div variants={fadeInUp}>
-                <h3 className="text-lg font-[family-name:var(--font-heading)] font-semibold mb-4">
-                  Stream Now
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {availablePlatforms.map((platform) => (
-                    <a
-                      key={platform.key}
-                      href={platform.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <motion.button
-                        className="flex items-center gap-2 px-5 py-3 bg-white/5 border border-white/10 
-                                   rounded-full text-text-primary font-medium transition-all
-                                   hover:border-white/30 hover:bg-white/10"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <span style={{ color: platform.color }}><BrandIcon platform={platform.key} size={16} /></span>
-                        {platform.label}
-                        <ExternalLink size={14} className="opacity-50" />
-                      </motion.button>
-                    </a>
-                  ))}
-                </div>
-              </motion.div>
-            </motion.div>
+    <>
+      <section aria-labelledby="release-heading">
+        <div className="container-szn grid gap-6 py-8 sm:grid-cols-[minmax(200px,420px)_1fr] sm:items-end sm:py-10">
+          <div className="overflow-hidden rounded-szn border border-line bg-bg-raised" style={{ aspectRatio: '1 / 1' }}>
+            {release.coverArt ? (
+              <CloudinaryImage src={release.coverArt} alt={`${release.title} cover art`} width={640} ar="1:1" sizes="(min-width: 640px) 420px, 100vw" priority className="h-full w-full object-cover" />
+            ) : (
+              <span aria-hidden className="flex h-full items-center justify-center p-6 text-center font-display text-4xl text-chrome">{release.title}</span>
+            )}
           </div>
-        </motion.div>
+          <div className="min-w-0">
+            <p className="label text-lg text-board">{release.type} · {formatDate(release.releaseDate)}</p>
+            <h1 id="release-heading" className="mt-2 text-[clamp(2.5rem,9vw,6.5rem)]">{release.title}</h1>
+            <p className="mt-3 font-display text-xl sm:text-2xl">
+              {hasArtistPage ? <Link to={`/artists/${release.artistSlug}`} className="text-board hover:text-fg">{release.artist}</Link> : release.artist}
+            </p>
+          </div>
+        </div>
+
+        <div className="led" aria-hidden />
+
+        <div className="container-szn py-5">
+          {open && (
+            <div className="mb-5">
+              {playback.kind === 'youtube' && <YouTubeFacade url={playback.url} title={title} startActive className="overflow-hidden rounded-szn" />}
+              {playback.kind === 'spotify' && <SpotifyEmbed type={playback.type} id={playback.id} title={title} startActive />}
+            </div>
+          )}
+          <div className="flex flex-wrap items-center gap-2">
+            {playback.kind !== 'links' && !open && (
+              <Button variant="primary" size="lg" onClick={() => setOpen(true)} aria-label={`Play ${release.title}`}>
+                <svg aria-hidden width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z" /></svg>
+                Play
+              </Button>
+            )}
+            {platforms.map((p) => (
+              <a key={p.key} href={p.url} target="_blank" rel="noopener noreferrer"
+                 className="label inline-flex min-h-11 items-center gap-2 rounded-szn border-2 border-chrome px-4 text-sm text-fg transition-colors hover:border-fg">
+                <span style={{ color: p.color }}><BrandIcon platform={p.key} size={16} /></span>{p.label}
+              </a>
+            ))}
+            {platforms.length === 0 && playback.kind === 'links' && <p className="text-fg-muted">Streaming links coming — see the artist's page.</p>}
+          </div>
+        </div>
+      </section>
+
+      <div className="container-szn grid gap-10 py-8 md:grid-cols-[3fr_2fr] sm:py-12">
+        <div>
+          {release.tracks && release.tracks.length > 0 && (
+            <section aria-labelledby="tracks-heading">
+              <h2 id="tracks-heading" className="mb-4 text-2xl">Tracks</h2>
+              <TrackList tracks={release.tracks} primaryArtist={release.artist} />
+            </section>
+          )}
+          {release.description && (
+            <section aria-labelledby="about-heading" className="mt-10">
+              <h2 id="about-heading" className="text-2xl">About</h2>
+              <p className="measure mt-4 text-lg text-fg-muted">{release.description}</p>
+            </section>
+          )}
+        </div>
+        <div>
+          <h2 className="label text-sm text-chrome">Share</h2>
+          <ShareRow data={share} className="mt-3" />
+        </div>
       </div>
 
-      {/* Spacer */}
-      <div className="h-24" />
-    </div>
+      {more.length > 0 && (
+        <section aria-labelledby="more-heading" className="border-t border-line">
+          <div className="container-szn py-10 sm:py-14">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <h2 id="more-heading" className="text-2xl">More from {release.artist}</h2>
+              {hasArtistPage && <LinkButton to={`/artists/${release.artistSlug}`} variant="secondary">Artist page</LinkButton>}
+            </div>
+            <ul className="mt-6 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+              {more.map((r) => <li key={r.id}><ReleaseCard release={r} /></li>)}
+            </ul>
+          </div>
+        </section>
+      )}
+    </>
   )
 }
