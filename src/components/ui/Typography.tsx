@@ -1,138 +1,65 @@
 import { type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
-/* Heading Component */
+/* Heading: Bungee signage lettering. The scale is the only hierarchy — no eyebrows, no kickers. */
 interface HeadingProps {
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  gradient?: boolean
+  as?: 'h1' | 'h2' | 'h3' | 'h4'
+  size?: 'display' | 'h1' | 'h2' | 'h3' | 'h4'
   children: ReactNode
   className?: string
   id?: string
 }
 
-export function Heading({
-  as,
-  size = 'h2',
-  gradient = false,
-  children,
-  className,
-  id,
-}: HeadingProps) {
-  const Component = as || size
+const HEADING_SIZES = {
+  display: 'text-[clamp(2.75rem,9vw,6rem)]',
+  h1: 'text-[clamp(2.25rem,6vw,4.5rem)]',
+  h2: 'text-[clamp(1.75rem,4vw,3rem)]',
+  h3: 'text-[clamp(1.25rem,2.5vw,1.75rem)]',
+  h4: 'text-[1.1rem]',
+} as const
 
-  const sizes = {
-    h1: 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl',
-    h2: 'text-3xl sm:text-4xl md:text-5xl',
-    h3: 'text-2xl sm:text-3xl',
-    h4: 'text-xl sm:text-2xl',
-    h5: 'text-lg sm:text-xl',
-    h6: 'text-base sm:text-lg',
-  }
-
+export function Heading({ as, size = 'h2', children, className, id }: HeadingProps) {
+  const Component = as ?? (size === 'display' ? 'h1' : size)
   return (
-    <Component
-      id={id}
-      className={cn(
-        'font-[family-name:var(--font-heading)] font-bold leading-tight',
-        sizes[size],
-        gradient && 'text-gradient',
-        className
-      )}
-    >
+    <Component id={id} className={cn('font-display uppercase', HEADING_SIZES[size], className)}>
       {children}
     </Component>
   )
 }
 
-/* Text Component */
 interface TextProps {
   as?: 'p' | 'span' | 'div'
-  size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl'
-  color?: 'primary' | 'secondary' | 'muted' | 'orange' | 'purple'
-  weight?: 'normal' | 'medium' | 'semibold' | 'bold'
+  size?: 'sm' | 'base' | 'lg' | 'xl'
+  color?: 'primary' | 'muted' | 'board' | 'accent'
   children: ReactNode
   className?: string
-  style?: React.CSSProperties
 }
 
-export function Text({
-  as = 'p',
-  size = 'base',
-  color = 'primary',
-  weight = 'normal',
-  children,
-  className,
-  style,
-}: TextProps) {
+export function Text({ as = 'p', size = 'base', color = 'primary', children, className }: TextProps) {
   const Component = as
-
-  const sizes = {
-    xs: 'text-xs',
-    sm: 'text-sm',
-    base: 'text-base',
-    lg: 'text-lg',
-    xl: 'text-xl',
-    '2xl': 'text-2xl',
-  }
-
-  const colors = {
-    primary: 'text-text-primary',
-    secondary: 'text-text-secondary',
-    muted: 'text-text-muted',
-    orange: 'text-burnt-orange',
-    purple: 'text-deep-purple',
-  }
-
-  const weights = {
-    normal: 'font-normal',
-    medium: 'font-medium',
-    semibold: 'font-semibold',
-    bold: 'font-bold',
-  }
-
-  return (
-    <Component
-      className={cn(
-        'font-[family-name:var(--font-body)]',
-        sizes[size],
-        colors[color],
-        weights[weight],
-        className
-      )}
-      style={style}
-    >
-      {children}
-    </Component>
-  )
+  const sizes = { sm: 'text-sm', base: 'text-base', lg: 'text-lg', xl: 'text-xl' }
+  const colors = { primary: 'text-fg', muted: 'text-fg-muted', board: 'text-board', accent: 'text-accent' }
+  return <Component className={cn(sizes[size], colors[color], className)}>{children}</Component>
 }
 
-/* SectionHeader Component */
+/* A section's route-board: the heading on the left, the LED rule beneath, an optional action on the right. */
 interface SectionHeaderProps {
   title: string
   subtitle?: string
-  centered?: boolean
+  action?: ReactNode
   className?: string
   id?: string
 }
 
-export function SectionHeader({
-  title,
-  subtitle,
-  centered = true,
-  className,
-  id,
-}: SectionHeaderProps) {
+export function SectionHeader({ title, subtitle, action, className, id }: SectionHeaderProps) {
   return (
-    <div className={cn(centered && 'text-center', 'mb-16', className)}>
-      <Heading id={id} size="h2" className="mb-4">
-        {title}
-      </Heading>
-      {subtitle && (
-        <Text size="xl" color="secondary" className="max-w-2xl mx-auto">
-          {subtitle}
-        </Text>
-      )}
+    <div className={cn('mb-8 sm:mb-10', className)}>
+      <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
+        <Heading id={id} size="h2">{title}</Heading>
+        {action}
+      </div>
+      <div className="led mt-4" aria-hidden />
+      {subtitle && <Text color="muted" className="mt-4 max-w-2xl">{subtitle}</Text>}
     </div>
   )
 }

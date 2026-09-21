@@ -1,2 +1,2 @@
 export { useDocumentHead } from './useDocumentHead'
-export { useScrollParallax, useHeroParallax, useScrollTrigger } from './useScrollParallax'
+export { useReducedMotion } from './useReducedMotion'

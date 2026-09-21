@@ -1,11 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="sunsetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FF6B35"/>
-      <stop offset="50%" style="stop-color:#6A11CB"/>
-      <stop offset="100%" style="stop-color:#2575FC"/>
-    </linearGradient>
-  </defs>
-  <circle cx="32" cy="32" r="30" fill="url(#sunsetGradient)"/>
-  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#FFFFFF">CS</text>
+  <!-- Culture SZN favicon: a route board — black panel, LED green rule, yellow route letters. Authored by hand, 2026-09-21. -->
+  <rect width="64" height="64" rx="6" fill="#0b0b0d"/>
+  <rect x="8" y="46" width="48" height="4" rx="2" fill="#39ff14"/>
+  <text x="32" y="38" font-family="Bungee, 'Arial Black', sans-serif" font-size="26" text-anchor="middle" fill="#ffd400">SZN</text>
 </svg>

@@ -1,0 +1,42 @@
+/* Culture SZN — role tokens for the Nganya Livery world (seed 53cae379).
+   Named by role, never by hue. Every surface styles with these and nothing else. */
+:root {
+  --bg: #0b0b0d;            /* gloss black panel */
+  --bg-raised: #17171c;     /* panel black */
+  --fg: #f4f4f6;            /* white vinyl */
+  --fg-muted: #b4b4c0;      /* tinted from chrome, never grey-on-grey */
+  --accent: #39ff14;        /* LED green — the only action colour */
+  --accent-fg: #05100a;
+  --band: #7b2cff;          /* LED purple — ambient band */
+  --board: #ffd400;         /* route-board yellow — wayfinding */
+  --mark: #e8232a;          /* reflective red — the NEW mark */
+  --chrome: #9a9aa6;        /* brushed chrome */
+  --line: #2c2c34;          /* hairline on black */
+  --font-display: 'Bungee', 'Arial Black', system-ui, sans-serif;
+  --font-label: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --radius: 4px;            /* cut vinyl */
+  --measure: 64ch;
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+  --space-5: 1.5rem; --space-6: 2rem; --space-7: 3rem; --space-8: 5rem;
+  --led-glow: 0 6px 18px -2px color-mix(in srgb, var(--accent) 55%, transparent);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: dark;       /* a bus at night; the phone is the light source */
+}
+@theme {
+  --color-bg: var(--bg);
+  --color-bg-raised: var(--bg-raised);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-band: var(--band);
+  --color-board: var(--board);
+  --color-mark: var(--mark);
+  --color-chrome: var(--chrome);
+  --color-line: var(--line);
+  --font-display: var(--font-display);
+  --font-label: var(--font-label);
+  --font-body: var(--font-body);
+  --radius-szn: var(--radius);
+}

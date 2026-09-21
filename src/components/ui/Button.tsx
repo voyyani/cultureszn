@@ -1,58 +1,57 @@
-import { forwardRef, type ReactNode } from 'react'
-import { motion, type HTMLMotionProps } from 'framer-motion'
+import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react'
+import { Link, type LinkProps } from 'react-router-dom'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
-const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2.5 font-[family-name:var(--font-heading)] font-semibold transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none cursor-pointer',
+/* The controls of the bus: LED-green for the one action, chrome-edged for the rest. */
+export const buttonVariants = cva(
+  'label inline-flex items-center justify-center gap-2 rounded-szn border-2 text-[0.95rem] transition-[background-color,color,border-color,transform] duration-200 ease-out select-none disabled:opacity-50 disabled:pointer-events-none active:translate-y-px',
   {
     variants: {
       variant: {
-        primary:
-          'bg-gradient-sunset text-white shadow-soft hover:shadow-[0_0_30px_rgba(255,107,53,0.4)] hover:-translate-y-0.5',
-        outline:
-          'bg-transparent text-text-primary border-2 border-white/10 hover:border-burnt-orange hover:bg-burnt-orange/5',
-        ghost: 'bg-transparent text-text-primary hover:bg-white/5',
-        link: 'bg-transparent text-burnt-orange underline-offset-4 hover:underline p-0',
+        primary: 'bg-accent text-accent-fg border-accent hover:bg-fg hover:border-fg',
+        secondary: 'bg-transparent text-fg border-chrome hover:border-fg hover:bg-bg-raised',
+        ghost: 'bg-transparent text-fg-muted border-transparent hover:text-fg hover:bg-bg-raised',
       },
       size: {
-        sm: 'h-9 px-4 text-sm rounded-lg',
-        md: 'h-11 px-6 text-base rounded-[var(--radius-szn)]',
-        lg: 'h-14 px-8 text-lg rounded-[var(--radius-szn)]',
-        xl: 'h-16 px-10 text-xl rounded-[var(--radius-szn)]',
-        icon: 'h-10 w-10 rounded-full',
+        md: 'min-h-11 px-5',
+        lg: 'min-h-14 px-7 text-[1.1rem]',
       },
     },
-    defaultVariants: {
-      variant: 'primary',
-      size: 'md',
-    },
-  }
+    defaultVariants: { variant: 'primary', size: 'md' },
+  },
 )
 
-export interface ButtonProps
-  extends Omit<HTMLMotionProps<'button'>, 'children'>,
-    VariantProps<typeof buttonVariants> {
+export type ButtonVariants = VariantProps<typeof buttonVariants>
+export const buttonClasses = (v: ButtonVariants & { className?: string }) => cn(buttonVariants(v), v.className)
+
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, ButtonVariants {
   children: ReactNode
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, children, ...props }, ref) => {
-    return (
-      <motion.button
-        ref={ref}
-        className={cn(buttonVariants({ variant, size, className }))}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-        {...props}
-      >
-        {children}
-      </motion.button>
-    )
-  }
-)
-
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, size, type = 'button', children, ...props }, ref) => (
+  <button ref={ref} type={type} className={cn(buttonVariants({ variant, size }), className)} {...props}>
+    {children}
+  </button>
+))
 Button.displayName = 'Button'
+
+/** Internal navigation styled as a control — a real <a>, never a button inside a link. */
+export function LinkButton({ className, variant, size, children, ...props }: LinkProps & ButtonVariants & { children: ReactNode }) {
+  return (
+    <Link className={cn(buttonVariants({ variant, size }), className)} {...props}>
+      {children}
+    </Link>
+  )
+}
+
+/** External link styled as a control. */
+export function AnchorButton({ className, variant, size, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & ButtonVariants & { children: ReactNode }) {
+  return (
+    <a className={cn(buttonVariants({ variant, size }), className)} target="_blank" rel="noopener noreferrer" {...props}>
+      {children}
+    </a>
+  )
+}
 
 export { Button }

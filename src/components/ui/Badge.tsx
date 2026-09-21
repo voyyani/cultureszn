@@ -1,40 +1,20 @@
 import { type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
+/* A vinyl-cut caption plate. `mark` is the reflective red used for NEW. */
 interface BadgeProps {
   children: ReactNode
-  variant?: 'default' | 'outline' | 'gradient'
+  variant?: 'plate' | 'outline' | 'mark'
   size?: 'sm' | 'md'
   className?: string
 }
 
-export function Badge({
-  children,
-  variant = 'default',
-  size = 'md',
-  className,
-}: BadgeProps) {
+export function Badge({ children, variant = 'plate', size = 'md', className }: BadgeProps) {
   const variants = {
-    default: 'bg-burnt-orange/10 text-burnt-orange',
-    outline: 'bg-transparent border border-burnt-orange/30 text-burnt-orange',
-    gradient: 'bg-gradient-sunset text-white',
+    plate: 'bg-board text-bg',
+    outline: 'bg-transparent border border-chrome text-fg',
+    mark: 'bg-mark text-fg',
   }
-
-  const sizes = {
-    sm: 'px-2 py-0.5 text-xs',
-    md: 'px-3 py-1 text-sm',
-  }
-
-  return (
-    <span
-      className={cn(
-        'inline-flex items-center justify-center rounded-full font-medium',
-        variants[variant],
-        sizes[size],
-        className
-      )}
-    >
-      {children}
-    </span>
-  )
+  const sizes = { sm: 'px-1.5 py-1 text-[0.7rem]', md: 'px-2 py-1.5 text-[0.8rem]' }
+  return <span className={cn('label inline-flex items-center rounded-szn', variants[variant], sizes[size], className)}>{children}</span>
 }

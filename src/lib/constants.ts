@@ -1,5 +1,5 @@
 /**
- * Navigation links (only surfaces that exist)
+ * Navigation links (only surfaces that exist). On the route board these are destinations.
  */
 export const NAV_LINKS = [
   { name: 'Artists', href: '/artists' },
@@ -8,23 +8,3 @@ export const NAV_LINKS = [
   { name: 'Join SZN', href: '/join' },
 ] as const
 export const FOOTER_LINKS = NAV_LINKS
-
-/**
- * Breakpoints (matching Tailwind)
- */
-export const BREAKPOINTS = {
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280,
-  '2xl': 1536,
-} as const
-
-/**
- * Animation settings
- */
-export const ANIMATION_CONFIG = {
-  reducedMotion: false, // Will be updated based on user preference
-  defaultDuration: 0.5,
-  staggerDelay: 0.1,
-} as const
