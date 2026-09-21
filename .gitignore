@@ -27,3 +27,8 @@ dist-ssr
 *.env
 # SDD scratch workspace
 .superpowers/
+
+# SEO prerender intermediate
+dist-seo
+# Impeccable review captures (regenerated per round)
+.impeccable/review/
