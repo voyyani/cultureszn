@@ -1,137 +1,95 @@
-import { useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
-import { Button } from '@/components/ui'
-import { cn } from '@/lib/utils'
+import { useEffect, useId, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { NAV_LINKS } from '@/lib/constants'
+import { cn } from '@/lib/utils'
 
+const DESTINATIONS = NAV_LINKS.filter((l) => l.href !== '/join')
+
+/* The route board. Sacco name on the left, destinations in yellow condensed caps on the right,
+   Join SZN as the LED-green control. On a phone the board unfolds into a full list. */
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
+  const [open, setOpen] = useState(false)
+  const menuId = useId()
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  // Close mobile menu when clicking outside
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
+    document.body.classList.toggle('menu-open', open)
+    const main = document.getElementById('main')
+    const footer = document.querySelector('footer')
+    for (const el of [main, footer]) el?.toggleAttribute('inert', open)
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', onKey)
     return () => {
-      document.body.style.overflow = 'unset'
+      window.removeEventListener('keydown', onKey)
+      document.body.classList.remove('menu-open')
+      for (const el of [main, footer]) el?.removeAttribute('inert')
     }
-  }, [isMobileMenuOpen])
+  }, [open])
+
+  const destination = ({ isActive }: { isActive: boolean }) =>
+    cn('label relative flex min-h-11 items-center text-[1.05rem] tracking-[0.1em] text-board transition-colors hover:text-fg',
+      'after:absolute after:inset-x-0 after:-bottom-1 after:h-[3px] after:rounded-full after:bg-accent after:opacity-0 after:transition-opacity',
+      isActive && 'text-fg after:opacity-100 after:shadow-[var(--led-glow)]')
 
   return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 w-full z-50 transition-all duration-300',
-        isScrolled
-          ? 'py-4 bg-matte-black/90 backdrop-blur-lg shadow-lg'
-          : 'py-6 bg-matte-black/50 backdrop-blur-sm'
-      )}
-    >
-      <div className="container-szn">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="relative z-10">
-            <motion.span
-              className="font-[family-name:var(--font-heading)] font-bold text-2xl text-gradient"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-            >
-              CULTURE<span className="font-light">SZN</span>
-            </motion.span>
-          </Link>
+    <header className="sticky top-0 z-50 bg-bg">
+      <div className="container-szn flex min-h-16 items-center justify-between gap-6">
+        <NavLink to="/" className="font-display text-[1.35rem] leading-none text-fg sm:text-2xl" aria-label="Culture SZN — home">
+          CULTURE <span className="text-board">SZN</span>
+        </NavLink>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-10">
-            {NAV_LINKS.map((item) => (
-              <NavLink
-                key={item.name}
-                to={item.href}
-                className={({ isActive }) =>
-                  cn(
-                    'font-medium text-base relative py-2 transition-colors',
-                    'after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5',
-                    'after:bg-gradient-sunset after:transition-all after:duration-300',
-                    'hover:after:w-full hover:text-text-primary',
-                    isActive ? 'text-burnt-orange after:w-full' : 'text-text-secondary'
-                  )
-                }
-              >
-                {item.name}
-              </NavLink>
-            ))}
-            <Link to="/join" className="inline-block">
-              <Button variant="outline" size="md">
-                Join SZN
-              </Button>
-            </Link>
-          </nav>
-
-          {/* Mobile Menu Toggle */}
-          <motion.button
-            className="lg:hidden relative z-10 p-2 text-text-primary"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-            whileTap={{ scale: 0.95 }}
+        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
+          {DESTINATIONS.map((item) => (
+            <NavLink key={item.href} to={item.href} className={destination}>
+              {item.name}
+            </NavLink>
+          ))}
+          <NavLink
+            to="/join"
+            className={({ isActive }) =>
+              cn('label inline-flex min-h-11 items-center rounded-szn border-2 border-accent px-5 text-[0.95rem] transition-colors',
+                isActive ? 'bg-fg border-fg text-accent-fg' : 'bg-accent text-accent-fg hover:bg-fg hover:border-fg')
+            }
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </motion.button>
-        </div>
+            Join SZN
+          </NavLink>
+        </nav>
+
+        <button
+          type="button"
+          className="label flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-szn border-2 border-chrome px-3 text-board md:hidden"
+          aria-label="Menu"
+          aria-expanded={open}
+          aria-controls={menuId}
+          onClick={() => setOpen((o) => !o)}
+        >
+          <svg aria-hidden width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            {open ? <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" strokeWidth="2.5" /> : <path d="M2 4h16v2.5H2zM2 8.75h16v2.5H2zM2 13.5h16V16H2z" />}
+          </svg>
+        </button>
       </div>
+      <div className="led" aria-hidden />
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="lg:hidden bg-matte-black border-t border-white/5 absolute top-full left-0 w-full"
-          >
-            <nav className="container-szn py-8 flex flex-col gap-6">
-              {NAV_LINKS.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <NavLink
-                    to={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-lg font-medium text-text-secondary hover:text-text-primary transition-colors block py-2"
-                  >
-                    {item.name}
-                  </NavLink>
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: NAV_LINKS.length * 0.1 }}
-              >
-                <Link to="/join" className="block" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button variant="primary" size="lg" className="w-full mt-4">
-                    Join SZN
-                  </Button>
-                </Link>
-              </motion.div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <nav
+        id={menuId}
+        aria-label="Primary"
+        hidden={!open}
+        className="fixed inset-x-0 top-[calc(4rem+3px)] bottom-0 z-40 flex flex-col bg-bg md:hidden"
+      >
+        <ul className="container-szn flex flex-col divide-y divide-line pt-2">
+          {DESTINATIONS.map((item) => (
+            <li key={item.href}>
+              <NavLink to={item.href} onClick={() => setOpen(false)} className={({ isActive }) => cn('label flex min-h-16 items-center text-3xl text-board', isActive && 'text-fg')}>
+                <span className="mr-4 text-chrome" aria-hidden>▸</span>{item.name}
+              </NavLink>
+            </li>
+          ))}
+          <li className="pt-6">
+            <NavLink to="/join" onClick={() => setOpen(false)} className="label flex min-h-14 items-center justify-center rounded-szn bg-accent text-xl text-accent-fg">
+              Join SZN
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
     </header>
   )
 }

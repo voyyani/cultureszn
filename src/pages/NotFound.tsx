@@ -1,62 +1,20 @@
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { Home, ArrowLeft } from 'lucide-react'
-import { Button, Text } from '@/components/ui'
-import { fadeInUp, staggerContainer } from '@/lib/motion'
+import { LinkButton } from '@/components/ui'
+import { useDocumentHead } from '@/hooks'
+import { SITE } from '@/config/site'
 
 export function NotFound() {
+  useDocumentHead({ title: `Wrong route | ${SITE.name}` })
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <motion.div
-        variants={staggerContainer}
-        initial="initial"
-        animate="animate"
-        className="text-center px-6"
-      >
-        {/* 404 Number */}
-        <motion.h1
-          variants={fadeInUp}
-          className="text-8xl sm:text-9xl font-[family-name:var(--font-heading)] font-bold text-gradient mb-4"
-        >
-          404
-        </motion.h1>
-
-        {/* Title */}
-        <motion.h2
-          variants={fadeInUp}
-          className="text-2xl sm:text-3xl font-[family-name:var(--font-heading)] font-bold mb-4"
-        >
-          Page Not Found
-        </motion.h2>
-
-        {/* Description */}
-        <motion.div variants={fadeInUp}>
-          <Text color="secondary" size="lg" className="mb-8 max-w-md mx-auto">
-            The page you're looking for doesn't exist or has been moved to a different location.
-          </Text>
-        </motion.div>
-
-        {/* Actions */}
-        <motion.div
-          variants={fadeInUp}
-          className="flex flex-wrap justify-center gap-4"
-        >
-          <Link to="/">
-            <Button variant="primary" size="lg">
-              <Home size={20} />
-              Go Home
-            </Button>
-          </Link>
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => window.history.back()}
-          >
-            <ArrowLeft size={20} />
-            Go Back
-          </Button>
-        </motion.div>
-      </motion.div>
-    </div>
+    <section className="section-szn" aria-labelledby="nf-heading">
+      <div className="container-szn">
+        <p className="label text-board text-lg">Route 404</p>
+        <h1 id="nf-heading" className="mt-3 text-[clamp(2.5rem,8vw,5.5rem)]">Wrong stage.</h1>
+        <p className="mt-6 max-w-md text-lg text-fg-muted">This stop doesn't exist. Board again from the front, or go straight to the music.</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <LinkButton to="/" variant="primary" size="lg">Home</LinkButton>
+          <LinkButton to="/releases" variant="secondary" size="lg">Releases</LinkButton>
+        </div>
+      </div>
+    </section>
   )
 }

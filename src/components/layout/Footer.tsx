@@ -1,104 +1,63 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { Instagram, Youtube, Music2 } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
-import { Button, Text } from '@/components/ui'
+import { BrandIcon } from '@/components/icons'
 import { FOOTER_LINKS } from '@/lib/constants'
 import { SITE } from '@/config/site'
+import type { PlatformKey } from '@/config/platforms'
 
-const SOCIAL_META: Record<keyof typeof SITE.socials, { name: string; icon: LucideIcon }> = {
-  instagram: { name: 'Instagram', icon: Instagram },
-  youtube: { name: 'YouTube', icon: Youtube },
-  spotify: { name: 'Spotify', icon: Music2 },
-  tiktok: { name: 'TikTok', icon: Music2 },
-}
+const SOCIAL_LABEL: Record<keyof typeof SITE.socials, string> = { instagram: 'Instagram', youtube: 'YouTube', spotify: 'Spotify', tiktok: 'TikTok' }
+const SOCIAL_ICON: Partial<Record<keyof typeof SITE.socials, PlatformKey>> = { youtube: 'youtube', spotify: 'spotify' }
 
-const socialLinks = (Object.keys(SOCIAL_META) as Array<keyof typeof SITE.socials>)
+const socials = (Object.keys(SOCIAL_LABEL) as Array<keyof typeof SITE.socials>)
   .filter((key) => Boolean(SITE.socials[key]))
-  .map((key) => ({ key, href: SITE.socials[key] as string, ...SOCIAL_META[key] }))
+  .map((key) => ({ key, href: SITE.socials[key] as string, name: SOCIAL_LABEL[key] }))
 
+/* The rear of the bus: a purple LED band, the sacco name, destinations, the credit plate. */
 export function Footer() {
   return (
-    <footer className="bg-black/50 border-t border-white/5">
-      <div className="container-szn py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-          {/* Brand Column */}
+    <footer className="mt-auto bg-bg">
+      <div className="led led--band" aria-hidden />
+      <div className="container-szn py-12 sm:py-16">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <Link to="/" className="inline-block mb-6">
-              <span className="font-[family-name:var(--font-heading)] font-bold text-3xl text-gradient">
-                CULTURE SZN
-              </span>
-            </Link>
-            <Text color="secondary" className="mb-8 leading-relaxed">
-              {SITE.description}
-            </Text>
-            {socialLinks.length > 0 && (
-              <div className="flex gap-4">
-                {socialLinks.map((social) => (
-                  <motion.a
-                    key={social.key}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-11 h-11 rounded-full bg-white/5 flex items-center justify-center
-                             text-text-secondary hover:text-white transition-colors"
-                    whileHover={{ y: -3 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label={social.name}
-                  >
-                    <social.icon size={18} />
-                  </motion.a>
+            <Link to="/" className="font-display text-3xl leading-none text-fg">CULTURE <span className="text-board">SZN</span></Link>
+            <p className="mt-4 max-w-sm text-fg-muted">{SITE.description}</p>
+            {socials.length > 0 && (
+              <ul className="mt-6 flex flex-wrap gap-3" aria-label="Culture SZN on social platforms">
+                {socials.map((s) => (
+                  <li key={s.key}>
+                    <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.name}
+                       className="flex h-11 w-11 items-center justify-center rounded-szn border border-line text-fg-muted transition-colors hover:border-fg hover:text-fg">
+                      {SOCIAL_ICON[s.key] ? <BrandIcon platform={SOCIAL_ICON[s.key]!} size={18} /> : <span className="label text-xs">{s.name.slice(0, 2)}</span>}
+                    </a>
+                  </li>
                 ))}
-              </div>
+              </ul>
             )}
           </div>
 
-          {/* Site Links */}
-          <div>
-            <h4 className="font-[family-name:var(--font-heading)] font-semibold text-lg mb-6 text-text-primary">
-              Explore
-            </h4>
-            <ul className="space-y-4">
+          <nav aria-label="Footer">
+            <p className="label text-sm text-chrome">Destinations</p>
+            <ul className="mt-3 flex flex-col gap-1">
               {FOOTER_LINKS.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-text-secondary hover:text-burnt-orange hover:pl-1 transition-all duration-300 flex items-center gap-2"
-                  >
-                    {link.name}
-                  </Link>
+                <li key={link.href}>
+                  <Link to={link.href} className="label inline-flex min-h-11 items-center text-xl text-board transition-colors hover:text-fg">{link.name}</Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Join */}
           <div>
-            <h4 className="font-[family-name:var(--font-heading)] font-semibold text-lg mb-6 text-text-primary">
-              Join The SZN
-            </h4>
-            <Text color="secondary" className="mb-6">
-              Stay connected with Nairobi's creative pulse.
-            </Text>
-            <Link to="/join" className="inline-block">
-              <Button variant="primary">Join SZN</Button>
-            </Link>
+            <p className="label text-sm text-chrome">Base</p>
+            <p className="mt-3 text-fg-muted">Nairobi, Kenya<br />Africa/Nairobi</p>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/5 text-center">
-          <p className="text-sm text-text-secondary mt-2">
+        <div className="chrome-rule mt-12" aria-hidden />
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 text-sm text-fg-muted">
+          <p>© {new Date().getFullYear()} Culture SZN</p>
+          <p>
             Crafted by{' '}
-            <a
-              href="https://voyani.tech"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:text-blue-400 transition-colors underline font-medium"
-            >
-              VOYANI
-            </a>{' '}
-            for the Culture SZN team.
+            <a href="https://voyani.tech" target="_blank" rel="noopener noreferrer" className="text-fg underline underline-offset-4 decoration-chrome hover:decoration-fg">VOYANI</a>
           </p>
         </div>
       </div>
