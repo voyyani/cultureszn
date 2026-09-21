@@ -1,6 +1,9 @@
 import '@testing-library/jest-dom/vitest'
-import { cleanup } from '@testing-library/react'
+import { cleanup, configure } from '@testing-library/react'
 import { afterEach } from 'vitest'
+
+// Lazy route chunks are transformed on first import; give findBy* room for a cold start.
+configure({ asyncUtilTimeout: 5000 })
 
 afterEach(() => cleanup())
 

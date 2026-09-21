@@ -4,7 +4,7 @@ import { readdir, readFile } from 'node:fs/promises'
 import { gzipSync } from 'node:zlib'
 import path from 'node:path'
 
-const BUDGET_GZIP = Number(process.env.BUNDLE_BUDGET_GZIP ?? 210_000)
+const BUDGET_GZIP = Number(process.env.BUNDLE_BUDGET_GZIP ?? 100_000)
 const assetsDir = path.resolve('dist/assets')
 
 let entries

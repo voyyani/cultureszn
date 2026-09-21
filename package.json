@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-seo.ts --outDir dist-seo && node scripts/prerender.mjs",
     "typecheck": "tsc -b --force",
     "lint": "eslint .",
     "test": "vitest run",
@@ -45,6 +45,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "jsdom": "^25.0.1",
+    "playwright-core": "^1.62.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4",

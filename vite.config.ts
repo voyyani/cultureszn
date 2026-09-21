@@ -13,4 +13,18 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Function form: applies only to bundled modules, so the SSR build (React external) is unaffected.
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return undefined
+          if (/node_modules\/(react|react-dom|scheduler|react-router|react-router-dom)\//.test(id)) return 'react'
+          if (/node_modules\/(framer-motion|motion-dom|motion-utils)\//.test(id)) return 'motion'
+          return undefined
+        },
+      },
+    },
+  },
+  esbuild: { drop: ['console', 'debugger'] },
 })
